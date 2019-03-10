@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Login from './components/login';
 import './scss/main.scss';
 
 
-const App = () => {
-    return (
-        <div>
-            <h1>
-                working...
-            </h1>
-        </div>
-    )
+class App extends React.Component {
+
+    state = {
+        step: 1
+    }
+
+
+    render() {
+        return (
+            <Login />
+        )
+
+    }
 }
+
 
 ReactDOM.render(
     <App />,

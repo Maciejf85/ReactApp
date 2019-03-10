@@ -1,0 +1,10 @@
+$backgroundColor: #aaa;
+
+$base-white: #eee;
+$dark-grey: #2F3334;
+
+// h1-h6
+@for $i from 1 through 6 {
+    h#{$i} { font-size: (2.7rem - $i*0.2)   }
+}
+
