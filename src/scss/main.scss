@@ -1,15 +1,22 @@
-@import './reset';
-@import './variables';
-@import './base';
-@import './fonts';
-@import './login';
+@import "./reset";
+@import "./fonts";
+@import "./variables";
+@import "./buttons";
+@import "./base";
+@import "./login";
 
-html{
-    font-size: 16px;
-    font-family: $open-sans;
+html {
+  font-size: 16px;
 }
-body{
-    position: relative;
-    background: white;
+body {
+  position: relative;
+  background: white;
+  font-family: $open-sans;
+  width: 100vw;
+  height: 100vh;
 }
-
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+}
