@@ -7,6 +7,7 @@ import NotFound from "./components/notFound";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./scss/main.scss";
 
+
 class App extends React.Component {
   state = {
     isAuthenticated: false
