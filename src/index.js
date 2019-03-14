@@ -1,30 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Main from "./components/main";
-import Login from "./components/login";
-import Contact from "./components/contact";
+import Login from "./components/logedIn";
 import NotFound from "./components/notFound";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./scss/main.scss";
-
 
 class App extends React.Component {
   state = {
-    isAuthenticated: false
+    isAuthenticated: false,
+    token: ""
   };
 
-  componentDidMount() {}
+  handleLogin = props => {
+    console.log(props);
+  };
 
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/Login" component={Login} />
-          <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

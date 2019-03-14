@@ -5,7 +5,9 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 class Main extends React.Component {
   state = {
     text: "",
-    password: ""
+    password: "",
+    response: "",
+    token: ""
   };
 
   inputForm = e => {
@@ -19,31 +21,60 @@ class Main extends React.Component {
     e.preventDefault();
     const { text, password } = this.state;
     this.setState({
-      text: "",
-      password: ""
+      response: ""
     });
 
-    console.log(text, password);
+    if (text.length !== 0 && password.length !== 0) {
+      //POBIERANIE
 
-    //POBIERANIE
+      // fetch("https://cors-anywhere.herokuapp.com/http://maciejf.pl/newUser.php")
+      //   .then(resp => {
+      //     if (resp.ok) return resp.text();
+      //     else throw new Error("Błąd sieci!");
+      //   })
+      //   .then(response => {
+      //     console.log(response);
+      //   })
+      //   .catch(err => {
+      //     console.log("Błąd!", err);
+      //   });
 
-    // fetch(
-    //   "https://cors-anywhere.herokuapp.com/http://maciejf.pl/Strony_k/222/222.json"
-    // )
-    //   .then(resp => {
-    //     if (resp.ok) return resp.json();
-    //     else throw new Error("Błąd sieci!");
-    //   })
-    //   .then(response => {
-    //     console.log(response);
-    //   })
-    //   .catch(err => {
-    //     console.log("Błąd!", err);
-    //   });
+      // WYSYŁANIE DANYCH
+      fetch(
+        "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/login.php",
+        {
+          method: "POST",
+          body: JSON.stringify({ text: text, password: password })
+        }
+      )
+        .then(resp => {
+          if (resp.ok) return resp.text();
+          else throw new Error("Błąd sieci!");
+        })
+        .then(response => {
+          this.setState({
+            response: response
+          });
+        })
+        .catch(err => {
+          this.setState({
+            response: err
+          });
+        });
+
+      this.setState({
+        text: "",
+        password: ""
+      });
+    } else {
+      this.setState({
+        response: "Wpisz login i hasło"
+      });
+    }
   };
 
   render() {
-    const { text, password } = this.state;
+    const { text, password, response } = this.state;
     return (
       <>
         <div className="wrapper">
@@ -71,6 +102,8 @@ class Main extends React.Component {
                   />
                   <label>Hasło</label>
                 </div>
+                <div className="result">{response}</div>
+
                 <input
                   type="submit"
                   value="Wyślij"
