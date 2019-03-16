@@ -20,3 +20,53 @@ body {
   height: 100vh;
   background: #000;
 }
+.owner-nav {
+  height: 60px;
+  background: $dark-grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+
+  .nav-list {
+    display: flex;
+    // border: 1px solid white;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    padding: 0 10px;
+    font-size: 0.9rem;
+  }
+  .nav-name {
+    font-size: 0.95rem;
+    color: $base-pink;
+    margin: 0 3px;
+    text-decoration: underline;
+    font-style: italic;
+  }
+  .nav-button {
+    margin-left: 20px;
+  }
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  width: 350px;
+  // border: 1px solid red;
+
+  img {
+    width: 60px;
+    margin-top: 40px;
+  }
+  span {
+    color: #00d7fe;
+    font-size: 1.8rem;
+    padding: 0 10px;
+    font-style: italic;
+    letter-spacing: 4px;
+  }
+}
+.nav-options {
+  display: flex;
+  justify-content: center;
+}

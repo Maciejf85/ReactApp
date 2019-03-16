@@ -1,11 +1,13 @@
 $backgroundColor: #aaa;
 
 $base-white: #eee;
-$dark-grey: #2F3334;
+$dark-grey: #2f3334;
 $main-dark-violet: rgba(88, 42, 114, 0.3);
+$base-pink: #f73859;
 
 // h1-h6
 @for $i from 1 through 6 {
-    h#{$i} { font-size: (2.7rem - $i*0.2)   }
+  h#{$i} {
+    font-size: (2.7rem - $i * 0.2);
+  }
 }
-
