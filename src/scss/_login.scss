@@ -83,7 +83,7 @@
   flex-wrap: wrap;
   width: 400px;
   min-height: 350px;
-  border: 1px dotted violet;
+  border: 1px solid #4e004ea9;
   padding: 70px 30px;
 }
 .form-icon {
@@ -95,8 +95,8 @@
   color: rgba(255, 255, 255, 0.76);
 }
 
-input[type="text"],
-input[type="password"] {
+.inputBox input[type="text"],
+.inputBox input[type="password"] {
   display: block;
   background: transparent;
   width: 300px;
@@ -121,7 +121,7 @@ input[type="password"] {
     left: 0;
     padding: 10px 10px;
     font-size: 15px;
-    color: #c20e0ec9;
+    color: white;
     letter-spacing: 0px;
     pointer-events: none;
     transition: 0.5s;
@@ -146,8 +146,9 @@ input[type="password"] {
 }
 
 .result {
+  padding-top: 5px;
   height: 20px;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 20px;
   color: red;
 }

@@ -39,69 +39,69 @@ class Main extends React.Component {
         });
   };
 
-  handleSubmitPrototype = e => {
-    e.preventDefault();
-
-    const { checkbox } = this.state;
-
-    const token = "b8b19afef0f4dd7ba907fe848589685e";
-    const type = "photographer";
-
-    const logInfo = JSON.stringify({ token: token, type: type });
-
-    checkbox
-      ? localStorage.setItem("session-token", logInfo)
-      : sessionStorage.setItem("session-token", logInfo);
-
-    this.setState({
-      token: token,
-      type: type
-    });
-
-    this.props.token(token, type);
-  };
-
-  // handleSubmit = e => {
+  // handleSubmitPrototype = e => {
   //   e.preventDefault();
-  //   const { text, password } = this.state;
+
+  //   const { checkbox } = this.state;
+
+  //   const token = "b8b19afef0f4dd7ba907fe848589685e";
+  //   const type = "photographer";
+
+  //   const logInfo = JSON.stringify({ token: token, type: type });
+
+  //   checkbox
+  //     ? localStorage.setItem("session-token", logInfo)
+  //     : sessionStorage.setItem("session-token", logInfo);
 
   //   this.setState({
-  //     response: ""
+  //     token: token,
+  //     type: type
   //   });
 
-  //   if (text.length !== 0 && password.length !== 0) {
-  //     // WYSYŁANIE DANYCH
-  //     fetch(
-  //       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/login.php",
-  //       {
-  //         method: "POST",
-  //         body: JSON.stringify({ user: text, password: password })
-  //       }
-  //     )
-  //       .then(resp => {
-  //         if (resp.ok) return resp.json();
-  //         else throw new Error("Błąd sieci!");
-  //       })
-  //       .then(response => {
-  //         const { token, type } = response;
-  //         console.log(token, type);
-  //       })
-  //       .catch(err => {
-  //         this.setState({
-  //           response: err
-  //         });
-  //       });
-
-  //     this.setState({
-  //       text: "",
-  //       password: ""
-  //     });
-  //   } else {
-  //     this.setState({
-  //       response: "Wpisz login i hasło"
-  //     });
-  //   }
+  //   this.props.token(token, type);
   // };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { text, password } = this.state;
+
+    this.setState({
+      response: ""
+    });
+
+    if (text.length !== 0 && password.length !== 0) {
+      // WYSYŁANIE DANYCH
+      fetch(
+        "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/login.php",
+        {
+          method: "POST",
+          body: JSON.stringify({ text: text, password: password })
+        }
+      )
+        .then(resp => {
+          if (resp.ok) return resp.text();
+          else throw new Error("Błąd sieci!");
+        })
+        .then(response => {
+          const { token, type, name } = JSON.parse(response);
+          this.props.token(token, type, name);
+        })
+        .catch(err => {
+          this.setState({
+            response: err
+          });
+        });
+
+      this.setState({
+        text: "",
+        password: ""
+      });
+    } else {
+      this.setState({
+        response: "Wpisz login i hasło"
+      });
+    }
+  };
 
   render() {
     const { text, password, response, token, type } = this.state;
@@ -151,7 +151,7 @@ class Main extends React.Component {
                   type="submit"
                   value="Wyślij"
                   className="btn-submit"
-                  onClick={this.handleSubmitPrototype}
+                  onClick={this.handleSubmit}
                 />
               </form>
             </div>

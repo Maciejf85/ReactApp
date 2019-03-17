@@ -19,16 +19,18 @@ class App extends React.Component {
       isAuthenticated: false,
       token: "",
       type: "",
+      name: "",
       local: this.local,
       session: this.session
     };
   }
 
-  handleLogin = (value, type) => {
+  handleLogin = (value, type, name) => {
     this.setState({
       isAuthenticated: true,
       token: value,
-      type: type
+      type: type,
+      name: name
     });
   };
 
@@ -36,21 +38,18 @@ class App extends React.Component {
     this.setState({
       isAuthenticated: false,
       token: "",
-      type: ""
+      type: "",
+      name: ""
     });
     localStorage.clear();
     sessionStorage.clear();
   };
 
   render() {
-    const { isAuthenticated, token, type, local, session } = this.state;
+    const { isAuthenticated, token, type, local, session, name } = this.state;
 
     return (
       <>
-        {/* <h2>
-            React Router , {isAuthenticated} , {token}, {type};
-            <button onClick={this.logOut}>wyloguj</button>
-          </h2> */}
         <Router>
           <Switch>
             <Route
@@ -61,6 +60,7 @@ class App extends React.Component {
                   token={this.handleLogin}
                   isAuthenticated={isAuthenticated}
                   type={type}
+                  name={name}
                   tokenValue={token}
                   logout={this.logOut}
                   local={local}
@@ -76,6 +76,7 @@ class App extends React.Component {
                   token={this.handleLogin}
                   isAuthenticated={isAuthenticated}
                   type={type}
+                  name={name}
                   tokenValue={token}
                   logout={this.logOut}
                 />
@@ -90,6 +91,7 @@ class App extends React.Component {
                   token={this.handleLogin}
                   isAuthenticated={isAuthenticated}
                   type={type}
+                  name={name}
                   tokenValue={token}
                   logout={this.logOut}
                 />

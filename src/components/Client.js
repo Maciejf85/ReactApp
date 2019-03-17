@@ -8,12 +8,13 @@ class Client extends React.Component {
 
     this.state = {
       token: this.props.tokenValue,
-      type: this.props.type
+      type: this.props.type,
+      name: this.props.name
     };
   }
 
   render() {
-    const { token, type } = this.state;
+    const { token, type, name } = this.state;
     if (token === "" || type === "") {
       return <Redirect to="/" />;
     } else {
@@ -30,7 +31,7 @@ class Client extends React.Component {
             </div>
             <ul className="nav-list">
               <li>
-                Witaj <span className="nav-name">{type}</span> !
+                Witaj <span className="nav-name">{name}</span> !
               </li>
               <li className="nav-button">
                 <button className="btn-logout" onClick={this.props.logout}>
@@ -40,9 +41,7 @@ class Client extends React.Component {
             </ul>
           </nav>
 
-          <h3 style={{ marginTop: "40px" }}>
-            message from component Photographer
-          </h3>
+          <h3 style={{ marginTop: "40px" }}>message from component Client</h3>
         </>
       );
     }

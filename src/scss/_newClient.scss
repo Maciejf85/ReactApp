@@ -1,0 +1,111 @@
+.photographer-container {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.photographer-main {
+  margin: 0 auto;
+  margin-top: 5px;
+  width: 60%;
+  height: 70%;
+  border-left: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  min-width: 550px;
+  min-height: 550px;
+
+  .newUser-form {
+    margin: 0 auto;
+    width: 70%;
+    min-height: 550px;
+    min-width: 400px;
+    // border: 1px solid red;
+    text-align: center;
+    padding: 0 30px;
+  }
+}
+
+.photographer-left {
+  width: 15%;
+  min-width: 300px;
+  // background: rgba(0, 128, 0, 0.1);
+  padding: 20px 30px;
+}
+
+.photographer-right {
+  width: 20%;
+  min-width: 300px;
+  // background: rgba(255, 0, 0, 0.1);
+  padding: 20px 30px;
+}
+
+.new-box input[type="text"],
+.new-box input[type="password"] {
+  display: block;
+  background: transparent;
+  width: 200px;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin: 30px 0;
+  color: black;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-indent: 10px;
+  font-size: 15px;
+  font-family: $roboto;
+}
+
+.new-box {
+  position: relative;
+
+  input {
+    margin-top: 10px;
+  }
+
+  > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 10px;
+    font-size: 15px;
+    color: $dark-grey;
+    letter-spacing: 0px;
+    pointer-events: none;
+    transition: 0.5s;
+  }
+
+  & input:focus ~ label,
+  & input:valid ~ label {
+    top: -25px;
+    left: -10px;
+    font-size: 13px;
+    color: $dark-grey;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .select-type {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    outline: none;
+    color: $dark-grey;
+    width: 150px;
+    text-align: center;
+  }
+}
+span {
+  font-size: 0.9rem;
+  margin: 0 10px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  min-height: 500px;
+  background: $base-white;
+  padding-bottom: 30px;
+  // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}

@@ -33,16 +33,21 @@
 }
 
 .btn-choose {
-  width: 250px;
+  width: 150px;
   height: 50px;
   background: transparent;
   border: none;
   outline: none;
   margin: 0 10px;
-  border-bottom: 2px solid $dark-grey;
+  color: $light-grey;
 
   &:hover {
     cursor: pointer;
     color: $base-pink;
   }
+}
+.btn-active {
+  color: $react-blue;
+  border-left: 4px solid $react-blue;
+  font-size: 0.9rem;
 }

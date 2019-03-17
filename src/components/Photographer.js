@@ -11,6 +11,7 @@ class Photographer extends React.Component {
     this.state = {
       token: this.props.tokenValue,
       type: this.props.type,
+      name: this.props.name,
       newUser: true,
       allSessions: false
     };
@@ -23,8 +24,7 @@ class Photographer extends React.Component {
   };
 
   render() {
-    const { token, type, newUser, allSessions } = this.state;
-    console.log(newUser, allSessions);
+    const { token, type, newUser, allSessions, name } = this.state;
     if (token === "" || type === "") {
       return <Redirect to="/" />;
     } else {
@@ -39,9 +39,10 @@ class Photographer extends React.Component {
                 <span>your LOGO</span>
               </div>
             </div>
+            <div className="nav-options" />
             <ul className="nav-list">
               <li>
-                Witaj <span className="nav-name">{type}</span> !
+                Witaj <span className="nav-name">{name}</span> !
               </li>
               <li className="nav-button">
                 <button className="btn-logout" onClick={this.props.logout}>
@@ -50,24 +51,21 @@ class Photographer extends React.Component {
               </li>
             </ul>
           </nav>
-          <div className="nav-options">
-            <button
-              className="btn-choose"
-              name="newClient"
-              onClick={this.handleButtonOption}
-            >
-              Nowy klient
-            </button>
-            <button
-              className="btn-choose"
-              name="allSesions"
-              onClick={this.handleButtonOption}
-            >
-              Pokaż wszystkie
-            </button>
-          </div>
-          {newUser && <Form />}
-          {allSessions && <Sessions />}
+
+          {newUser && (
+            <Form
+              change={this.handleButtonOption}
+              newUser={this.state.newUser}
+              allSessions={this.state.allSessions}
+            />
+          )}
+          {allSessions && (
+            <Sessions
+              change={this.handleButtonOption}
+              newUser={this.state.newUser}
+              allSessions={this.state.allSessions}
+            />
+          )}
         </>
       );
     }
