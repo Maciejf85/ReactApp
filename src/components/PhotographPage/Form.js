@@ -9,6 +9,7 @@ class Form extends React.Component {
       surname: "",
       password: "",
       email: "",
+      phone: "",
       packageQ: "",
       price: "",
       addPrice: "",
@@ -50,6 +51,7 @@ class Form extends React.Component {
       name,
       surname,
       email,
+      phone,
       password,
       packageQ,
       price,
@@ -110,6 +112,16 @@ class Form extends React.Component {
                 <div className="new-box">
                   <input
                     type="text"
+                    name="password"
+                    onChange={this.inputForm}
+                    value={password}
+                    required
+                  />
+                  <label>Hasło</label>
+                </div>
+                <div className="new-box">
+                  <input
+                    type="text"
                     name="email"
                     onChange={this.inputForm}
                     value={email}
@@ -120,13 +132,14 @@ class Form extends React.Component {
                 <div className="new-box">
                   <input
                     type="text"
-                    name="password"
+                    name="phone"
                     onChange={this.inputForm}
-                    value={password}
+                    value={phone}
                     required
                   />
-                  <label>Hasło</label>
+                  <label>Telefon</label>
                 </div>
+
                 <div className="new-box">
                   <span>Rodzaj sesji :</span>
                   <select

@@ -5,13 +5,15 @@
 @import "./base";
 @import "./login";
 @import "./newClient";
+@import "./loader";
+@import "./module";
 
 html {
   font-size: 16px;
 }
 body {
   position: relative;
-  background: white;
+  background: #fdfdfd;
   font-family: $open-sans;
   width: 100vw;
   height: 100vh;
@@ -29,22 +31,25 @@ body {
   justify-content: space-between;
   padding: 0 30px;
   min-width: 760px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
 
   .nav-list {
     display: flex;
     // border: 1px solid white;
     align-items: center;
     justify-content: space-between;
-    color: white;
+    color: $base-pink;
     padding: 0 10px;
     font-size: 0.9rem;
+    letter-spacing: 1px;
   }
   .nav-name {
-    font-size: 0.95rem;
-    color: $base-pink;
+    font-size: 1rem;
+    color: white;
     margin: 0 3px;
     text-decoration: underline;
     font-style: italic;
+    letter-spacing: 2px;
   }
   .nav-button {
     margin-left: 20px;

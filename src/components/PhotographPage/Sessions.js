@@ -1,10 +1,12 @@
 import React from "react";
+import Loader from "../Loader";
 
 class Sessions extends React.Component {
   state = {
     newUser: this.props.newUser,
     allSesions: this.props.allSessions,
-    response: ""
+    response: "",
+    loading: true
   };
 
   componentDidMount() {
@@ -12,10 +14,13 @@ class Sessions extends React.Component {
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
     )
       .then(resp => {
-        if (resp.ok) return resp.text();
+        if (resp.ok) return resp.json();
         else throw new Error("Błąd sieci!");
       })
-      .then(response => this.setState({ response: response }))
+      .then(response => {
+        this.setState({ response: response, loading: false });
+        console.log(response);
+      })
       .catch(err => {
         this.setState({
           response: err
@@ -24,7 +29,8 @@ class Sessions extends React.Component {
   }
 
   render() {
-    const { newUser, allSesions, response } = this.state;
+    const { newUser, allSesions, response, loading } = this.state;
+    // const [token, type, name, rows] = response;
 
     return (
       <div className="photographer-container">
@@ -45,9 +51,23 @@ class Sessions extends React.Component {
           </button>
         </div>
         <div className="photographer-main ">
+          {loading && <div className="loader">{<Loader />}</div>}
           <div>
-            data:
-            <h1>{response}</h1>
+            <h1 className="list-title">Zbiór sesji</h1>
+            {!loading && (
+              <ul className="list">
+                {response.map(item => {
+                  return (
+                    <li key={item.id}>
+                      <span className="title">{item.name}</span>
+                      <div className="description">
+                        `${item.token} ${item.type} ${item.name}`
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </div>
         </div>
         <div className="photographer-right" />

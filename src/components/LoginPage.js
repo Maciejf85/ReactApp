@@ -11,8 +11,8 @@ class Main extends React.Component {
     this.session = JSON.parse(sessionStorage.getItem("session-token"));
 
     this.state = {
-      text: "",
-      password: "",
+      text: "Jan",
+      password: "1",
       response: "",
       token: this.props.tokenValue,
       type: this.props.type,
@@ -79,12 +79,14 @@ class Main extends React.Component {
         }
       )
         .then(resp => {
-          if (resp.ok) return resp.text();
+          if (resp.ok) return resp.json();
           else throw new Error("Błąd sieci!");
         })
         .then(response => {
-          const { token, type, name } = JSON.parse(response);
-          this.props.token(token, type, name);
+          const { error, token, type, name } = response;
+          error === undefined
+            ? this.props.token(token, type, name)
+            : console.log(error);
         })
         .catch(err => {
           this.setState({
