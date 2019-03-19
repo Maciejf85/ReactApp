@@ -7,6 +7,7 @@
 @import "./newClient";
 @import "./loader";
 @import "./module";
+@import './summary';
 
 html {
   font-size: 16px;
@@ -16,6 +17,8 @@ body {
   background: #fdfdfd;
   font-family: $open-sans;
   width: 100vw;
+  // max-width: 1903px;
+  overflow-x: hidden;
   height: 100vh;
 }
 .wrapper {
@@ -32,6 +35,7 @@ body {
   padding: 0 30px;
   min-width: 760px;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+
 
   .nav-list {
     display: flex;

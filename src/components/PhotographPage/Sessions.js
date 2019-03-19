@@ -50,7 +50,7 @@ class Sessions extends React.Component {
             Pokaż wszystkie
           </button>
         </div>
-        <div className="photographer-main ">
+        <div className="photographer-form ">
           {loading && <div className="loader">{<Loader />}</div>}
           <div>
             <h1 className="list-title">Zbiór sesji</h1>

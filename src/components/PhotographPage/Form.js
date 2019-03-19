@@ -15,7 +15,11 @@ class Form extends React.Component {
       addPrice: "",
       dateOf: "",
       type: "",
+      payed: false,
+      prints: false,
+      comments: false,
       files: "",
+      filesSummary: '',
       newUser: this.props.newUser,
       allSesions: this.props.allSessions,
       token: ""
@@ -26,23 +30,42 @@ class Form extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+
+
   };
 
   fileSelectedHandler = e => {
     const files = e.target.files;
     const t = [...files];
     const size = t.reduce((sum, current) => sum + current.size, 0);
-    console.log((size / 1024 / 1024).toFixed(2) + " MB");
-
+    const sizeT = ((size / 1024 / 1024).toFixed(2) + " MB");
     this.setState({
-      files: e.target.files
+      filesSummary: { quantity: t.length, size: sizeT }
     });
   };
+
+  handleCheckbox = e => {
+    console.log(e.target.checked)
+    e.target.checked
+      ? this.setState({
+        [e.target.name]: true
+      })
+      : this.setState({
+        [e.target.name]: false
+      });
+
+  };
+
+
   handleSubmit = e => {
+    e.preventDefault();
     const date = new Date();
     const token = date.valueOf().toString();
     const md5 = require("js-md5");
     const sessionValue = md5(token);
+    this.setState({
+      token: sessionValue
+    })
     console.log("submit ", sessionValue);
   };
 
@@ -59,9 +82,15 @@ class Form extends React.Component {
       dateOf,
       type,
       newUser,
+      payed,
+      prints,
+      comments,
+      files,
+      filesSummary,
       allSesions
     } = this.state;
 
+    console.log(payed, prints, comments, files);
     return (
       <div className="photographer-container">
         <div className="photographer-left">
@@ -80,15 +109,16 @@ class Form extends React.Component {
             Pokaż wszystkie
           </button>
         </div>
-        <div className="photographer-main ">
+        <div className="photographer-form ">
           <div className="newUser-form">
             <div>
               <h3>Nowy klient</h3>
             </div>
             <div className="form-container">
-              <form>
+              <form onSubmit={this.handleSubmit} noValidate>
                 <div className="new-box">
                   <input
+                    autocomplete='off'
                     type="text"
                     name="name"
                     onChange={this.inputForm}
@@ -100,6 +130,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
+                    autocomplete='off'
                     type="text"
                     name="surname"
                     onChange={this.inputForm}
@@ -111,6 +142,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
+                    autocomplete='off'
                     type="text"
                     name="password"
                     onChange={this.inputForm}
@@ -121,6 +153,7 @@ class Form extends React.Component {
                 </div>
                 <div className="new-box">
                   <input
+                    autocomplete='off'
                     type="text"
                     name="email"
                     onChange={this.inputForm}
@@ -131,6 +164,7 @@ class Form extends React.Component {
                 </div>
                 <div className="new-box">
                   <input
+                    autocomplete='off'
                     type="text"
                     name="phone"
                     onChange={this.inputForm}
@@ -145,6 +179,7 @@ class Form extends React.Component {
                   <select
                     className="select-type"
                     name="type"
+                    autocomplete='off'
                     value={type}
                     onChange={this.inputForm}
                   >
@@ -159,6 +194,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
+                    autocomplete='off'
                     type="text"
                     name="packageQ"
                     onChange={this.inputForm}
@@ -170,6 +206,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
+                    autocomplete='off'
                     type="text"
                     name="price"
                     onChange={this.inputForm}
@@ -181,6 +218,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
+                    autocomplete='off'
                     type="text"
                     name="addPrice"
                     onChange={this.inputForm}
@@ -192,6 +230,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
+                    autocomplete='off'
                     type="text"
                     name="dateOf"
                     onChange={this.inputForm}
@@ -199,6 +238,23 @@ class Form extends React.Component {
                     required
                   />
                   <label>Data sesji</label>
+                </div>
+
+
+                <div className="form-checkbox">
+                  <label className={payed ? 'checkbox-active' : ''} >
+                    <input name='payed' type="checkbox" onChange={this.handleCheckbox} /> Sesja opłacona
+                  </label >
+                </div>
+                <div className="form-checkbox">
+                  <label className={prints ? 'checkbox-active' : ''}>
+                    <input name='prints' type="checkbox" onChange={this.handleCheckbox} /> Odbitki
+                  </label>
+                </div>
+                <div className="form-checkbox">
+                  <label className={comments ? 'checkbox-active' : ''}>
+                    <input name='comments' type="checkbox" onChange={this.handleCheckbox} /> Dodawanie komentarzy
+                  </label>
                 </div>
 
                 <div className="new-box">
@@ -211,8 +267,10 @@ class Form extends React.Component {
                     multiple
                   />
                 </div>
-                <button type="submit" onClick={this.handleSubmit}>
-                  Wyślij{" "}
+
+
+                <button className="btn-submit" >
+                  Wyślij
                 </button>
               </form>
             </div>

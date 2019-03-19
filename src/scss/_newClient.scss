@@ -1,13 +1,12 @@
 .photographer-container {
   margin-top: 30px;
-  width: 100%;
   display: flex;
   justify-content: space-around;
 }
-.photographer-main {
-  margin: 0 auto;
+.photographer-form {
+  // margin: 0 auto;
   margin-top: 5px;
-  width: 60%;
+  width: 65%;
   height: 70%;
   border-left: 1px solid #aaa;
   border-right: 1px solid #aaa;
@@ -20,7 +19,7 @@
     min-height: 550px;
     min-width: 400px;
     // border: 1px solid red;
-    text-align: center;
+    // text-align: center;
     padding: 0 30px;
   }
 }
@@ -33,6 +32,7 @@
 }
 
 .photographer-right {
+  position: relative;
   width: 20%;
   min-width: 300px;
   // background: rgba(255, 0, 0, 0.1);
@@ -105,7 +105,28 @@ span {
   justify-content: center;
   margin-top: 30px;
   min-height: 500px;
-  background: $base-white;
+  // background: $base-white;
   padding-bottom: 30px;
+  // border:1px solid red;
+  // width: 100%;
   // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.form-checkbox{
+  height: 30px;
+  margin: 10px 0;
+  color: $dark-grey;
+  font-size: 1rem;
+  // border: 1px solid black;
+
+  
+  &:hover, label:hover, input:hover{
+    color:$base-pink;
+    cursor: pointer;
+  }
+}
+
+.checkbox-active{ 
+ color:$base-pink;
+ font-size: 1.1rem;
 }
