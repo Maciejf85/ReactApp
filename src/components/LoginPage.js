@@ -32,11 +32,11 @@ class Main extends React.Component {
   handleCheckbox = e => {
     e.target.checked
       ? this.setState({
-        checkbox: true
-      })
+          checkbox: true
+        })
       : this.setState({
-        checkbox: false
-      });
+          checkbox: false
+        });
   };
 
   // handleSubmitPrototype = e => {
@@ -73,6 +73,7 @@ class Main extends React.Component {
       // WYSYŁANIE DANYCH
       fetch(
         "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/login.php",
+        // "http://maciejf.pl/reactApp/login.php",
         {
           method: "POST",
           body: JSON.stringify({ text: text, password: password })

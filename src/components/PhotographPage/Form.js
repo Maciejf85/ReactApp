@@ -5,24 +5,26 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      surname: "",
-      password: "",
-      email: "",
-      phone: "",
-      packageQ: "",
-      price: "",
-      addPrice: "",
-      dateOf: "",
-      type: "",
+      name: "Maciej",
+      surname: "Fiałkowski",
+      password: "Qr2r3jp",
+      email: "mki@interia.pl",
+      phone: "503-111-456",
+      packageQ: "15",
+      price: "350",
+      addPrice: "15",
+      dateOf: "01-05-2017",
+      type: "Rodzinna",
       payed: false,
       prints: false,
       comments: false,
       files: "",
-      filesSummary: '',
+      filesSummary: "",
       newUser: this.props.newUser,
       allSesions: this.props.allSessions,
-      token: ""
+      token: "",
+      typeOf: "client",
+      form_data: {}
     };
   }
 
@@ -30,43 +32,139 @@ class Form extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-
-
   };
 
   fileSelectedHandler = e => {
     const files = e.target.files;
     const t = [...files];
     const size = t.reduce((sum, current) => sum + current.size, 0);
-    const sizeT = ((size / 1024 / 1024).toFixed(2) + " MB");
-    this.setState({
-      filesSummary: { quantity: t.length, size: sizeT }
-    });
-  };
+    const sizeT = (size / 1024 / 1024).toFixed(2) + " MB";
 
-  handleCheckbox = e => {
-    console.log(e.target.checked)
-    e.target.checked
-      ? this.setState({
-        [e.target.name]: true
-      })
-      : this.setState({
-        [e.target.name]: false
-      });
-
-  };
-
-
-  handleSubmit = e => {
-    e.preventDefault();
     const date = new Date();
     const token = date.valueOf().toString();
     const md5 = require("js-md5");
     const sessionValue = md5(token);
+
+    var formData = new FormData();
+
     this.setState({
+      files: files,
+      filesSummary: { quantity: t.length, size: sizeT },
+      form_data: formData,
       token: sessionValue
-    })
-    console.log("submit ", sessionValue);
+    });
+
+    const data = JSON.stringify({
+      name: this.state.name,
+      surname: this.state.surname,
+      password: this.state.password,
+      email: this.state.email,
+      phone: this.state.phone,
+      type: this.state.type,
+      token: sessionValue,
+      packageQ: this.state.packageQ,
+      price: this.state.price,
+      addPrice: this.state.addPrice,
+      dateOf: this.state.dateOf,
+      typeOf: this.state.typeOf,
+      payed: String(this.state.payed),
+      prints: String(this.state.prints),
+      comments: String(this.state.comments)
+    });
+    for (let i = 0; i <= t.length; i++) {
+      formData.append("files[]", t[i]);
+    }
+    formData.append("json", data);
+
+    console.log("file select handler");
+  };
+
+  clearForm = () => {
+    this.setState({
+      name: "",
+      surname: "",
+      email: "",
+      phone: "",
+      password: "",
+      packageQ: "",
+      price: "",
+      addPrice: "",
+      dateOf: "",
+      type: "Rodzinna",
+      token: "",
+      payed: false,
+      prints: false,
+      comments: false,
+      files: "",
+      filesSummary: ""
+    });
+    console.log("clear form");
+  };
+  /**
+   * Obsługa checkoxów
+   */
+  handleCheckbox = e => {
+    e.target.checked
+      ? this.setState({
+          [e.target.name]: true
+        })
+      : this.setState({
+          [e.target.name]: false
+        });
+  };
+
+  addNewUser = () => {
+    fetch(
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/newUser.php",
+      // "http://maciejf.pl/reactApp/newUser.php",
+      {
+        method: "POST",
+        body: this.state.form_data
+      }
+    )
+      .then(resp => {
+        if (resp.ok) return resp.text();
+        else throw new Error("Błąd sieci!");
+      })
+      .then(response => {
+        console.log(response);
+        this.clearForm();
+      })
+      .catch(err => {
+        this.setState({
+          response: err
+        });
+      });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    /**
+     * Walidacja formularza
+     */
+    // const {
+    //   name,
+    //   surname,
+    //   email,
+    //   phone,
+    //   password,
+    //   packageQ,
+    //   price,
+    //   addPrice,
+    //   dateOf,
+    //   type,
+    //   payed,
+    //   prints,
+    //   comments,
+    //   files,
+    //   form_data
+    // } = this.state;
+
+    /**
+     * Stworzenie tokena na podstawie time stamp
+     */
+    this.addNewUser();
   };
 
   render() {
@@ -84,13 +182,11 @@ class Form extends React.Component {
       newUser,
       payed,
       prints,
-      comments,
       files,
-      filesSummary,
+      comments,
       allSesions
     } = this.state;
 
-    console.log(payed, prints, comments, files);
     return (
       <div className="photographer-container">
         <div className="photographer-left">
@@ -118,7 +214,7 @@ class Form extends React.Component {
               <form onSubmit={this.handleSubmit} noValidate>
                 <div className="new-box">
                   <input
-                    autocomplete='off'
+                    autoComplete="off"
                     type="text"
                     name="name"
                     onChange={this.inputForm}
@@ -130,7 +226,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
-                    autocomplete='off'
+                    autoComplete="off"
                     type="text"
                     name="surname"
                     onChange={this.inputForm}
@@ -142,7 +238,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
-                    autocomplete='off'
+                    autoComplete="off"
                     type="text"
                     name="password"
                     onChange={this.inputForm}
@@ -153,7 +249,7 @@ class Form extends React.Component {
                 </div>
                 <div className="new-box">
                   <input
-                    autocomplete='off'
+                    autoComplete="off"
                     type="text"
                     name="email"
                     onChange={this.inputForm}
@@ -164,7 +260,7 @@ class Form extends React.Component {
                 </div>
                 <div className="new-box">
                   <input
-                    autocomplete='off'
+                    autoComplete="off"
                     type="text"
                     name="phone"
                     onChange={this.inputForm}
@@ -179,7 +275,7 @@ class Form extends React.Component {
                   <select
                     className="select-type"
                     name="type"
-                    autocomplete='off'
+                    autoComplete="off"
                     value={type}
                     onChange={this.inputForm}
                   >
@@ -194,7 +290,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
-                    autocomplete='off'
+                    autoComplete="off"
                     type="text"
                     name="packageQ"
                     onChange={this.inputForm}
@@ -206,7 +302,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
-                    autocomplete='off'
+                    autoComplete="off"
                     type="text"
                     name="price"
                     onChange={this.inputForm}
@@ -218,7 +314,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
-                    autocomplete='off'
+                    autoComplete="off"
                     type="text"
                     name="addPrice"
                     onChange={this.inputForm}
@@ -230,7 +326,7 @@ class Form extends React.Component {
 
                 <div className="new-box">
                   <input
-                    autocomplete='off'
+                    autoComplete="off"
                     type="text"
                     name="dateOf"
                     onChange={this.inputForm}
@@ -240,20 +336,37 @@ class Form extends React.Component {
                   <label>Data sesji</label>
                 </div>
 
-
                 <div className="form-checkbox">
-                  <label className={payed ? 'checkbox-active' : ''} >
-                    <input name='payed' type="checkbox" onChange={this.handleCheckbox} /> Sesja opłacona
-                  </label >
-                </div>
-                <div className="form-checkbox">
-                  <label className={prints ? 'checkbox-active' : ''}>
-                    <input name='prints' type="checkbox" onChange={this.handleCheckbox} /> Odbitki
+                  <label className={payed ? "checkbox-active" : ""}>
+                    <input
+                      name="payed"
+                      type="checkbox"
+                      onChange={this.handleCheckbox}
+                      checked={this.state.payed}
+                    />
+                    Sesja opłacona
                   </label>
                 </div>
                 <div className="form-checkbox">
-                  <label className={comments ? 'checkbox-active' : ''}>
-                    <input name='comments' type="checkbox" onChange={this.handleCheckbox} /> Dodawanie komentarzy
+                  <label className={prints ? "checkbox-active" : ""}>
+                    <input
+                      name="prints"
+                      type="checkbox"
+                      onChange={this.handleCheckbox}
+                      checked={this.state.prints}
+                    />
+                    Odbitki
+                  </label>
+                </div>
+                <div className="form-checkbox">
+                  <label className={comments ? "checkbox-active" : ""}>
+                    <input
+                      name="comments"
+                      type="checkbox"
+                      onChange={this.handleCheckbox}
+                      checked={this.state.comments}
+                    />
+                    Dodawanie komentarzy
                   </label>
                 </div>
 
@@ -261,15 +374,27 @@ class Form extends React.Component {
                   <input
                     type="file"
                     name="files"
+                    id="file"
                     accept=".jpg"
                     encType="multipart/form-data"
                     onChange={this.fileSelectedHandler}
                     multiple
                   />
                 </div>
+                <label
+                  htmlFor="file"
+                  className={
+                    files.length > 0
+                      ? " file-label files-selected"
+                      : "file-label"
+                  }
+                >
+                  {files.length <= 0
+                    ? " dodaj pliki"
+                    : " wybrano plików: " + files.length}
+                </label>
 
-
-                <button className="btn-submit" >
+                <button className="btn-submit" disabled={files.length <= 0}>
                   Wyślij
                 </button>
               </form>

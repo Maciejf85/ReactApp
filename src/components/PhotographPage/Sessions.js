@@ -1,5 +1,7 @@
 import React from "react";
 import Loader from "../Loader";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Sessions extends React.Component {
   state = {
@@ -12,6 +14,7 @@ class Sessions extends React.Component {
   componentDidMount() {
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
+      // "http://maciejf.pl/reactApp/getData.php"
     )
       .then(resp => {
         if (resp.ok) return resp.json();
@@ -57,14 +60,28 @@ class Sessions extends React.Component {
             {!loading && (
               <ul className="list">
                 {response.map(item => {
-                  return (
-                    <li key={item.id}>
-                      <span className="title">{item.name}</span>
-                      <div className="description">
-                        `${item.token} ${item.type} ${item.name}`
-                      </div>
-                    </li>
-                  );
+                  if (item.type === "client") {
+                    return (
+                      <li key={item.id}>
+                        <span className="title">{item.user}</span>
+                        <div className="description">
+                          {` ${item.type} ${item.name}  ${item.name} ${
+                            item.surname
+                          } ${item.email} ${item.phone}`}
+                        </div>
+                        <div className="description">
+                          {`${item.typeof} ${item.package} ${item.price} ${
+                            item.price_add
+                          } ${item.data} ${item.prints === 1 ? true : false} ${
+                            item.comments === 1 ? true : false
+                          }`}
+                          <button>
+                            <FontAwesomeIcon icon={faTrashAlt} />
+                          </button>
+                        </div>
+                      </li>
+                    );
+                  }
                 })}
               </ul>
             )}

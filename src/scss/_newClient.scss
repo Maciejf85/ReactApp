@@ -112,21 +112,46 @@ span {
   // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-.form-checkbox{
+.form-checkbox {
   height: 30px;
   margin: 10px 0;
   color: $dark-grey;
   font-size: 1rem;
   // border: 1px solid black;
 
-  
-  &:hover, label:hover, input:hover{
-    color:$base-pink;
+  &:hover,
+  label:hover,
+  input:hover {
+    color: $base-pink;
     cursor: pointer;
   }
 }
 
-.checkbox-active{ 
- color:$base-pink;
- font-size: 1.1rem;
+.checkbox-active {
+  color: $base-pink;
+  font-size: 1.1rem;
+}
+input[type="file"] {
+  color: transparent;
+  width: 200px;
+  display: none;
+}
+.file-label {
+  color: #d3394c;
+  background: transparent;
+  border: 2px solid currentColor;
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px 15px;
+  font-size: 0.8rem;
+
+  &:hover {
+    cursor: pointer;
+    color: #722040;
+  }
+}
+.files-selected {
+  font-weight: 700;
 }

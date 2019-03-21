@@ -14,6 +14,12 @@
     cursor: pointer;
     background: #111111;
   }
+
+  &:disabled {
+    background: rgb(240, 240, 240);
+    color: grey;
+    cursor: not-allowed;
+  }
 }
 
 .btn-logout {
