@@ -20,7 +20,12 @@ class Sessions extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        this.setState({ response: response, loading: false });
+        this.setState({ response: response });
+        setTimeout(() => {
+          this.setState({
+            loading: false
+          })
+        }, 5000)
         console.log(response);
       })
       .catch(err => {
@@ -33,8 +38,8 @@ class Sessions extends React.Component {
   handleRemove = e => {
     console.log(e.target.id, e.target.name, e.target.value);
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/delete.php",
-      // "http://maciejf.pl/reactApp/newUser.php",
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/removeUser.php",
+      // "http://maciejf.pl/reactApp/removeUser.php",
       {
         method: "POST",
         body: JSON.stringify({
@@ -49,10 +54,39 @@ class Sessions extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
+        console.log('response ' + response);
+        this.getData();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  getData = () => {
+    fetch(
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
+      // "http://maciejf.pl/reactApp/getData.php"
+    )
+      .then(resp => {
+        if (resp.ok) return resp.json();
+        else throw new Error("Błąd sieci!");
+      })
+      .then(response => {
+        this.setState({ response: response });
+        setTimeout(() => {
+          this.setState({
+            loading: false
+          })
+        }, 5000)
         console.log(response);
       })
-      .catch(err => {});
-  };
+      .catch(err => {
+        this.setState({
+          response: err
+        });
+      });
+  }
+
 
   render() {
     const { newUser, allSesions, response, loading } = this.state;
@@ -76,7 +110,7 @@ class Sessions extends React.Component {
             Pokaż wszystkie
           </button>
         </div>
-        <div className="photographer-form ">
+        <div className="photographer-form busy">
           {loading && <div className="loader">{<Loader />}</div>}
           <div>
             <h1 className="list-title">Zbiór sesji</h1>
@@ -92,14 +126,14 @@ class Sessions extends React.Component {
                         <div className="description">
                           {` ${item.type} ${item.name}  ${item.name} ${
                             item.surname
-                          } ${item.email} ${item.phone} `}
+                            } ${item.email} ${item.phone} `}
                         </div>
                         <div className="description">
                           {`${item.typeof} ${item.package} ${item.price} ${
                             item.price_add
-                          } ${item.data} ${item.prints === 1 ? true : false} ${
+                            } ${item.data} ${item.prints === 1 ? true : false} ${
                             item.comments === 1 ? true : false
-                          }`}
+                            }`}
                           <button
                             className="btn-remove"
                             id={item.id}

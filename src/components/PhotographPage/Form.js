@@ -132,17 +132,17 @@ class Form extends React.Component {
   handleCheckbox = e => {
     e.target.checked
       ? this.setState({
-          [e.target.name]: true
-        })
+        [e.target.name]: true
+      })
       : this.setState({
-          [e.target.name]: false
-        });
+        [e.target.name]: false
+      });
   };
 
   addNewUser = () => {
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/newUser.php",
-      // "http://maciejf.pl/reactApp/newUser.php",
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/addUser.php",
+      // "http://maciejf.pl/reactApp/addUser.php",
       {
         method: "POST",
         body: this.state.form_data
