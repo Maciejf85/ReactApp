@@ -57,3 +57,52 @@
   border-left: 4px solid $react-blue;
   font-size: 0.9rem;
 }
+
+.btn-modal-hide {
+  // position: absolute;
+  // bottom: 15px;
+  // right: 15px;
+  width: 120px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  outline: none;
+  border-radius: 0.25rem;
+  &:hover {
+    cursor: pointer;
+    background: #006ee4;
+  }
+}
+.success {
+  background: $success-color;
+  border: 1px solid $success-color;
+
+  &:hover {
+    background: #1f8337;
+  }
+}
+.failure {
+  background: $failure-color;
+  border: 1px solid $failure-color;
+  &:hover {
+    background: #9e202c;
+  }
+}
+.btn-remove {
+  background: transparent;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin: 0 15px;
+  outline: none;
+  border: none;
+  border: 1px solid $dark-grey;
+  color: $dark-grey;
+  transition: 0.1s;
+
+  &:hover {
+    cursor: pointer;
+    color: $base-pink;
+    border: 1px solid $base-pink;
+  }
+}

@@ -1,14 +1,13 @@
 import React from "react";
 import Loader from "../Loader";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Sessions extends React.Component {
   state = {
     newUser: this.props.newUser,
     allSesions: this.props.allSessions,
     response: "",
-    loading: true
+    loading: true,
+    remove: false
   };
 
   componentDidMount() {
@@ -30,6 +29,30 @@ class Sessions extends React.Component {
         });
       });
   }
+
+  handleRemove = e => {
+    console.log(e.target.id, e.target.name, e.target.value);
+    fetch(
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/delete.php",
+      // "http://maciejf.pl/reactApp/newUser.php",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          user: e.target.name,
+          id: e.target.id,
+          token: e.target.value
+        })
+      }
+    )
+      .then(resp => {
+        if (resp.ok) return resp.text();
+        else throw new Error("Błąd sieci!");
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {});
+  };
 
   render() {
     const { newUser, allSesions, response, loading } = this.state;
@@ -63,11 +86,13 @@ class Sessions extends React.Component {
                   if (item.type === "client") {
                     return (
                       <li key={item.id}>
-                        <span className="title">{item.user}</span>
+                        <span className="title">
+                          {`${item.user} id ${item.id}`}
+                        </span>
                         <div className="description">
                           {` ${item.type} ${item.name}  ${item.name} ${
                             item.surname
-                          } ${item.email} ${item.phone}`}
+                          } ${item.email} ${item.phone} `}
                         </div>
                         <div className="description">
                           {`${item.typeof} ${item.package} ${item.price} ${
@@ -75,8 +100,14 @@ class Sessions extends React.Component {
                           } ${item.data} ${item.prints === 1 ? true : false} ${
                             item.comments === 1 ? true : false
                           }`}
-                          <button>
-                            <FontAwesomeIcon icon={faTrashAlt} />
+                          <button
+                            className="btn-remove"
+                            id={item.id}
+                            name={item.user}
+                            value={item.token}
+                            onClick={this.handleRemove}
+                          >
+                            usuń
                           </button>
                         </div>
                       </li>

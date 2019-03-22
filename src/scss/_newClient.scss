@@ -47,13 +47,13 @@
   height: 30px;
   outline: none;
   border: none;
-  border-bottom: 1px solid #ccc;
-  margin: 30px 0;
+  border: 1px solid #ccc;
+  margin: 20px 0;
   color: black;
   font-weight: 700;
   letter-spacing: 1px;
   text-indent: 10px;
-  font-size: 15px;
+  font-size: 0.8rem;
   font-family: $roboto;
 }
 
@@ -81,8 +81,9 @@
     top: -25px;
     left: -10px;
     font-size: 13px;
-    color: $dark-grey;
-    font-weight: 700;
+    color: #777;
+    font-style: italic;
+    font-weight: 500;
     letter-spacing: 1px;
   }
 
@@ -116,10 +117,9 @@ span {
   height: 30px;
   margin: 10px 0;
   color: $dark-grey;
-  font-size: 1rem;
+  font-size: 0.9rem;
   // border: 1px solid black;
 
-  &:hover,
   label:hover,
   input:hover {
     color: $base-pink;
@@ -129,7 +129,7 @@ span {
 
 .checkbox-active {
   color: $base-pink;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 input[type="file"] {
   color: transparent;

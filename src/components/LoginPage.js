@@ -117,47 +117,46 @@ class Main extends React.Component {
 
     return (
       <>
-        <div className="wrapper">
-          <div className="form-window">
-            <div className="form">
-              <div className="form-icon">
-                <FontAwesomeIcon icon={faUserCircle} />
-              </div>
-              <form>
-                <div className="inputBox">
-                  <input
-                    type="text"
-                    onChange={this.inputForm}
-                    value={text}
-                    required
-                  />
-                  <label>Login</label>
-                </div>
-                <div className="inputBox">
-                  <input
-                    type="password"
-                    onChange={this.inputForm}
-                    value={password}
-                    required
-                  />
-                  <label>Hasło</label>
-                </div>
-                <div className="main-checkbox">
-                  <label>
-                    <input type="checkbox" onChange={this.handleCheckbox} /> Nie
-                    wylogowuj mnie
-                  </label>
-                </div>
-                <div className="result">{response}</div>
-
-                <input
-                  type="submit"
-                  value="Wyślij"
-                  className="btn-submit"
-                  onClick={this.handleSubmit}
-                />
-              </form>
+        <div className="wrapper" />
+        <div className="form-window">
+          <div className="form">
+            <div className="form-icon">
+              <FontAwesomeIcon icon={faUserCircle} />
             </div>
+            <form>
+              <div className="inputBox">
+                <input
+                  type="text"
+                  onChange={this.inputForm}
+                  value={text}
+                  required
+                />
+                <label>Login</label>
+              </div>
+              <div className="inputBox">
+                <input
+                  type="password"
+                  onChange={this.inputForm}
+                  value={password}
+                  required
+                />
+                <label>Hasło</label>
+              </div>
+              <div className="main-checkbox">
+                <label>
+                  <input type="checkbox" onChange={this.handleCheckbox} /> Nie
+                  wylogowuj mnie
+                </label>
+              </div>
+              <div className="result">{response}</div>
+
+              <input
+                type="submit"
+                value="Wyślij"
+                className="btn-submit"
+                onClick={this.handleSubmit}
+              />
+            </form>
           </div>
         </div>
       </>
