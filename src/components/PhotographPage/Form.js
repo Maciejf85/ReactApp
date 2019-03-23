@@ -178,14 +178,23 @@ class Form extends React.Component {
   clearForm = () => {
     this.setState({
       name: "",
+      name_e: false,
       surname: "",
+      surname_e: false,
       email: "",
+      email_e: false,
       phone: "",
+      phone_e: false,
       password: "",
+      password_e: false,
       packageQ: "",
+      packageQ_e: false,
       price: "",
+      price_e: false,
       addPrice: "",
+      addPrice_e: false,
       dateOf: "",
+      dateOf_e: false,
       type: "Rodzinna",
       token: "",
       payed: false,
@@ -403,15 +412,6 @@ class Form extends React.Component {
       loading
     } = this.state;
 
-    // console.log('name_e => ' + name_e)
-    // console.log('surname_e => ' + surname_e)
-    // console.log('password_e => ' + password_e)
-    // console.log('email_e => ' + email_e)
-    // console.log('phone_e => ' + phone_e)
-    // console.log('packageQ_e => ' + packageQ_e)
-    // console.log('price_e => ' + price_e)
-    // console.log('addPrice_e => ' + addPrice_e)
-    // console.log('dateOf_e => ' + dateOf_e)
 
     return (
       <>
@@ -452,6 +452,8 @@ class Form extends React.Component {
                     />
                     <label>Imię</label>
                     <div className='form-error'>{name_e}</div>
+                    {(name_e.length === 0) && <div className='form-success-icon'></div>}
+
                   </div>
 
                   <div className="new-box">
@@ -466,6 +468,7 @@ class Form extends React.Component {
                     />
                     <label>Nazwisko</label>
                     <div className='form-error'>{surname_e}</div>
+                    {(surname_e.length === 0) && <div className='form-success-icon'></div>}
                   </div>
 
                   <div className="new-box">
@@ -480,6 +483,8 @@ class Form extends React.Component {
                     />
                     <label>Hasło</label>
                     <div className='form-error'>{password_e}</div>
+                    {(password_e.length === 0) && <div className='form-success-icon'></div>}
+
 
                   </div>
                   <div className="new-box">
@@ -494,6 +499,8 @@ class Form extends React.Component {
                     />
                     <label>E-mail</label>
                     <div className='form-error'>{email_e}</div>
+                    {(email_e.length === 0) && <div className='form-success-icon'></div>}
+
                   </div>
                   <div className="new-box">
                     <input
@@ -508,6 +515,8 @@ class Form extends React.Component {
                     />
                     <label>Telefon</label>
                     <div className='form-error'>{phone_e}</div>
+                    {(phone_e.length === 0) && <div className='form-success-icon'></div>}
+
                   </div>
 
                   <div className="new-box">
@@ -541,6 +550,8 @@ class Form extends React.Component {
                     />
                     <label>Pakiet</label>
                     <div className='form-error'>{packageQ_e}</div>
+                    {(packageQ_e.length === 0) && <div className='form-success-icon'></div>}
+
                   </div>
 
                   <div className="new-box">
@@ -555,6 +566,8 @@ class Form extends React.Component {
                     />
                     <label>Cena sesji</label>
                     <div className='form-error'>{price_e}</div>
+                    {(price_e.length === 0) && <div className='form-success-icon'></div>}
+
                   </div>
 
                   <div className="new-box">
@@ -569,6 +582,8 @@ class Form extends React.Component {
                     />
                     <label>Cena za dodatkowe</label>
                     <div className='form-error'>{addPrice_e}</div>
+                    {(addPrice_e.length === 0) && <div className='form-success-icon'></div>}
+
                   </div>
 
                   <div className="new-box">
@@ -584,6 +599,8 @@ class Form extends React.Component {
                     />
                     <label>Data sesji</label>
                     <div className='form-error'>{dateOf_e}</div>
+                    {(dateOf_e.length === 0) && <div className='form-success-icon'></div>}
+
                   </div>
 
                   <div className="form-checkbox">
