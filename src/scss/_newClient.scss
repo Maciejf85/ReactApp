@@ -156,3 +156,10 @@ input[type="file"] {
 .files-selected {
   font-weight: 700;
 }
+.form-error{
+  position: absolute;
+  bottom:-12px;
+  left:0;
+  font-size: 0.8rem;
+  color:red;
+}
