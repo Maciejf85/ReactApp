@@ -19,8 +19,7 @@
     width: 70%;
     min-height: 550px;
     min-width: 400px;
-    // border: 1px solid red;
-    // text-align: center;
+    border: 1px solid red;
     padding: 0 30px;
   }
 }
@@ -109,7 +108,7 @@ span {
   min-height: 500px;
   // background: $base-white;
   padding-bottom: 30px;
-  // border:1px solid red;
+  border:1px solid orange;
   // width: 100%;
   // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
@@ -153,6 +152,13 @@ input[type="file"] {
     color: #722040;
   }
 }
+form{
+  // width: 100%;
+  // margin: 0 auto;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-around;
+}
 .files-selected {
   font-weight: 700;
 }
@@ -169,7 +175,6 @@ input[type="file"] {
   right:25px;
   height:20px;
   width:20px;
-  // border:1px solid red;
   background-image:url('../img/success_20.png');
   background-position: center;
 }

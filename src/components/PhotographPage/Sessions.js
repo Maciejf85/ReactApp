@@ -11,6 +11,7 @@ class Sessions extends React.Component {
   };
 
   componentDidMount() {
+    this.mounted = true;
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
       // "http://maciejf.pl/reactApp/getData.php"
@@ -20,14 +21,20 @@ class Sessions extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        this.setState({ response: response, loading: false });
-        console.log(response);
+        if (this.mounted === true) {
+          this.setState({ response: response, loading: false });
+          console.log(response);
+        }
       })
       .catch(err => {
         this.setState({
           response: err
         });
       });
+  }
+  componentWillUnmount() {
+    this.mounted = false;
+    console.log('component unmounted: ' + this.mounted);
   }
 
   handleRemove = e => {
@@ -67,13 +74,10 @@ class Sessions extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        this.setState({ response: response });
-        setTimeout(() => {
-          this.setState({
-            loading: false
-          });
-        }, 5000);
-        console.log(response);
+        if (this.mounted === true) {
+          this.setState({ response: response, loading: false });
+          console.log(response);
+        }
       })
       .catch(err => {
         this.setState({
@@ -120,14 +124,14 @@ class Sessions extends React.Component {
                         <div className="description">
                           {` ${item.type} ${item.name}  ${item.name} ${
                             item.surname
-                          } ${item.email} ${item.phone} `}
+                            } ${item.email} ${item.phone} `}
                         </div>
                         <div className="description">
                           {`${item.typeof} ${item.package} ${item.price} ${
                             item.price_add
-                          } ${item.data} ${item.prints === 1 ? true : false} ${
+                            } ${item.data} ${item.prints === 1 ? true : false} ${
                             item.comments === 1 ? true : false
-                          }`}
+                            }`}
                           <button
                             className="btn-remove"
                             id={item.id}
