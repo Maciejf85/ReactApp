@@ -36,7 +36,7 @@ class Photographer extends React.Component {
                 <div>
                   <img src={logSrc} alt="logo" />
                 </div>
-                <span>your LOGO</span>
+                <span>company name</span>
               </div>
             </div>
             <div className="nav-options" />

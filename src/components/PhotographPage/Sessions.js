@@ -20,12 +20,7 @@ class Sessions extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        this.setState({ response: response });
-        setTimeout(() => {
-          this.setState({
-            loading: false
-          })
-        }, 5000)
+        this.setState({ response: response, loading: false });
         console.log(response);
       })
       .catch(err => {
@@ -54,7 +49,7 @@ class Sessions extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        console.log('response ' + response);
+        console.log("response " + response);
         this.getData();
       })
       .catch(err => {
@@ -76,8 +71,8 @@ class Sessions extends React.Component {
         setTimeout(() => {
           this.setState({
             loading: false
-          })
-        }, 5000)
+          });
+        }, 5000);
         console.log(response);
       })
       .catch(err => {
@@ -85,8 +80,7 @@ class Sessions extends React.Component {
           response: err
         });
       });
-  }
-
+  };
 
   render() {
     const { newUser, allSesions, response, loading } = this.state;
@@ -126,14 +120,14 @@ class Sessions extends React.Component {
                         <div className="description">
                           {` ${item.type} ${item.name}  ${item.name} ${
                             item.surname
-                            } ${item.email} ${item.phone} `}
+                          } ${item.email} ${item.phone} `}
                         </div>
                         <div className="description">
                           {`${item.typeof} ${item.package} ${item.price} ${
                             item.price_add
-                            } ${item.data} ${item.prints === 1 ? true : false} ${
+                          } ${item.data} ${item.prints === 1 ? true : false} ${
                             item.comments === 1 ? true : false
-                            }`}
+                          }`}
                           <button
                             className="btn-remove"
                             id={item.id}

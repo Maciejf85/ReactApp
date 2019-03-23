@@ -129,6 +129,7 @@ class Main extends React.Component {
                   type="text"
                   onChange={this.inputForm}
                   value={text}
+                  autoComplete="off"
                   required
                 />
                 <label>Login</label>
@@ -138,6 +139,7 @@ class Main extends React.Component {
                   type="password"
                   onChange={this.inputForm}
                   value={password}
+                  autoComplete="off"
                   required
                 />
                 <label>Hasło</label>

@@ -26,7 +26,7 @@ class Client extends React.Component {
                 <div>
                   <img src={logSrc} alt="logo" />
                 </div>
-                <span>your LOGO</span>
+                <span> LOGO</span>
               </div>
             </div>
             <ul className="nav-list">

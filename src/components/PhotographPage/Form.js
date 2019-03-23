@@ -1,6 +1,7 @@
 import React from "react";
 import Summary from "./Summary";
 import Modal from "./Modal";
+import Loader from "../Loader";
 
 class Form extends React.Component {
   constructor(props) {
@@ -50,7 +51,8 @@ class Form extends React.Component {
       typeOf: "client",
       form_data: {},
       showMessage: false,
-      success: false
+      success: false,
+      loading: false
     };
   }
 
@@ -122,7 +124,8 @@ class Form extends React.Component {
       prints: false,
       comments: false,
       files: "",
-      filesSummary: ""
+      filesSummary: "",
+      loading: false
     });
     console.log("clear form");
   };
@@ -132,11 +135,11 @@ class Form extends React.Component {
   handleCheckbox = e => {
     e.target.checked
       ? this.setState({
-        [e.target.name]: true
-      })
+          [e.target.name]: true
+        })
       : this.setState({
-        [e.target.name]: false
-      });
+          [e.target.name]: false
+        });
   };
 
   addNewUser = () => {
@@ -156,7 +159,8 @@ class Form extends React.Component {
         console.log(response);
         this.setState({
           success: true,
-          showMessage: true
+          showMessage: true,
+          loading: false
         });
       })
       .catch(err => {
@@ -192,9 +196,9 @@ class Form extends React.Component {
     //   form_data
     // } = this.state;
 
-    /**
-     * Stworzenie tokena na podstawie time stamp
-     */
+    this.setState({
+      loading: true
+    });
     this.addNewUser();
   };
 
@@ -224,11 +228,13 @@ class Form extends React.Component {
       comments,
       allSesions,
       showMessage,
-      success
+      success,
+      loading
     } = this.state;
 
     return (
       <>
+        {loading && <div className="loader form-loader">{<Loader />}</div>};
         <div className="photographer-container">
           <div className="photographer-left">
             <button
