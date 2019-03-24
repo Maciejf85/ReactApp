@@ -42,7 +42,7 @@ class Photographer extends React.Component {
             <div className="nav-options" />
             <ul className="nav-list">
               <li>
-                Zalogowany jako : <span className="nav-name">{name}</span> !
+                Zalogowany jako : <span className="nav-name">{name}</span>
               </li>
               <li className="nav-button">
                 <button className="btn-logout" onClick={this.props.logout}>

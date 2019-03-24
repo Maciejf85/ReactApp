@@ -11,7 +11,7 @@ class Main extends React.Component {
     this.session = JSON.parse(sessionStorage.getItem("session-token"));
 
     this.state = {
-      text: "Jan",
+      text: "Maciej",
       password: "1",
       response: "",
       token: this.props.tokenValue,
@@ -32,11 +32,11 @@ class Main extends React.Component {
   handleCheckbox = e => {
     e.target.checked
       ? this.setState({
-          checkbox: true
-        })
+        checkbox: true
+      })
       : this.setState({
-          checkbox: false
-        });
+        checkbox: false
+      });
   };
 
   // handleSubmitPrototype = e => {

@@ -1,5 +1,6 @@
 import React from "react";
 import Loader from "../Loader";
+import hourglass from '../../img/hourglass.svg';
 
 class Sessions extends React.Component {
   state = {
@@ -7,7 +8,9 @@ class Sessions extends React.Component {
     allSesions: this.props.allSessions,
     response: "",
     loading: true,
-    remove: false
+    remove: false,
+    sort: 'data',
+    ready: 1
   };
 
   componentDidMount() {
@@ -38,10 +41,10 @@ class Sessions extends React.Component {
   }
 
   handleRemove = e => {
-    console.log(e.target.id, e.target.name, e.target.value);
+    // console.log(e.target.id, e.target.name, e.target.value);
     fetch(
-      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/removeUser.php",
-      "http://maciejf.pl/reactApp/removeUser.php",
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/removeUser.php",
+      // "http://maciejf.pl/reactApp/removeUser.php",
       {
         method: "POST",
         body: JSON.stringify({
@@ -66,8 +69,8 @@ class Sessions extends React.Component {
 
   getData = () => {
     fetch(
-      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
-      "http://maciejf.pl/reactApp/getData.php"
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
+      // "http://maciejf.pl/reactApp/getData.php"
     )
       .then(resp => {
         if (resp.ok) return resp.json();
@@ -88,7 +91,7 @@ class Sessions extends React.Component {
 
   render() {
     const { newUser, allSesions, response, loading } = this.state;
-    // const [token, type, name, rows] = response;
+    console.log(response);
 
     return (
       <div className="photographer-container">
@@ -118,34 +121,46 @@ class Sessions extends React.Component {
                   if (item.type === "client") {
                     return (
                       <li key={item.id}>
-                        <span className="title">{`${item.user}`}</span>
-                        <div className="description">
-                          {` ${item.type} ${item.name}  ${item.name} ${
-                            item.surname
-                          } ${item.email} ${item.phone} `}
+                        <div className='title'>
+                          <span className="date">{`${item.user}`}</span>
+                          <span className="date">{`${item.data}`}</span>
                         </div>
-                        <div className="description">
-                          {`${item.typeof} ${item.package} ${item.price} ${
-                            item.price_add
-                          } ${item.data} ${item.prints === 1 ? true : false} ${
-                            item.comments === 1 ? true : false
-                          }`}
-                          <button
-                            className="btn-remove"
-                            id={item.id}
-                            name={item.user}
-                            value={item.token}
-                            onClick={this.handleRemove}
-                          >
-                            usuń
-                          </button>
-                        </div>
+                        <ul className='client-data'>
+                          <li className='element' >{item.name}</li>
+                          <li className='element' >{item.surname}</li>
+                          <li className='element' >{item.phone}</li>
+                          <li className='element' >{item.email}</li>
+                          <li className='element' >{item.typeof}</li>
+                          <li className='element small' >{item.package} szt.</li>
+                          <li className='element small' >{item.price} zł</li>
+                          <li className='element small' >{item.price_add} zł</li>
+                          {/* <li className='element' >{item.data}</li> */}
+                          <li className={this.state.ready ? 'element ready' : 'element pending'} >{this.state.ready ? 'gotowe' : 'oczekuje'}</li>
+                          <li >
+                            <button
+                              className="btn-edit"
+                              id={item.id}
+                              name={item.user}
+                              value={item.token}
+                              onClick={this.handleRemove}
+                            >edytuj</button>
+
+                            <button
+                              className="btn-remove"
+                              id={item.id}
+                              name={item.user}
+                              value={item.token}
+                              onClick={this.handleRemove}
+                            >usuń</button>
+                          </li>
+                        </ul>
                       </li>
                     );
                   }
                 })}
               </ul>
-            )}
+            )
+            }
           </div>
         </div>
         <div className="photographer-right" />

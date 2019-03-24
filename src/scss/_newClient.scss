@@ -19,8 +19,8 @@
     width: 70%;
     min-height: 550px;
     min-width: 400px;
-    border: 1px solid red;
     padding: 0 30px;
+    // border: 1px solid red;
   }
 }
 
@@ -47,8 +47,8 @@
   height: 30px;
   outline: none;
   border: none;
-  border: 1px solid #ccc;
-  margin: 30px 0;
+  border-bottom: 1px solid #ccc;
+  margin: 25px 0;
   color: black;
   font-weight: 700;
   letter-spacing: 1px;
@@ -67,7 +67,7 @@
 
   > label {
     position: absolute;
-    top: 0;
+    top: 1.5em;
     left: 0;
     padding: 10px 10px;
     font-size: 15px;
@@ -79,8 +79,8 @@
 
   & input:focus ~ label,
   & input:valid ~ label {
-    top: -25px;
-    left: -10px;
+    top: 0;
+    left: 0;
     font-size: 13px;
     color: #777;
     font-style: italic;
@@ -109,13 +109,15 @@ span {
   min-height: 500px;
   // background: $base-white;
   padding-bottom: 30px;
-  border: 1px dotted orange;
+  // border: 1px dotted orange;
   // width: 100%;
   // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .form-checkbox {
   height: 30px;
+  width:230px;
+  text-align: center;
   margin: 10px 0;
   color: $dark-grey;
   font-size: 0.9rem;
@@ -141,9 +143,9 @@ input[type="file"] {
   color: #d3394c;
   background: transparent;
   border: 2px solid currentColor;
-  width: 200px;
+  width: 300px;
   display: block;
-  margin: 0 auto;
+  margin: 10px 150px;
   text-align: center;
   padding: 10px 15px;
   font-size: 0.8rem;
@@ -159,15 +161,15 @@ input[type="file"] {
 }
 .form-error {
   position: absolute;
-  bottom: -12px;
-  left: 0;
   font-size: 0.8rem;
+  top: 4.7em;
+  left: 0;
   color: red;
 }
 .form-success-icon {
   position: absolute;
-  top: 5px;
-  right: 25px;
+  top:1.9em;
+  left: 75%;
   height: 20px;
   width: 20px;
   background-image: url("../img/success_20.png");
@@ -176,6 +178,6 @@ input[type="file"] {
 .form-newClient {
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   flex-wrap: wrap;
 }

@@ -184,11 +184,11 @@ class Form extends React.Component {
   handleCheckbox = e => {
     e.target.checked
       ? this.setState({
-          [e.target.name]: true
-        })
+        [e.target.name]: true
+      })
       : this.setState({
-          [e.target.name]: false
-        });
+        [e.target.name]: false
+      });
   };
   /**
    * Dodanie nowego użytkownika
@@ -642,7 +642,7 @@ class Form extends React.Component {
                       : " wybrano plików: " + files.length}
                   </label>
 
-                  <button className="btn-submit" disabled={files.length <= 0}>
+                  <button className="btn-submit-newUser" disabled={files.length <= 0}>
                     Wyślij
                   </button>
                 </form>
