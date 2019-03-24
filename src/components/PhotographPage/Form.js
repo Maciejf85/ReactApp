@@ -6,28 +6,6 @@ import Loader from "../Loader";
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   name: "Maciej",
-    //   surname: "Fiałkowski",
-    //   password: "Qr2r3jp",
-    //   email: "mki@interia.pl",
-    //   phone: "503-111-456",
-    //   packageQ: "15",
-    //   price: "350",
-    //   addPrice: "15",
-    //   dateOf: "01-05-2017",
-    //   type: "Rodzinna",
-    //   payed: false,
-    //   prints: false,
-    //   comments: false,
-    //   files: "",
-    //   filesSummary: "",
-    //   newUser: this.props.newUser,
-    //   allSesions: this.props.allSessions,
-    //   token: "",
-    //   typeOf: "client",
-    //   form_data: {}
-    // };
 
     this.state = {
       name: "",
@@ -69,10 +47,8 @@ class Form extends React.Component {
    * Reakcja na zmiany w input
    */
   inputForm = e => {
-
     const inputValue = e.target.value;
     const inputName = e.target.name;
-
 
     function allLetter(inputtxt) {
       const letters = /^[a-zA-ZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
@@ -83,7 +59,7 @@ class Form extends React.Component {
       }
     }
 
-    if (inputName === 'name' || inputName === 'surname') {
+    if (inputName === "name" || inputName === "surname") {
       const matchValue = allLetter(inputValue);
       if (matchValue || inputValue.length < 1) {
         this.setState({
@@ -95,34 +71,30 @@ class Form extends React.Component {
         [e.target.name]: e.target.value
       });
     }
-  }
+  };
   /**
    * formatowanie daty, nr. telefonu
    */
   formatForm = e => {
     let length = e.target.value.length;
-    if (e.target.name === 'dateOf') {
+    if (e.target.name === "dateOf") {
       if (length === 2 || length === 5) {
         this.setState({
-          [e.target.name]: e.target.value + '/'
+          [e.target.name]: e.target.value + "/"
         });
-
-
       } else if (length === 14) {
         this.setState({
-          [e.target.name]: e.target.value + ' r.'
+          [e.target.name]: e.target.value + " r."
         });
-
       }
     } else {
-
       if (length === 3 || length === 7) {
         this.setState({
-          [e.target.name]: e.target.value + '-'
+          [e.target.name]: e.target.value + "-"
         });
       }
-    };
-  }
+    }
+  };
 
   /**
    * dodanie plików
@@ -168,7 +140,7 @@ class Form extends React.Component {
       formData.append("files[]", t[i]);
     }
     formData.append("json", data);
-    console.log(formData)
+    console.log(formData);
 
     console.log("file select handler");
   };
@@ -212,11 +184,11 @@ class Form extends React.Component {
   handleCheckbox = e => {
     e.target.checked
       ? this.setState({
-        [e.target.name]: true
-      })
+          [e.target.name]: true
+        })
       : this.setState({
-        [e.target.name]: false
-      });
+          [e.target.name]: false
+        });
   };
   /**
    * Dodanie nowego użytkownika
@@ -266,11 +238,6 @@ class Form extends React.Component {
       });
       this.addNewUser();
     }
-
-
-
-
-
   };
   /**
    * Wyłączanie modala i czyszczenie formularza
@@ -289,93 +256,94 @@ class Form extends React.Component {
     const inputValue = e.target.value;
     const inputLength = e.target.value.length;
 
-
-
-    if (inputName === 'name') {
+    if (inputName === "name") {
       if (inputLength < 3) {
         this.setState({
-          [inputName + '_e']: 'minimalna długość to 3 znaki'
-        })
+          [inputName + "_e"]: "minimalna długość to 3 znaki"
+        });
       } else {
         this.setState({
-          [inputName + '_e']: ''
-        })
+          [inputName + "_e"]: ""
+        });
       }
     }
 
-    if (inputName === 'surname') {
+    if (inputName === "surname") {
       if (inputLength < 2) {
         this.setState({
-          [inputName + '_e']: 'minimalna długość to 2 znaki'
-        })
+          [inputName + "_e"]: "minimalna długość to 2 znaki"
+        });
       } else {
         this.setState({
-          [inputName + '_e']: ''
-        })
+          [inputName + "_e"]: ""
+        });
       }
     }
 
-    if (inputName === 'password') {
+    if (inputName === "password") {
       if (inputLength < 5) {
         this.setState({
-          [inputName + '_e']: 'minimalna długość to 5 znaków'
-        })
+          [inputName + "_e"]: "minimalna długość to 5 znaków"
+        });
       } else {
         this.setState({
-          [inputName + '_e']: ''
-        })
+          [inputName + "_e"]: ""
+        });
       }
     }
-    if (inputName === 'email') {
-      if (inputValue.indexOf('@') === -1) {
+    if (inputName === "email") {
+      if (inputValue.indexOf("@") === -1) {
         this.setState({
-          [inputName + '_e']: 'email musi zawierać @'
-        })
+          [inputName + "_e"]: "email musi zawierać @"
+        });
       } else {
         this.setState({
-          [inputName + '_e']: ''
-        })
+          [inputName + "_e"]: ""
+        });
       }
     }
-    if (inputName === 'phone') {
+    if (inputName === "phone") {
       if (inputLength < 11) {
         this.setState({
-          [inputName + '_e']: 'prawidłowy format to xxx-xxx-xxx'
-        })
+          [inputName + "_e"]: "prawidłowy format to xxx-xxx-xxx"
+        });
       } else {
         this.setState({
-          [inputName + '_e']: ''
-        })
+          [inputName + "_e"]: ""
+        });
       }
     }
 
-    if (inputName === 'packageQ' || inputName === 'price' || inputName === 'addPrice') {
+    if (
+      inputName === "packageQ" ||
+      inputName === "price" ||
+      inputName === "addPrice"
+    ) {
       if (inputLength === 0) {
         this.setState({
-          [inputName + '_e']: 'pole nie może być puste'
-        })
+          [inputName + "_e"]: "pole nie może być puste"
+        });
       } else {
         this.setState({
-          [inputName + '_e']: ''
-        })
+          [inputName + "_e"]: ""
+        });
       }
     }
-    if (inputName === 'dateOf') {
+    if (inputName === "dateOf") {
       if (inputLength !== 10) {
         this.setState({
-          [inputName + '_e']: 'prawidłowy format daty to xx/xx/xxx'
-        })
+          [inputName + "_e"]: "prawidłowy format daty to xx/xx/xxx"
+        });
       } else {
         this.setState({
-          [inputName + '_e']: ''
-        })
+          [inputName + "_e"]: ""
+        });
       }
     }
 
     console.log(inputValue);
     console.log(inputLength);
-  }
-
+  };
 
   /**
    * Render strony
@@ -412,10 +380,9 @@ class Form extends React.Component {
       loading
     } = this.state;
 
-
     return (
       <>
-        {loading && <div className="loader form-loader">{<Loader />}</div>};
+        {loading && <div className="loader form-loader">{<Loader />}</div>}
         <div className="photographer-container">
           <div className="photographer-left">
             <button
@@ -439,7 +406,12 @@ class Form extends React.Component {
                 <h3>Nowy klient</h3>
               </div>
               <div className="form-container">
-                <form onSubmit={this.handleSubmit} noValidate>
+                <form
+                  className="form-newClient"
+                  onSubmit={this.handleSubmit}
+                  noValidate
+                >
+                  {/* Początek formularza */}
                   <div className="new-box">
                     <input
                       autoComplete="off"
@@ -451,9 +423,10 @@ class Form extends React.Component {
                       required
                     />
                     <label>Imię</label>
-                    <div className='form-error'>{name_e}</div>
-                    {(name_e.length === 0) && <div className='form-success-icon'></div>}
-
+                    <div className="form-error">{name_e}</div>
+                    {name_e.length === 0 && (
+                      <div className="form-success-icon" />
+                    )}
                   </div>
 
                   <div className="new-box">
@@ -467,8 +440,10 @@ class Form extends React.Component {
                       required
                     />
                     <label>Nazwisko</label>
-                    <div className='form-error'>{surname_e}</div>
-                    {(surname_e.length === 0) && <div className='form-success-icon'></div>}
+                    <div className="form-error">{surname_e}</div>
+                    {surname_e.length === 0 && (
+                      <div className="form-success-icon" />
+                    )}
                   </div>
 
                   <div className="new-box">
@@ -482,10 +457,10 @@ class Form extends React.Component {
                       required
                     />
                     <label>Hasło</label>
-                    <div className='form-error'>{password_e}</div>
-                    {(password_e.length === 0) && <div className='form-success-icon'></div>}
-
-
+                    <div className="form-error">{password_e}</div>
+                    {password_e.length === 0 && (
+                      <div className="form-success-icon" />
+                    )}
                   </div>
                   <div className="new-box">
                     <input
@@ -498,9 +473,10 @@ class Form extends React.Component {
                       required
                     />
                     <label>E-mail</label>
-                    <div className='form-error'>{email_e}</div>
-                    {(email_e.length === 0) && <div className='form-success-icon'></div>}
-
+                    <div className="form-error">{email_e}</div>
+                    {email_e.length === 0 && (
+                      <div className="form-success-icon" />
+                    )}
                   </div>
                   <div className="new-box">
                     <input
@@ -514,9 +490,10 @@ class Form extends React.Component {
                       required
                     />
                     <label>Telefon</label>
-                    <div className='form-error'>{phone_e}</div>
-                    {(phone_e.length === 0) && <div className='form-success-icon'></div>}
-
+                    <div className="form-error">{phone_e}</div>
+                    {phone_e.length === 0 && (
+                      <div className="form-success-icon" />
+                    )}
                   </div>
 
                   <div className="new-box">
@@ -549,9 +526,10 @@ class Form extends React.Component {
                       required
                     />
                     <label>Pakiet</label>
-                    <div className='form-error'>{packageQ_e}</div>
-                    {(packageQ_e.length === 0) && <div className='form-success-icon'></div>}
-
+                    <div className="form-error">{packageQ_e}</div>
+                    {packageQ_e.length === 0 && (
+                      <div className="form-success-icon" />
+                    )}
                   </div>
 
                   <div className="new-box">
@@ -565,9 +543,10 @@ class Form extends React.Component {
                       required
                     />
                     <label>Cena sesji</label>
-                    <div className='form-error'>{price_e}</div>
-                    {(price_e.length === 0) && <div className='form-success-icon'></div>}
-
+                    <div className="form-error">{price_e}</div>
+                    {price_e.length === 0 && (
+                      <div className="form-success-icon" />
+                    )}
                   </div>
 
                   <div className="new-box">
@@ -581,9 +560,10 @@ class Form extends React.Component {
                       required
                     />
                     <label>Cena za dodatkowe</label>
-                    <div className='form-error'>{addPrice_e}</div>
-                    {(addPrice_e.length === 0) && <div className='form-success-icon'></div>}
-
+                    <div className="form-error">{addPrice_e}</div>
+                    {addPrice_e.length === 0 && (
+                      <div className="form-success-icon" />
+                    )}
                   </div>
 
                   <div className="new-box">
@@ -598,9 +578,10 @@ class Form extends React.Component {
                       required
                     />
                     <label>Data sesji</label>
-                    <div className='form-error'>{dateOf_e}</div>
-                    {(dateOf_e.length === 0) && <div className='form-success-icon'></div>}
-
+                    <div className="form-error">{dateOf_e}</div>
+                    {dateOf_e.length === 0 && (
+                      <div className="form-success-icon" />
+                    )}
                   </div>
 
                   <div className="form-checkbox">

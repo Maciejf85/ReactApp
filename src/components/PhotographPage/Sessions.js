@@ -34,14 +34,14 @@ class Sessions extends React.Component {
   }
   componentWillUnmount() {
     this.mounted = false;
-    console.log('component unmounted: ' + this.mounted);
+    console.log("component unmounted: " + this.mounted);
   }
 
   handleRemove = e => {
     console.log(e.target.id, e.target.name, e.target.value);
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/removeUser.php",
-      // "http://maciejf.pl/reactApp/removeUser.php",
+      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/removeUser.php",
+      "http://maciejf.pl/reactApp/removeUser.php",
       {
         method: "POST",
         body: JSON.stringify({
@@ -66,8 +66,8 @@ class Sessions extends React.Component {
 
   getData = () => {
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
-      // "http://maciejf.pl/reactApp/getData.php"
+      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
+      "http://maciejf.pl/reactApp/getData.php"
     )
       .then(resp => {
         if (resp.ok) return resp.json();
@@ -118,20 +118,18 @@ class Sessions extends React.Component {
                   if (item.type === "client") {
                     return (
                       <li key={item.id}>
-                        <span className="title">
-                          {`${item.user} id ${item.id}`}
-                        </span>
+                        <span className="title">{`${item.user}`}</span>
                         <div className="description">
                           {` ${item.type} ${item.name}  ${item.name} ${
                             item.surname
-                            } ${item.email} ${item.phone} `}
+                          } ${item.email} ${item.phone} `}
                         </div>
                         <div className="description">
                           {`${item.typeof} ${item.package} ${item.price} ${
                             item.price_add
-                            } ${item.data} ${item.prints === 1 ? true : false} ${
+                          } ${item.data} ${item.prints === 1 ? true : false} ${
                             item.comments === 1 ? true : false
-                            }`}
+                          }`}
                           <button
                             className="btn-remove"
                             id={item.id}
