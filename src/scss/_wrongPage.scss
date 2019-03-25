@@ -1,0 +1,20 @@
+.wrongPage {
+  background: radial-gradient(#1b275f, #080a16);
+  color: white;
+  width: 100vw;
+  height: 100vh;
+  font-family: $open-sans;
+
+  .error404 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    h5 {
+      text-decoration: underline;
+    }
+    div {
+      font-size: 3.8rem;
+    }
+  }
+}

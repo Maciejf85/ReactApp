@@ -1,6 +1,6 @@
 import React from "react";
 import Loader from "../Loader";
-import hourglass from '../../img/hourglass.svg';
+import ListItem from "./ListItem";
 
 class Sessions extends React.Component {
   state = {
@@ -9,8 +9,7 @@ class Sessions extends React.Component {
     response: "",
     loading: true,
     remove: false,
-    sort: 'data',
-    ready: 1
+    sort: "data"
   };
 
   componentDidMount() {
@@ -26,7 +25,7 @@ class Sessions extends React.Component {
       .then(response => {
         if (this.mounted === true) {
           this.setState({ response: response, loading: false });
-          console.log(response);
+          // console.log(response);
         }
       })
       .catch(err => {
@@ -79,7 +78,7 @@ class Sessions extends React.Component {
       .then(response => {
         if (this.mounted === true) {
           this.setState({ response: response, loading: false });
-          console.log(response);
+          // console.log(response);
         }
       })
       .catch(err => {
@@ -91,7 +90,7 @@ class Sessions extends React.Component {
 
   render() {
     const { newUser, allSesions, response, loading } = this.state;
-    console.log(response);
+    // console.log(response);
 
     return (
       <div className="photographer-container">
@@ -114,53 +113,21 @@ class Sessions extends React.Component {
         <div className="photographer-form busy">
           {loading && <div className="loader">{<Loader />}</div>}
           <div>
-            <h1 className="list-title">Zbiór sesji</h1>
+            <h1 className="list-title">Baza klientów</h1>
             {!loading && (
               <ul className="list">
-                {response.map(item => {
-                  if (item.type === "client") {
-                    return (
-                      <li key={item.id}>
-                        <div className='title'>
-                          <span className="date">{`${item.user}`}</span>
-                          <span className="date">{`${item.data}`}</span>
-                        </div>
-                        <ul className='client-data'>
-                          <li className='element' >{item.name}</li>
-                          <li className='element' >{item.surname}</li>
-                          <li className='element' >{item.phone}</li>
-                          <li className='element' >{item.email}</li>
-                          <li className='element' >{item.typeof}</li>
-                          <li className='element small' >{item.package} szt.</li>
-                          <li className='element small' >{item.price} zł</li>
-                          <li className='element small' >{item.price_add} zł</li>
-                          {/* <li className='element' >{item.data}</li> */}
-                          <li className={this.state.ready ? 'element ready' : 'element pending'} >{this.state.ready ? 'gotowe' : 'oczekuje'}</li>
-                          <li >
-                            <button
-                              className="btn-edit"
-                              id={item.id}
-                              name={item.user}
-                              value={item.token}
-                              onClick={this.handleRemove}
-                            >edytuj</button>
-
-                            <button
-                              className="btn-remove"
-                              id={item.id}
-                              name={item.user}
-                              value={item.token}
-                              onClick={this.handleRemove}
-                            >usuń</button>
-                          </li>
-                        </ul>
-                      </li>
-                    );
-                  }
-                })}
+                {response.map(
+                  item =>
+                    item.type === "client" && (
+                      <ListItem
+                        key={item.id}
+                        value={item}
+                        remove={this.handleRemove}
+                      />
+                    )
+                )}
               </ul>
-            )
-            }
+            )}
           </div>
         </div>
         <div className="photographer-right" />

@@ -1,8 +1,10 @@
 .list-title {
   font-weight: normal;
-  font-size: 2rem;
-  color: #333;
-  text-align: center;
+  font-size: 1.7rem;
+  font-style: italic;
+  color: rgb(99, 99, 99);
+  text-align: left;
+  text-indent: 4rem;
 }
 
 .list {
@@ -14,27 +16,25 @@
 .list > li {
   // padding: 0 20px;
   border-radius: 3px;
-  // border:1px solid #ccc;
-  border:1px solid #ccc;
+  // border: 1px solid #ccc;
   background: white;
   box-shadow: 1px 2px 1px #ccc;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding-bottom: 20px;
   width: 90%;
   min-width: 600px;
   overflow: hidden;
-
 }
 
 .title {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin:0;
+  margin: 0;
   padding: 10px;
   background: #dddddd4f;
-  color:#686868;
+  color: #686868;
   margin-bottom: 10px;
   // text-indent: 1rem;
   font-style: italic;
@@ -43,39 +43,51 @@
   font-family: $roboto;
 }
 
-.client-data{
+.client-data {
   display: flex;
   justify-content: space-around;
   align-items: center;
   // margin-top: 10px;
   padding: 0 20px;
   width: 100%;
-  
-  li.element{
-   color:#494949;
-   min-width: 60px;
-   height: 1.4rem;
-   line-height: 1.4rem;
-   font-size: 0.8rem;
-  //  border: 1px solid #eee;
-   text-align: center;
-   margin: 5px 0;
 
-   &.small{
-     min-width: 30px;
-   }
+  li.element {
+    color: #494949;
+    min-width: 60px;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.8rem;
+    //  border: 1px solid #eee;
+    text-align: center;
+    margin: 5px 0;
 
-   &.pending, &.ready{
-     color:#EA8010;
-     font-style: italic;
-   }
-   &.ready{
-     color:#81d600;
-     text-decoration: underline;  
-     letter-spacing: 1px;
-   }
+    &.small {
+      min-width: 30px;
+    }
 
+    &.pending,
+    &.ready {
+      color: orange;
+      font-style: italic;
+    }
+    &.ready {
+      color: #67ac00;
+      text-decoration: underline;
+      letter-spacing: 2px;
+    }
   }
-
 }
 
+.listItem-input {
+  width: 100px;
+  outline: none;
+  text-align: center;
+
+  &:focus {
+    color: red;
+    font-style: italic;
+  }
+  &.small {
+    width: 50px;
+  }
+}
