@@ -16,7 +16,6 @@ html {
 }
 body {
   position: relative;
-  background: #fdfdfd;
   font-family: $open-sans;
   width: 100vw;
   height: 100vh;
@@ -26,9 +25,11 @@ body {
 .wrapper {
   width: 100vw;
   height: 100vh;
-  background-image: url("../img/camera_1920.jpg");
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  background: radial-gradient(#1b275f, #080a16);
+
+  // background-image: url("../img/camera_1920.jpg");
+  // filter: blur(8px);
+  // -webkit-filter: blur(8px);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

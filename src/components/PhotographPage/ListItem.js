@@ -92,122 +92,123 @@ class ListItem extends React.Component {
             </ul>
           </li>
         ) : (
-          <li key={id}>
-            <div className="title">
-              <span className="date">{this.props.value.user}</span>
-              <span className="date">
-                <input
-                  className="listItem-input"
-                  type="text"
-                  defaultValue={date}
-                  name="date"
-                  onChange={this.handleForm}
-                />
-              </span>
-            </div>
-            <ul className="client-data">
-              <li className="element">
-                <input
-                  className="listItem-input"
-                  type="text"
-                  defaultValue={name}
-                  name="name"
-                  onChange={this.handleForm}
-                />
+            <li key={id}>
+              <div className="title">
+                <span className="date">{this.props.value.user}</span>
+                <span>Edycja</span>
+                <span className="date">
+                  <input
+                    className="listItem-input"
+                    type="text"
+                    defaultValue={date}
+                    name="date"
+                    onChange={this.handleForm}
+                  />
+                </span>
+              </div>
+              <ul className="client-data">
+                <li className="element">
+                  <input
+                    className="listItem-input"
+                    type="text"
+                    defaultValue={name}
+                    name="name"
+                    onChange={this.handleForm}
+                  />
+                </li>
+                <li className="element">
+                  <input
+                    className="listItem-input"
+                    type="text"
+                    defaultValue={surname}
+                    name="surname"
+                    onChange={this.handleForm}
+                  />
+                </li>
+                <li className="element">
+                  <input
+                    className="listItem-input"
+                    type="text"
+                    defaultValue={phone}
+                    name="phone"
+                    onChange={this.handleForm}
+                  />
+                </li>
+                <li className="element">
+                  <input
+                    className="listItem-input"
+                    type="text"
+                    defaultValue={email}
+                    name="email"
+                    onChange={this.handleForm}
+                  />
+                </li>
+                <li className="element">
+                  <input
+                    className="listItem-input"
+                    type="text"
+                    defaultValue={typeOf}
+                    name="typeOf"
+                    onChange={this.handleForm}
+                  />
+                </li>
+                <li className="element small">
+                  <input
+                    className="listItem-input small"
+                    type="text"
+                    defaultValue={packageQ}
+                    name="packageQ"
+                    onChange={this.handleForm}
+                  />
+                  szt.
               </li>
-              <li className="element">
-                <input
-                  className="listItem-input"
-                  type="text"
-                  defaultValue={surname}
-                  name="surname"
-                  onChange={this.handleForm}
-                />
+                <li className="element small">
+                  <input
+                    className="listItem-input small"
+                    type="text"
+                    defaultValue={price}
+                    name="price"
+                    onChange={this.handleForm}
+                  />
+                  zł
               </li>
-              <li className="element">
-                <input
-                  className="listItem-input"
-                  type="text"
-                  defaultValue={phone}
-                  name="phone"
-                  onChange={this.handleForm}
-                />
+                <li className="element small">
+                  <input
+                    className="listItem-input small"
+                    type="text"
+                    defaultValue={priceAdd}
+                    name="priceAdd"
+                    onChange={this.handleForm}
+                  />
+                  zł
               </li>
-              <li className="element">
-                <input
-                  className="listItem-input"
-                  type="text"
-                  defaultValue={email}
-                  name="email"
-                  onChange={this.handleForm}
-                />
-              </li>
-              <li className="element">
-                <input
-                  className="listItem-input"
-                  type="text"
-                  defaultValue={typeOf}
-                  name="typeOf"
-                  onChange={this.handleForm}
-                />
-              </li>
-              <li className="element small">
-                <input
-                  className="listItem-input small"
-                  type="text"
-                  defaultValue={packageQ}
-                  name="packageQ"
-                  onChange={this.handleForm}
-                />
-                szt.
-              </li>
-              <li className="element small">
-                <input
-                  className="listItem-input small"
-                  type="text"
-                  defaultValue={price}
-                  name="price"
-                  onChange={this.handleForm}
-                />
-                zł
-              </li>
-              <li className="element small">
-                <input
-                  className="listItem-input small"
-                  type="text"
-                  defaultValue={priceAdd}
-                  name="priceAdd"
-                  onChange={this.handleForm}
-                />
-                zł
-              </li>
-              <li className={ready > 0 ? "element ready" : "element pending"}>
-                {ready > 0 ? "gotowe" : "oczekuje"}
-              </li>
-              <li>
-                <button
-                  className="btn-edit"
-                  id={id}
-                  name={user}
-                  value={token}
-                  onClick={this.handleEdit}
-                >
-                  zapisz
+                <li className={ready > 0 ? "element ready" : "element pending"}>
+                  {ready > 0 ? "gotowe" : "oczekuje"}
+                </li>
+                <li>
+                  <button
+                    className="btn-edit"
+                    id={id}
+                    name={user}
+                    value={token}
+                    onClick={this.handleEdit}
+                  >
+                    zapisz
                 </button>
 
-                <button
-                  className="btn-remove"
-                  id={id}
-                  name={user}
-                  value={token}
-                  onClick={this.props.remove}
-                >
-                  usuń
+                  <button
+                    className="btn-remove"
+                    id={id}
+                    name={user}
+                    value={token}
+                    onClick={this.props.remove}
+                  >
+                    usuń
                 </button>
-              </li>
-            </ul>
-          </li>
-        )}
+                </li>
+              </ul>
+            </li>
+          )}
       </>
     );
   }

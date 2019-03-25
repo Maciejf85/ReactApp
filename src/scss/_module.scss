@@ -81,6 +81,10 @@
 .listItem-input {
   width: 100px;
   outline: none;
+  border:none;
+  border-bottom: 1px solid orange;
+  font-style: italic;
+  color: #bd7b01;
   text-align: center;
 
   &:focus {
