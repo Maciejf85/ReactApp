@@ -1,4 +1,5 @@
-.btn-submit, .btn-submit-newUser {
+.btn-submit,
+.btn-submit-newUser {
   position: relative;
   width: 100%;
   height: 40px;
@@ -18,9 +19,9 @@
     background: rgb(240, 240, 240);
     color: grey;
     cursor: not-allowed;
-  }  
+  }
 }
-.btn-submit-newUser{
+.btn-submit-newUser {
   width: 50%;
 }
 
@@ -95,7 +96,7 @@
   background: transparent;
   border-radius: 5px;
   padding: 5px 15px;
-  margin-left:10px;
+  margin-left: 10px;
   outline: none;
   border: none;
   border: 1px solid #fa4747;
@@ -106,7 +107,6 @@
     cursor: pointer;
     color: #b10000;
     border: 1px solid #b10000;
-
   }
 }
 
@@ -114,7 +114,7 @@
   background: transparent;
   border-radius: 5px;
   padding: 5px 15px;
-  margin-left:10px;
+  margin-left: 10px;
   outline: none;
   border: none;
   border: 1px solid orange;
@@ -126,5 +126,15 @@
     color: darkorange;
     border: 1px solid darkgoldenrod;
   }
-}
 
+  &.save {
+    color: green;
+    border: 1px solid green;
+
+    &:hover {
+      cursor: pointer;
+      color: darkgreen;
+      border: 1px solid darkgreen;
+    }
+  }
+}

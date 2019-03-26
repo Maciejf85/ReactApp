@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Redirect } from "react-router-dom";
+import LoaderSmall from "./PhotographPage/LoaderSmall";
 
 class Main extends React.Component {
   constructor(props) {
@@ -18,8 +19,21 @@ class Main extends React.Component {
       type: this.props.type,
       checkbox: false,
       local: this.local,
-      session: this.session
+      session: this.session,
+      loading: false
     };
+  }
+  componentDidMount() {
+    if (this.local !== null) {
+      this.props.token(this.local.token, this.local.type, this.local.name);
+    }
+    if (this.session !== null) {
+      this.props.token(
+        this.session.token,
+        this.session.type,
+        this.session.name
+      );
+    }
   }
 
   inputForm = e => {
@@ -32,41 +46,19 @@ class Main extends React.Component {
   handleCheckbox = e => {
     e.target.checked
       ? this.setState({
-        checkbox: true
-      })
+          checkbox: true
+        })
       : this.setState({
-        checkbox: false
-      });
+          checkbox: false
+        });
   };
-
-  // handleSubmitPrototype = e => {
-  //   e.preventDefault();
-
-  //   const { checkbox } = this.state;
-
-  //   const token = "b8b19afef0f4dd7ba907fe848589685e";
-  //   const type = "photographer";
-
-  //   const logInfo = JSON.stringify({ token: token, type: type });
-
-  //   checkbox
-  //     ? localStorage.setItem("session-token", logInfo)
-  //     : sessionStorage.setItem("session-token", logInfo);
-
-  //   this.setState({
-  //     token: token,
-  //     type: type
-  //   });
-
-  //   this.props.token(token, type);
-  // };
 
   handleSubmit = e => {
     e.preventDefault();
     const { text, password } = this.state;
 
     this.setState({
-      response: ""
+      loading: true
     });
 
     if (text.length !== 0 && password.length !== 0) {
@@ -86,7 +78,7 @@ class Main extends React.Component {
         .then(response => {
           const { error, token, type, name } = response;
           error === undefined
-            ? this.props.token(token, type, name)
+            ? this.props.token(token, type, name, this.state.checkbox)
             : console.log(error);
         })
         .catch(err => {
@@ -107,7 +99,7 @@ class Main extends React.Component {
   };
 
   render() {
-    const { text, password, response, token, type } = this.state;
+    const { text, password, response, token, type, loading } = this.state;
 
     if (token !== "" && type === "photographer") {
       return <Redirect to="/photographer" />;
@@ -120,6 +112,9 @@ class Main extends React.Component {
         <div className="wrapper" />
         <div className="form-window">
           <div className="form">
+            {loading && (
+              <div className="loader_small dark">{<LoaderSmall />}</div>
+            )}
             <div className="form-icon">
               <FontAwesomeIcon icon={faUserCircle} />
             </div>

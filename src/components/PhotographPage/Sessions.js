@@ -67,6 +67,8 @@ class Sessions extends React.Component {
   };
 
   getData = () => {
+    this.mounted = true;
+
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
       // "http://maciejf.pl/reactApp/getData.php"
@@ -77,8 +79,10 @@ class Sessions extends React.Component {
       })
       .then(response => {
         if (this.mounted === true) {
-          this.setState({ response: response, loading: false });
-          // console.log(response);
+          this.setState({
+            response: response,
+            loading: false
+          });
         }
       })
       .catch(err => {
@@ -88,9 +92,41 @@ class Sessions extends React.Component {
       });
   };
 
+  handleUpdate = props => {
+    fetch(
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/update.php",
+      // "http://maciejf.pl/reactApp/removeUser.php",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          name: props.name,
+          surname: props.surname,
+          phone: props.phone,
+          email: props.email,
+          typeOf: props.typeOf,
+          packageQ: props.packageQ,
+          price: props.price,
+          priceAdd: props.priceAdd,
+          date: props.date,
+          id: props.id
+        })
+      }
+    )
+      .then(resp => {
+        if (resp.ok) return resp.text();
+        else throw new Error("Błąd sieci!");
+      })
+      .then(response => {
+        console.log("response " + response);
+        this.getData();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     const { newUser, allSesions, response, loading } = this.state;
-    // console.log(response);
 
     return (
       <div className="photographer-container">
@@ -123,6 +159,7 @@ class Sessions extends React.Component {
                         key={item.id}
                         value={item}
                         remove={this.handleRemove}
+                        update={this.handleUpdate}
                       />
                     )
                 )}

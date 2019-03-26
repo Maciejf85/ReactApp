@@ -1,77 +1,3 @@
-.login {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -60%);
-  height: 60vh;
-  min-height: 500px;
-  min-width: 800px;
-  width: 100vh;
-  display: flex;
-  box-shadow: 0 6px 15px 2px rgba(0, 0, 0, 0.21);
-
-  &__left {
-    position: relative;
-    width: 50%;
-    background: $base-white;
-  }
-
-  &__right {
-    position: relative;
-    width: 50%;
-    background: $dark-grey;
-  }
-
-  &__text {
-    font-size: 1rem;
-    margin-top: 30px;
-    text-transform: uppercase;
-  }
-}
-
-.login__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -70%);
-  width: 150px;
-  height: 150px;
-  // border: 1px solid white;
-  border-radius: 20px;
-  text-align: center;
-
-  &:hover {
-    background: #5c5c5c15;
-    cursor: pointer;
-  }
-}
-
-.loginIcon {
-  margin-top: 30px;
-  font-size: 50px;
-  color: $dark-grey;
-}
-.white {
-  color: $base-white;
-}
-.dark {
-  color: $dark-grey;
-}
-
-.form-window {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vw;
-  min-width: 700px;
-  height: 70vh;
-  min-height: 500px;
-  font-family: $open-sans;
-  // background: white;
-  // border: 1px dotted red;
-}
-
 .form {
   position: absolute;
   top: 50%;
@@ -86,6 +12,7 @@
   background: rgba(255, 255, 255, 0.068);
   border-radius: 15px;
   padding: 70px 30px;
+  overflow: hidden;
 }
 .form-icon {
   text-align: center;
@@ -93,7 +20,7 @@
   width: 100%;
   height: 50px;
   font-size: 60px;
-  color: rgba(0, 0, 0, 0.384);
+  color: rgba(0, 0, 0, 0.484);
 }
 
 .inputBox input[type="text"],
@@ -105,7 +32,8 @@
   outline: none;
   border: none;
   margin: 20px 0;
-  color: black;
+  color: #2169d6;
+  font-weight: 700;
   letter-spacing: 1px;
   text-indent: 10px;
   font-size: 15px;
@@ -139,13 +67,53 @@
   }
 }
 .main-checkbox {
-  height: 30px;
+  position: relative;
+  height: 35px;
   line-height: 30px;
-  font-size: 0.8rem;
-  // border: 1px solid red;
-  color: black;
+  font-size: 0.85rem;
+  // text-indent: 30px;
+  color: #c0c0c0;
   :hover {
     cursor: pointer;
+  }
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    width: 35px;
+    height: 15px;
+    background: #c5c5c5;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: 0.1s;
+    margin: 0 10px;
+  }
+  input:checked[type="checkbox"] {
+    background: #2169d6;
+  }
+
+  input[type="checkbox"]:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+  }
+  input:checked[type="checkbox"]:before {
+    left: 20px;
+  }
+  label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
 }
 

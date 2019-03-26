@@ -25,13 +25,25 @@ class App extends React.Component {
     };
   }
 
-  handleLogin = (value, type, name) => {
+  handleLogin = (value, type, name, checkbox = false) => {
     this.setState({
       isAuthenticated: true,
       token: value,
       type: type,
       name: name
     });
+    if (this.state.local === null && checkbox) {
+      localStorage.setItem(
+        "session-token",
+        JSON.stringify({ token: value, type: type, name: name })
+      );
+    }
+    if (this.state.session === null && !checkbox) {
+      sessionStorage.setItem(
+        "session-token",
+        JSON.stringify({ token: value, type: type, name: name })
+      );
+    }
   };
 
   logOut = () => {
@@ -39,7 +51,9 @@ class App extends React.Component {
       isAuthenticated: false,
       token: "",
       type: "",
-      name: ""
+      name: "",
+      local: null,
+      session: null
     });
     localStorage.clear();
     sessionStorage.clear();
