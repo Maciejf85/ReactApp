@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import logSrc from "../img/react-logo.png";
 import Form from "./PhotographPage/Form";
-import Sessions from "./PhotographPage/Sessions";
+import Sessions from "./Photograph_Page/Sessions";
 
 class Photographer extends React.Component {
   constructor(props) {

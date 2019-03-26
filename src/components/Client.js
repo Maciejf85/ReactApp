@@ -1,6 +1,9 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import logSrc from "../img/react-logo.png";
+import ClientSummary from './Client_Page/ClientSummary';
+import ClientMain from '../components/Client_Page/ClientMain';
+
 
 class Client extends React.Component {
   constructor(props) {
@@ -40,8 +43,16 @@ class Client extends React.Component {
               </li>
             </ul>
           </nav>
+          <main className='client-main'>
+            <div className='client-summary-side'>
+              <ClientSummary value={this.state} />
+            </div>
+            <div className='client-photo-side'>
+              <ClientMain value={this.state} />
+            </div>
+            <div className='client-footer'></div>
+          </main>
 
-          <h3 style={{ marginTop: "40px" }}>message from component Client</h3>
         </>
       );
     }

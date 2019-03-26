@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Redirect } from "react-router-dom";
-import LoaderSmall from "./PhotographPage/LoaderSmall";
+import LoaderSmall from "./Photograph_Page/LoaderSmall";
 
 class Main extends React.Component {
   constructor(props) {
@@ -46,11 +46,11 @@ class Main extends React.Component {
   handleCheckbox = e => {
     e.target.checked
       ? this.setState({
-          checkbox: true
-        })
+        checkbox: true
+      })
       : this.setState({
-          checkbox: false
-        });
+        checkbox: false
+      });
   };
 
   handleSubmit = e => {
