@@ -40,9 +40,11 @@ class Form extends React.Component {
       showMessage: false,
       success: false,
       loading: false,
-      err: 0
+      err: 0,
+      files_obj: {}
     };
   }
+
   /**
    * Reakcja na zmiany w input
    */
@@ -104,6 +106,17 @@ class Form extends React.Component {
     const t = [...files];
     const size = t.reduce((sum, current) => sum + current.size, 0);
     const sizeT = (size / 1024 / 1024).toFixed(2) + " MB";
+    const filesArr = [];
+
+    t.map(item => {
+      const photo = {
+        name: item.name,
+        chosen: 0,
+        comment: "",
+        prints: []
+      };
+      return filesArr.push(photo);
+    });
 
     const date = new Date();
     const token = date.valueOf().toString();
@@ -134,13 +147,13 @@ class Form extends React.Component {
       typeOf: this.state.typeOf,
       payed: String(this.state.payed),
       prints: String(this.state.prints),
-      comments: String(this.state.comments)
+      comments: String(this.state.comments),
+      files_obj: JSON.stringify(filesArr)
     });
     for (let i = 0; i <= t.length; i++) {
       formData.append("files[]", t[i]);
     }
     formData.append("json", data);
-    console.log(formData);
 
     console.log("file select handler");
   };
@@ -184,11 +197,11 @@ class Form extends React.Component {
   handleCheckbox = e => {
     e.target.checked
       ? this.setState({
-        [e.target.name]: true
-      })
+          [e.target.name]: true
+        })
       : this.setState({
-        [e.target.name]: false
-      });
+          [e.target.name]: false
+        });
   };
   /**
    * Dodanie nowego użytkownika
@@ -340,9 +353,6 @@ class Form extends React.Component {
         });
       }
     }
-
-    console.log(inputValue);
-    console.log(inputLength);
   };
 
   /**
@@ -642,7 +652,10 @@ class Form extends React.Component {
                       : " wybrano plików: " + files.length}
                   </label>
 
-                  <button className="btn-submit-newUser" disabled={files.length <= 0}>
+                  <button
+                    className="btn-submit-newUser"
+                    disabled={files.length <= 0}
+                  >
                     Wyślij
                   </button>
                 </form>

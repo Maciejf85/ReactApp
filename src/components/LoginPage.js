@@ -46,11 +46,11 @@ class Main extends React.Component {
   handleCheckbox = e => {
     e.target.checked
       ? this.setState({
-        checkbox: true
-      })
+          checkbox: true
+        })
       : this.setState({
-        checkbox: false
-      });
+          checkbox: false
+        });
   };
 
   handleSubmit = e => {

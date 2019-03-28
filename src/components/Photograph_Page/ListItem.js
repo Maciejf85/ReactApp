@@ -37,6 +37,13 @@ class ListItem extends React.Component {
     });
   };
 
+  handleRemove = e => {
+    this.props.remove(e);
+    this.setState({
+      pending: true
+    });
+  };
+
   handleForm = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -100,7 +107,8 @@ class ListItem extends React.Component {
                   id={id}
                   name={user}
                   value={token}
-                  onClick={this.props.remove}
+                  // onClick={this.props.remove}
+                  onClick={this.handleRemove}
                 >
                   usuń
                 </button>

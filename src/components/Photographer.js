@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import logSrc from "../img/react-logo.png";
-import Form from "./PhotographPage/Form";
+import Form from "./Photograph_Page/Form";
 import Sessions from "./Photograph_Page/Sessions";
 
 class Photographer extends React.Component {
@@ -30,6 +30,8 @@ class Photographer extends React.Component {
     } else {
       return (
         <>
+          <div className="owner-nav-container" />
+
           <nav className="owner-nav">
             <div>
               <div className="nav-logo">

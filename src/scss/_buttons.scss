@@ -138,3 +138,44 @@
     }
   }
 }
+
+.btn-photo-select,
+.btn-photo-prints,
+.btn-photo-comment {
+  width: 110px;
+  line-height: 19px;
+  text-align: center;
+  font-size: 0.8rem;
+  transition: all 0.1s ease;
+  background: transparent;
+  outline: none;
+  border: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0 3px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn-photo-select {
+  &:hover {
+    color: white;
+    background: #65aeff;
+  }
+}
+.btn-photo-prints {
+  width: 70px;
+  &:hover {
+    color: white;
+    background: #5fb65f;
+  }
+}
+.btn-photo-comment {
+  width: 30px;
+  &:hover {
+    background: $photo-edit-color;
+    color: white;
+  }
+}

@@ -95,7 +95,7 @@ class Sessions extends React.Component {
   handleUpdate = props => {
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/update.php",
-      // "http://maciejf.pl/reactApp/removeUser.php",
+      // "http://maciejf.pl/reactApp/update.php",
       {
         method: "POST",
         body: JSON.stringify({

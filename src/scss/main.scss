@@ -12,6 +12,7 @@
 @import "./modal";
 @import "./wrongPage";
 @import "./client";
+@import "./client-photo";
 
 html {
   font-size: 16px;
@@ -36,7 +37,16 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.owner-nav-container {
+  height: 60px;
+  width: 100%;
+  background: #000;
+}
 .owner-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 60px;
   background: $dark-grey;
   display: flex;
@@ -45,6 +55,7 @@ body {
   padding: 0 30px;
   min-width: 760px;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+  z-index: 333;
 
   .nav-list {
     display: flex;

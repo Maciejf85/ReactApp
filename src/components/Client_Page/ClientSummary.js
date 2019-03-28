@@ -1,72 +1,70 @@
-import React from 'react'
-
+import React from "react";
 
 class MainClient extends React.Component {
-    state = {
-        name: '',
-        packageQ: '',
-        price: '',
-        priceAdd: '',
-        payed: '',
-        choosed: 0,
-        supplement: '',
-        type: ''
-    }
+  state = {
+    name: this.props.value.user_name,
+    packageQ: this.props.value.packageQ,
+    price: this.props.value.price,
+    priceAdd: this.props.value.priceAdd,
+    payed: this.props.value.payed,
+    choosed: 0,
+    supplement: 0,
+    type: this.props.value.typeOf
+  };
 
-    handleData = value => {
-        this.setState({
-            name: value.name + ' ' + value.surname,
-            packageQ: value.package,
-            price: value.price,
-            priceAdd: value.price_add,
-            payed: value.payed,
-            type: value.typeof
-        })
-    }
-
-    componentDidMount() {
-        fetch(
-            "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
-            // "http://maciejf.pl/reactApp/getClientData.php",
-            {
-                method: "POST",
-                body: JSON.stringify({ token: this.props.value.token })
-            }
-        )
-            .then(resp => {
-                if (resp.ok) return resp.json();
-                else throw new Error("Błąd sieci!");
-            })
-            .then(response => {
-                console.log(response[0])
-                this.handleData(response[0]);
-
-            })
-            .catch(err => {
-                this.setState({
-                    response: err
-                });
-            });
-    }
-
-    render() {
-        const { name, packageQ, price, priceAdd, payed, choosed, type } = this.state;
-        return (
-
-            <div className='client-summary-container'>
-                <h2>Podsumowanie</h2>
-                <h2></h2>
-                <h5>Sesja {type}</h5>
-                <h6>{name}</h6>
-                <h6>pakiet: {packageQ}</h6>
-                <h6>cena: {price}</h6>
-                <h6>sesja {payed ? 'opłacona ' : 'nieopłacona'}</h6>
-                <h6>wybrane {choosed}/{packageQ}</h6>
-                <h6>dopłata{(choosed - packageQ) * priceAdd}</h6>
-            </div>
-
-        )
-    }
+  render() {
+    const {
+      name,
+      packageQ,
+      price,
+      priceAdd,
+      payed,
+      choosed,
+      type
+    } = this.state;
+    return (
+      <div className="client-summary-container">
+        <div className="client-item-title">Podsumowanie: </div>
+        <div className="client-item">
+          <div className="client-item-value">
+            <p>sesja : {type}</p>
+          </div>
+        </div>
+        <div className="client-item">
+          <div className="client-item-value">
+            <p>imię : {name}</p>
+          </div>
+        </div>
+        <div className="client-item">
+          <div className="client-item-value">
+            <p>pakiet : {packageQ} szt.</p>
+          </div>
+        </div>
+        <div className="client-item">
+          <div className="client-item-value">
+            <p>cena : {price} zł</p>
+          </div>
+        </div>
+        <div className="client-item">
+          <div className="client-item-value">
+            <p>sesja {payed ? "opłacona " : "nieopłacona"}</p>
+          </div>
+        </div>
+        <div className="client-item">
+          <div className="client-item-value">
+            <p>
+              wybrane {choosed}/{packageQ} szt.
+            </p>
+          </div>
+        </div>
+        <div className="client-item">
+          <div className="client-item-value">
+            <p>dopłata {choosed * priceAdd} zł</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default MainClient;
