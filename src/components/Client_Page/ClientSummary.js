@@ -1,27 +1,26 @@
 import React from "react";
 
 class MainClient extends React.Component {
-  state = {
-    name: this.props.value.user_name,
-    packageQ: this.props.value.packageQ,
-    price: this.props.value.price,
-    priceAdd: this.props.value.priceAdd,
-    payed: this.props.value.payed,
-    choosed: 0,
-    supplement: 0,
-    type: this.props.value.typeOf
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: this.props.value.user_name,
+      packageQ: this.props.value.packageQ,
+      price: this.props.value.price,
+      priceAdd: this.props.value.priceAdd,
+      payed: this.props.value.payed,
+      supplement: 0,
+      type: this.props.value.typeOf,
+      photos: this.props.photos
+    };
+  }
 
   render() {
-    const {
-      name,
-      packageQ,
-      price,
-      priceAdd,
-      payed,
-      choosed,
-      type
-    } = this.state;
+    const { name, packageQ, price, priceAdd, payed, type } = this.state;
+    const count1 = this.props.photos.filter(item => item.chosen === true)
+      .length;
+
     return (
       <div className="client-summary-container">
         <div className="client-item-title">Podsumowanie: </div>
@@ -53,13 +52,13 @@ class MainClient extends React.Component {
         <div className="client-item">
           <div className="client-item-value">
             <p>
-              wybrane {choosed}/{packageQ} szt.
+              wybrane {count1}/{packageQ} szt.
             </p>
           </div>
         </div>
         <div className="client-item">
           <div className="client-item-value">
-            <p>dopłata {choosed * priceAdd} zł</p>
+            <p>dopłata {count1 * priceAdd} zł</p>
           </div>
         </div>
       </div>

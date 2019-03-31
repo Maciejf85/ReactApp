@@ -1,7 +1,7 @@
 .client-photo-container {
   width: 100%;
   min-height: 700px;
-  padding: 0 30px;
+  padding: 0 30px 30px 30px;
   //   background: #f1f1f1;
   display: flex;
   flex-wrap: wrap;
@@ -36,6 +36,18 @@
     transform: translate(-50%, -50%);
     height: 100%;
   }
+}
+.mark {
+  position: absolute;
+  bottom: 0px;
+  right: -10px;
+  width: 0;
+  height: 0;
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid rgba(32, 119, 218, 0.9);
+  border-left: 40px solid transparent;
+  // display: none;
+  transition: all 0.6s linear;
 }
 .photo-buttons {
   position: absolute;

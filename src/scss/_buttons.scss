@@ -142,7 +142,7 @@
 .btn-photo-select,
 .btn-photo-prints,
 .btn-photo-comment {
-  width: 110px;
+  width: 125px;
   line-height: 19px;
   text-align: center;
   font-size: 0.8rem;
@@ -160,9 +160,18 @@
 }
 
 .btn-photo-select {
+  flex-grow: 1;
+
   &:hover {
     color: white;
     background: #65aeff;
+  }
+  &.selected {
+    background: #65aeff;
+    color: white;
+    &:hover {
+      color: black;
+    }
   }
 }
 .btn-photo-prints {

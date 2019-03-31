@@ -58,7 +58,8 @@ class Main extends React.Component {
     const { text, password } = this.state;
 
     this.setState({
-      loading: true
+      loading: true,
+      response: ""
     });
 
     if (text.length !== 0 && password.length !== 0) {
@@ -77,9 +78,10 @@ class Main extends React.Component {
         })
         .then(response => {
           const { error, token, type, name } = response;
+          console.log(error);
           error === undefined
             ? this.props.token(token, type, name, this.state.checkbox)
-            : console.log(error);
+            : this.setState({ response: error, loading: false });
         })
         .catch(err => {
           this.setState({
@@ -93,7 +95,8 @@ class Main extends React.Component {
       });
     } else {
       this.setState({
-        response: "Wpisz login i hasło"
+        response: "Wpisz login i hasło",
+        loading: false
       });
     }
   };

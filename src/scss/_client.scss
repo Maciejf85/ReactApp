@@ -29,6 +29,7 @@
   bottom: 0;
   height: 40px;
   width: 100%;
+  z-index: 999;
   background: #000;
 }
 .client-summary-container {
@@ -58,7 +59,7 @@
     width: 60%;
     padding: 5px 0 5px 0;
     // border-bottom: 1px dotted grey;
-    color: #1d1d1d;
+    color: #b80909;
     font-weight: 700;
     font-style: italic;
     text-align: left;

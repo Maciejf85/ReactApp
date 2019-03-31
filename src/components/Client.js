@@ -22,6 +22,7 @@ class Client extends React.Component {
       prints: false,
       comments: false,
       gettingData: false,
+      chosenQ: 0,
       photos: {}
     };
   }
@@ -41,8 +42,10 @@ class Client extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        console.log(response);
         if (this.mounted) {
+          const chosenQ = JSON.parse(response[1]).filter(
+            item => item.chosen === true
+          ).length;
           this.setState({
             user_name: response[0].name,
             packageQ: response[0].package,
@@ -52,8 +55,9 @@ class Client extends React.Component {
             typeOf: response[0].typeof,
             comments: JSON.parse(response[0].comments),
             prints: JSON.parse(response[0].prints),
-            photos: response[1],
-            gettingData: true
+            photos: JSON.parse(response[1]),
+            gettingData: true,
+            chosenQ: chosenQ
           });
         }
       })
@@ -63,6 +67,45 @@ class Client extends React.Component {
         });
       });
   }
+
+  updateData = () => {
+    console.log("update data");
+    fetch(
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
+      // "http://maciejf.pl/reactApp/getClientData.php",
+      {
+        method: "POST",
+        body: JSON.stringify({ token: this.state.token })
+      }
+    )
+      .then(resp => {
+        if (resp.ok) return resp.json();
+        else throw new Error("Błąd sieci!");
+      })
+      .then(response => {
+        if (this.mounted) {
+          const chosenQ = response.filter(item => item.chosen === true).length;
+          this.setState({
+            user_name: response[0].name,
+            packageQ: response[0].package,
+            price: response[0].price,
+            priceAdd: response[0].price_add,
+            payed: response[0].payed,
+            typeOf: response[0].typeof,
+            comments: JSON.parse(response[0].comments),
+            prints: JSON.parse(response[0].prints),
+            photos: JSON.parse(response[1]),
+            gettingData: true,
+            chosenQ: chosenQ
+          });
+        }
+      })
+      .catch(err => {
+        this.setState({
+          response: err
+        });
+      });
+  };
   componentWillUnmount() {
     this.mounted = false;
   }
@@ -97,15 +140,16 @@ class Client extends React.Component {
             </ul>
           </nav>
           <main className="client-main">
-            <div className="client-summary-side">
-              {gettingData && <ClientSummary value={this.state} />}
-            </div>
             <div className="client-photo-side">
               {gettingData && (
                 <ClientMain
-                  photos={this.state.photos}
-                  prints={this.state.prints}
-                  comments={this.state.comments}
+                  allData={this.state}
+                  // photos={this.state.photos}
+                  // prints={this.state.prints}
+                  // comments={this.state.comments}
+                  token={this.state.token}
+                  chosenQ={this.state.chosenQ}
+                  // update={this.updateData}
                 />
               )}
             </div>
