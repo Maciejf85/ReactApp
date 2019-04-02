@@ -101,8 +101,14 @@ class Photo extends React.Component {
     );
   };
 
+  handleModal = e => {
+    const { name, comment_text, prints_items, chosen, token } = this.state;
+    this.props.click(name, comment_text, prints_items, chosen, token);
+  };
+
   render() {
     const { prints, comment, chosen, edit, status } = this.state;
+    console.log(status, chosen);
 
     return (
       <>
@@ -110,7 +116,7 @@ class Photo extends React.Component {
 
         <div className="photo-item">
           {status && <div className="loader_small">{<LoaderSmall />}</div>}
-          <div className="photo-image">
+          <div className="photo-image" onClick={this.handleModal}>
             <img
               src={`http://www.maciejf.pl/reactApp/${this.props.token}/img/${
                 this.state.name

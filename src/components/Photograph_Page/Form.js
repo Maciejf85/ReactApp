@@ -40,7 +40,6 @@ class Form extends React.Component {
       showMessage: false,
       success: false,
       loading: false,
-      err: 0,
       files_obj: {}
     };
   }
@@ -239,11 +238,75 @@ class Form extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const err = this.state.err;
+    let err = false;
+    const {
+      name,
+      surname,
+      password,
+      email,
+      phone,
+      packageQ,
+      price,
+      addPrice,
+      dateOf
+    } = this.state;
 
     /**
      * Walidacja formularza
      */
+    if (name.length < 3) {
+      this.setState({
+        name_e: "minimalna długość to 3 znaki"
+      });
+      err = true;
+    }
+    if (surname.length < 2) {
+      this.setState({
+        surname_e: "minimalna długość to 2 znaki"
+      });
+      err = true;
+    }
+    if (password.length < 5) {
+      this.setState({
+        password_e: "minimalna długość to 5 znaków"
+      });
+      err = true;
+    }
+    if (email.indexOf("@") === -1) {
+      this.setState({
+        email_e: "email musi zawierać @"
+      });
+      err = true;
+    }
+    if (phone.length !== 11) {
+      this.setState({
+        phone_e: "prawidłowy format to xxx-xxx-xxx"
+      });
+      err = true;
+    }
+    if (packageQ.length === 0) {
+      this.setState({
+        packageQ_e: "pole nie może być puste"
+      });
+      err = true;
+    }
+    if (price.length === 0) {
+      this.setState({
+        price_e: "pole nie może być puste"
+      });
+      err = true;
+    }
+    if (addPrice.length === 0) {
+      this.setState({
+        addPrice_e: "pole nie może być puste"
+      });
+      err = true;
+    }
+    if (dateOf.length !== 10) {
+      this.setState({
+        dateOf_e: "prawidłowy format daty to xx/xx/xxxx"
+      });
+    }
 
     if (!err) {
       this.setState({
@@ -345,7 +408,7 @@ class Form extends React.Component {
     if (inputName === "dateOf") {
       if (inputLength !== 10) {
         this.setState({
-          [inputName + "_e"]: "prawidłowy format daty to xx/xx/xxx"
+          [inputName + "_e"]: "prawidłowy format daty to xx/xx/xxxx"
         });
       } else {
         this.setState({

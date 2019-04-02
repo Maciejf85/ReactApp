@@ -1,7 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import logSrc from "../img/react-logo.png";
-import ClientSummary from "./Client_Page/ClientSummary";
 import ClientMain from "../components/Client_Page/ClientMain";
 import Loader from "./Loader";
 
@@ -14,6 +13,7 @@ class Client extends React.Component {
       type: this.props.type,
       name: this.props.name,
       user_name: "",
+      surname: "",
       packageQ: "",
       price: "",
       priceAdd: "",
@@ -23,6 +23,7 @@ class Client extends React.Component {
       comments: false,
       gettingData: false,
       chosenQ: 0,
+      ready: 0,
       photos: {}
     };
   }
@@ -42,17 +43,21 @@ class Client extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
+        console.log("Client.js DidMount", response);
+
         if (this.mounted) {
           const chosenQ = JSON.parse(response[1]).filter(
             item => item.chosen === true
           ).length;
           this.setState({
             user_name: response[0].name,
+            surname: response[0].surname,
             packageQ: response[0].package,
             price: response[0].price,
             priceAdd: response[0].price_add,
             payed: response[0].payed,
             typeOf: response[0].typeof,
+            ready: response[0].ready,
             comments: JSON.parse(response[0].comments),
             prints: JSON.parse(response[0].prints),
             photos: JSON.parse(response[1]),
@@ -67,7 +72,9 @@ class Client extends React.Component {
         });
       });
   }
-
+  componentDidUpdate() {
+    console.log("Client.js didUpdate");
+  }
   updateData = () => {
     console.log("update data");
     fetch(
@@ -83,6 +90,7 @@ class Client extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
+        console.log(response);
         if (this.mounted) {
           const chosenQ = response.filter(item => item.chosen === true).length;
           this.setState({
@@ -149,11 +157,10 @@ class Client extends React.Component {
                   // comments={this.state.comments}
                   token={this.state.token}
                   chosenQ={this.state.chosenQ}
-                  // update={this.updateData}
+                  update={this.updateData}
                 />
               )}
             </div>
-            <div className="client-footer" />
           </main>
         </>
       );

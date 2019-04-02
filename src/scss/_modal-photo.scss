@@ -29,7 +29,7 @@
   box-shadow: 0 0 50px 0px rgba(0, 0, 0, 0.4);
 
   animation-name: fadeIn;
-  animation-duration: 0.5s;
+  animation-duration: 1s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   opacity: 0;
@@ -103,7 +103,6 @@
   width: 100%;
   justify-content: flex-end;
 }
-.arrow,
 .arrow {
   position: absolute;
   top: 50%;
@@ -114,8 +113,8 @@
   border: none;
   border: 2px solid white;
   border-radius: 50%;
-  // background: black;
-  background: rgb(114, 114, 114);
+  background: black;
+  background: rgb(31, 31, 31);
   &:hover {
     cursor: pointer;
     background: rgb(48, 127, 231);
@@ -127,10 +126,82 @@
     right: 0;
     transform: translate(50%, -50%);
   }
+  .icon {
+    font-size: 2rem;
+    color: white;
+    background: transparent;
+    pointer-events: none;
+  }
 }
 
 @keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes main-modal-fadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -55%);
+  }
+}
+// MAIN MODAL
+.main-modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 334;
+  min-width: 1000px;
+  height: 55vh;
+  min-height: 680px;
+  border: 2px solid white;
+
+  animation-name: main-modal-fadeIn;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  text-align: center;
+  img {
+    height: 100%;
+  }
+}
+.main-modal-buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+
+  .item {
+    width: 33%;
+    font-size: 1rem;
+    font-family: $roboto;
+  }
+
+  .modal-btn-close {
+    width: 150px;
+    color: white;
+    border: 1px solid white;
+    &:hover {
+      background: rgb(48, 127, 231);
+    }
+  }
+  div {
+    color: white;
+    text-align: center;
+    &.right {
+      text-align: right;
+    }
   }
 }

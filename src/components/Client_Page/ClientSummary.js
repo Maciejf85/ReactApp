@@ -6,6 +6,7 @@ class MainClient extends React.Component {
 
     this.state = {
       name: this.props.value.user_name,
+      surname: this.props.allData.surname,
       packageQ: this.props.value.packageQ,
       price: this.props.value.price,
       priceAdd: this.props.value.priceAdd,
@@ -17,7 +18,15 @@ class MainClient extends React.Component {
   }
 
   render() {
-    const { name, packageQ, price, priceAdd, payed, type } = this.state;
+    const {
+      name,
+      packageQ,
+      price,
+      priceAdd,
+      payed,
+      type,
+      surname
+    } = this.state;
     const count1 = this.props.photos.filter(item => item.chosen === true)
       .length;
 
@@ -26,12 +35,14 @@ class MainClient extends React.Component {
         <div className="client-item-title">Podsumowanie: </div>
         <div className="client-item">
           <div className="client-item-value">
-            <p>sesja : {type}</p>
+            <p>sesja :</p> <span>{type}</span>
           </div>
         </div>
         <div className="client-item">
           <div className="client-item-value">
-            <p>imię : {name}</p>
+            <p>
+              imię : {name} {surname}
+            </p>
           </div>
         </div>
         <div className="client-item">

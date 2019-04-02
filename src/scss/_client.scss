@@ -7,8 +7,8 @@
 }
 .client-summary-side {
   position: fixed;
-  top: 90px;
-  left: 10px;
+  top: 0;
+  left: 0px;
   width: 20%;
   min-width: 400px;
   height: 100%;
@@ -17,7 +17,7 @@
 .client-photo-side {
   position: absolute;
   top: 0;
-  left: 410px;
+  left: 400px;
   width: 80%;
   min-width: 400px;
   height: 100%;
@@ -31,10 +31,21 @@
   width: 100%;
   z-index: 999;
   background: #000;
+  > .footer-summary {
+    line-height: 40px;
+    text-align: center;
+    width: 180px;
+    height: 100%;
+    color: white;
+    background: #2078da;
+  }
 }
 .client-summary-container {
   width: 300px;
   padding: 20px;
+  margin: 0 auto;
+  margin-top: 80px;
+  // border: 1px solid red;
 }
 
 .summary-items {
@@ -45,23 +56,41 @@
 }
 
 .client-item {
-  padding: 5px;
+  padding: 8px 0;
 
   &-title {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     text-align: left;
     color: grey;
     font-style: italic;
-    margin: 15px 0;
+    margin: 10px 0 30px 0;
+    .icon {
+      color: $react-blue-dark;
+      margin-right: 10px;
+    }
+  }
+
+  .value-title {
+    color: $react-blue-dark;
+    font-size: 1.1rem;
+    padding-left: 10px;
+    margin: 0;
+    font-weight: 900;
   }
 
   &-value {
-    width: 60%;
-    padding: 5px 0 5px 0;
-    // border-bottom: 1px dotted grey;
-    color: #b80909;
-    font-weight: 700;
+    width: 90%;
+    color: #5c5c5c;
     font-style: italic;
     text-align: left;
+    font-weight: 700;
+    font-size: 1rem;
+
+    &.fail {
+      color: $failure-color;
+    }
+    &.payed {
+      color: $success-color;
+    }
   }
 }
