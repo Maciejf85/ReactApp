@@ -4,8 +4,7 @@ class ModalPhoto extends React.Component {
   state = {
     name: this.props.name.name,
     comment: this.props.name.comment_text,
-    prints: [],
-    comment_av: false
+    prints: []
   };
 
   handleInput = e => {
@@ -16,6 +15,7 @@ class ModalPhoto extends React.Component {
 
   saveData = e => {
     const option = e.target.name;
+    console.log("saveData = ", this.state.comment);
 
     if (option === "save") {
       this.props.hide(
@@ -24,8 +24,6 @@ class ModalPhoto extends React.Component {
         this.state.prints,
         this.props.name.chosen
       );
-    } else if (option === "chosen") {
-      this.props.hide("chosen");
     } else {
       this.props.hide("close", "", "");
     }
@@ -53,13 +51,6 @@ class ModalPhoto extends React.Component {
             />
           </div>
           <div className="modal-buttons">
-            {/* <button
-              className="btn-edit photo-btn-chose"
-              name="chosen"
-              onClick={this.saveData}
-            >
-              Wybierz
-            </button> */}
             <button
               className="btn-edit photo-btn-close"
               name="save"

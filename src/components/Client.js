@@ -43,8 +43,6 @@ class Client extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        console.log("Client.js DidMount", response);
-
         if (this.mounted) {
           const chosenQ = JSON.parse(response[1]).filter(
             item => item.chosen === true
@@ -72,11 +70,8 @@ class Client extends React.Component {
         });
       });
   }
-  componentDidUpdate() {
-    console.log("Client.js didUpdate");
-  }
+
   updateData = () => {
-    console.log(" Client.js  update data");
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
       // "http://maciejf.pl/reactApp/getClientData.php",
@@ -90,7 +85,6 @@ class Client extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        console.log(response);
         if (this.mounted) {
           const chosenQ = response.filter(item => item.chosen === true).length;
           this.setState({

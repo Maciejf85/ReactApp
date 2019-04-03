@@ -23,9 +23,6 @@ class Photo extends React.Component {
   componentWillUnmount() {
     this.mount = false;
   }
-  componentDidUpdate() {
-    console.log("photo-item did update");
-  }
 
   countChosen = response => {
     const chosenQ = response.filter(item => item.chosen === true).length;
@@ -55,7 +52,6 @@ class Photo extends React.Component {
           this.setState({
             status: false
           });
-          console.log("update z photo item");
         })
         .catch(err => {
           console.log(err);
@@ -73,23 +69,14 @@ class Photo extends React.Component {
           edit: !this.state.edit,
           comment_text: comment,
           prints_items: prints
-        }
-        // this.updateComponent
-      );
-    } else if (message === "chosen") {
-      this.setState(
-        {
-          edit: !this.state.edit,
-          chosen: !this.state.chosen
-        }
-        // this.updateComponent
+        },
+        this.updateComponent
       );
     } else {
       this.setState({
         edit: !this.state.edit,
         status: false
       });
-      console.log("close modal");
     }
   };
 

@@ -59,12 +59,12 @@ class Main extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        console.log("updated");
-        this.setState({
-          photos: response
-        });
+        const chosenQ = response.filter(item => item.chosen === true).length;
 
-        console.log("update z photo item");
+        this.setState({
+          photos: response,
+          chosen: chosenQ
+        });
       })
       .catch(err => {
         console.log(err);
@@ -72,7 +72,6 @@ class Main extends React.Component {
   };
 
   updateData = (response, value) => {
-    console.log("update wybranych zdjęć");
     this.setState({
       photos: response,
       chosen: value
@@ -95,25 +94,7 @@ class Main extends React.Component {
       modal_length: photos_length
     });
   };
-  componentDidUpdate() {
-    console.log("Client main updated");
-    // let value1 = 0;
-    // let value2 = 0;
 
-    // console.log((value1 = this.state.photos.map(item => item.chosen === true)));
-    // let cnt1 = value1.map(item => (item === true ? 1 : 0));
-    // const sum1 = cnt1.reduce((prev, curr) => prev + curr);
-    // console.log(
-    //   (value2 = this.props.allData.photos.map(item => item.chosen === true))
-    // );
-    // let cnt2 = value2.map(item => (item === true ? 1 : 0));
-    // const sum2 = cnt2.reduce((prev, curr) => prev + curr);
-    // console.log("state sum = ", sum1, " props sum = ", sum2);
-    // console.log(sum1 === sum2);
-    // if (sum1 !== sum2) {
-    // this.props.update();
-    // }
-  }
   /**
    * Obsługa modala
    */
@@ -204,7 +185,6 @@ class Main extends React.Component {
           else throw new Error("Błąd sieci!");
         })
         .then(response => {
-          console.log("ClientMain.js zmieniono isRady na watość ", value);
           this.setState({
             isReady: value
           });
@@ -246,6 +226,10 @@ class Main extends React.Component {
               <span className="client-item-value">{price} zł</span>
             </div>
             <div className="client-item">
+              <span className="value-title">dodatkowe zdjęcie :</span>
+              <span className="client-item-value">{priceAdd} zł</span>
+            </div>
+            <div className="client-item">
               <span className="value-title">sesja :</span>
               <span
                 className={`client-item-value ${
@@ -261,12 +245,12 @@ class Main extends React.Component {
                 {chosen} / {packageQ}
               </span>
             </div>
-            {/* <div className="client-item">
+            <div className="client-item">
               <span className="value-title">do zapłaty :</span>
               <span className="client-item-value">
                 {this.countPrice(chosen, packageQ, priceAdd, payed, price)} zł
               </span>
-            </div> */}
+            </div>
           </div>
         </div>
         <div className="client-footer">
@@ -291,7 +275,6 @@ class Main extends React.Component {
                 )}
               </div>
             ))}
-            )
           </div>
         }
         {modal && (

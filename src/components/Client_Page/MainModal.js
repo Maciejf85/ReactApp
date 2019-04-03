@@ -14,7 +14,6 @@ class MainModal extends React.Component {
   };
 
   componentDidUpdate() {
-    console.log("MainModal updated");
     if (this.state.name !== this.props.name) {
       this.setState({
         name: this.props.name,
@@ -22,9 +21,6 @@ class MainModal extends React.Component {
         length: this.props.length,
         chosen: Boolean(this.props.chosen)
       });
-    }
-    if (this.state.chosen !== this.props.chosen) {
-      console.log("MAIN MODAL chosen !== chosen");
     }
   }
   componentDidMount() {
@@ -67,7 +63,11 @@ class MainModal extends React.Component {
             <div className="item" />
             <div className="item">
               <div>
-                zdjęcie {this.state.index} / {this.state.length}
+                zdjęcie
+                {this.state.index + 1 < 10
+                  ? ` 0${this.state.index + 1} `
+                  : ` ${this.state.index + 1} `}
+                / {this.state.length + 1}
               </div>
             </div>
             <div className="item right">
