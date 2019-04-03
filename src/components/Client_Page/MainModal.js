@@ -10,7 +10,7 @@ class MainModal extends React.Component {
     name: this.props.name,
     index: this.props.index,
     length: this.props.length,
-    chosen: this.props.chosen
+    chosen: Boolean(this.props.chosen)
   };
 
   componentDidUpdate() {
@@ -20,13 +20,23 @@ class MainModal extends React.Component {
         name: this.props.name,
         index: this.props.index,
         length: this.props.length,
-        chosen: this.props.chosen
+        chosen: Boolean(this.props.chosen)
       });
+    }
+    if (this.state.chosen !== this.props.chosen) {
+      console.log("MAIN MODAL chosen !== chosen");
     }
   }
   componentDidMount() {
     document.addEventListener("keyup", this.props.slider);
   }
+  saveData = () => {
+    this.props.save(!this.state.chosen, this.props.name, this.props.token);
+
+    this.setState({
+      chosen: !this.state.chosen
+    });
+  };
 
   render() {
     return (
@@ -61,6 +71,13 @@ class MainModal extends React.Component {
               </div>
             </div>
             <div className="item right">
+              <button
+                className="btn-edit photo-btn-chose"
+                name="chosen"
+                onClick={this.saveData}
+              >
+                Wybierz
+              </button>
               <button
                 className="btn-edit modal-btn-close"
                 name="close"

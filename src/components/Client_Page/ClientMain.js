@@ -17,6 +17,7 @@ class Main extends React.Component {
     } = this.props.allData;
     const nameArray = [];
     photos.map(item => nameArray.push(item.name));
+
     this.state = {
       photos: photos,
       comments: this.props.allData.comments,
@@ -37,8 +38,43 @@ class Main extends React.Component {
     };
   }
 
-  updateData = value => {
+  saveModal = (value, name, token) => {
+    const curr = this.state.photos.filter(item => item.name === name);
+
+    fetch(
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
+      // "http://maciejf.pl/reactApp/updateData.php",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          chosen: value,
+          token: token,
+          comment: curr[0].comment
+        })
+      }
+    )
+      .then(resp => {
+        if (resp.ok) return resp.json();
+        else throw new Error("Błąd sieci!");
+      })
+      .then(response => {
+        console.log("updated");
+        this.setState({
+          photos: response
+        });
+
+        console.log("update z photo item");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  updateData = (response, value) => {
+    console.log("update wybranych zdjęć");
     this.setState({
+      photos: response,
       chosen: value
     });
   };
@@ -59,15 +95,39 @@ class Main extends React.Component {
       modal_length: photos_length
     });
   };
+  componentDidUpdate() {
+    console.log("Client main updated");
+    // let value1 = 0;
+    // let value2 = 0;
+
+    // console.log((value1 = this.state.photos.map(item => item.chosen === true)));
+    // let cnt1 = value1.map(item => (item === true ? 1 : 0));
+    // const sum1 = cnt1.reduce((prev, curr) => prev + curr);
+    // console.log(
+    //   (value2 = this.props.allData.photos.map(item => item.chosen === true))
+    // );
+    // let cnt2 = value2.map(item => (item === true ? 1 : 0));
+    // const sum2 = cnt2.reduce((prev, curr) => prev + curr);
+    // console.log("state sum = ", sum1, " props sum = ", sum2);
+    // console.log(sum1 === sum2);
+    // if (sum1 !== sum2) {
+    // this.props.update();
+    // }
+  }
   /**
    * Obsługa modala
    */
   handleSlider = e => {
-    const dir = e.target.name;
-
+    let dir = "";
+    if (e.keyCode !== undefined) {
+      dir = e.keyCode;
+    } else {
+      dir = e.target.name;
+    }
     if (e.keyCode === 27) this.closeModal();
 
     let currPhotoIndex = this.state.modal_nameArray.indexOf(this.state.toModal);
+
     if (dir === "next" || e.keyCode === 39) {
       if (currPhotoIndex < this.state.modal_length) {
         currPhotoIndex += 1;
@@ -88,6 +148,7 @@ class Main extends React.Component {
       modal_index: currPhotoIndex,
       modal_chosen: currPhotoValue.chosen
     });
+    // console.log(currPhotoValue);
   };
   /**
    * Zamknij modal
@@ -143,7 +204,7 @@ class Main extends React.Component {
           else throw new Error("Błąd sieci!");
         })
         .then(response => {
-          console.log("ClientMain.js updateIsReady", response);
+          console.log("ClientMain.js zmieniono isRady na watość ", value);
           this.setState({
             isReady: value
           });
@@ -218,16 +279,19 @@ class Main extends React.Component {
           <div className="client-photo-container">
             {photos.map(item => (
               <div key={item.name}>
-                <Photo
-                  item={item}
-                  prints={this.state.prints}
-                  comments={this.state.comments}
-                  token={this.props.token}
-                  update={this.updateData}
-                  click={this.handleModal}
-                />
+                {!modal && (
+                  <Photo
+                    item={item}
+                    prints={this.state.prints}
+                    comments={this.state.comments}
+                    token={this.props.token}
+                    update={this.updateData}
+                    click={this.handleModal}
+                  />
+                )}
               </div>
             ))}
+            )
           </div>
         }
         {modal && (
@@ -235,6 +299,7 @@ class Main extends React.Component {
             name={this.state.toModal}
             token={this.state.modal_token}
             close={this.closeModal}
+            save={this.saveModal}
             slider={this.handleSlider}
             index={this.state.modal_index}
             length={this.state.modal_length}

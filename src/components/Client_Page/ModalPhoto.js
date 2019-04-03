@@ -4,7 +4,8 @@ class ModalPhoto extends React.Component {
   state = {
     name: this.props.name.name,
     comment: this.props.name.comment_text,
-    prints: []
+    prints: [],
+    comment_av: false
   };
 
   handleInput = e => {
@@ -52,13 +53,13 @@ class ModalPhoto extends React.Component {
             />
           </div>
           <div className="modal-buttons">
-            <button
+            {/* <button
               className="btn-edit photo-btn-chose"
               name="chosen"
               onClick={this.saveData}
             >
               Wybierz
-            </button>
+            </button> */}
             <button
               className="btn-edit photo-btn-close"
               name="save"

@@ -13,8 +13,8 @@
   left: 50%;
   transform: translate(-50%, -55%);
   z-index: 334;
-  width: 65vw;
-  min-width: 1000px;
+  width: 60vw;
+  min-width: 800px;
   height: 55vh;
   min-height: 570px;
   display: flex;
@@ -166,6 +166,7 @@
   height: 55vh;
   min-height: 680px;
   border: 2px solid white;
+  background: rgba(0, 0, 0, 0.5);
 
   animation-name: main-modal-fadeIn;
   animation-duration: 0.3s;

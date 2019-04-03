@@ -76,7 +76,7 @@ class Client extends React.Component {
     console.log("Client.js didUpdate");
   }
   updateData = () => {
-    console.log("update data");
+    console.log(" Client.js  update data");
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
       // "http://maciejf.pl/reactApp/getClientData.php",
@@ -95,11 +95,13 @@ class Client extends React.Component {
           const chosenQ = response.filter(item => item.chosen === true).length;
           this.setState({
             user_name: response[0].name,
+            surname: response[0].surname,
             packageQ: response[0].package,
             price: response[0].price,
             priceAdd: response[0].price_add,
             payed: response[0].payed,
             typeOf: response[0].typeof,
+            ready: response[0].ready,
             comments: JSON.parse(response[0].comments),
             prints: JSON.parse(response[0].prints),
             photos: JSON.parse(response[1]),

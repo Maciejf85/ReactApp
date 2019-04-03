@@ -15,6 +15,10 @@
   height: 230px;
   margin: 0 60px 80px 0;
   box-shadow: 0 1px 10px rgba(20, 20, 20, 0.2);
+
+  &.active {
+    box-shadow: 0 1px 10px #2077da50;
+  }
 }
 
 .photo-image {
@@ -47,7 +51,7 @@
   width: 0;
   height: 0;
   border-top: 40px solid transparent;
-  border-bottom: 40px solid rgba(32, 119, 218, 0.9);
+  border-bottom: 40px solid #2077dae6;
   border-left: 40px solid transparent;
   transition: all 0.6s linear;
   &:hover {

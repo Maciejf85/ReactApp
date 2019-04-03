@@ -313,6 +313,11 @@ class Form extends React.Component {
         loading: true
       });
       this.addNewUser();
+    } else {
+      this.setState({
+        files: "",
+        filesSummary: ""
+      });
     }
   };
   /**

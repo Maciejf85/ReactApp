@@ -23,10 +23,13 @@ class Photo extends React.Component {
   componentWillUnmount() {
     this.mount = false;
   }
+  componentDidUpdate() {
+    console.log("photo-item did update");
+  }
 
   countChosen = response => {
     const chosenQ = response.filter(item => item.chosen === true).length;
-    this.props.update(chosenQ);
+    this.props.update(response, chosenQ);
   };
   updateComponent = () => {
     if (this.mount) {
@@ -52,6 +55,7 @@ class Photo extends React.Component {
           this.setState({
             status: false
           });
+          console.log("update z photo item");
         })
         .catch(err => {
           console.log(err);
@@ -69,19 +73,17 @@ class Photo extends React.Component {
           edit: !this.state.edit,
           comment_text: comment,
           prints_items: prints
-        },
-        this.updateComponent
+        }
+        // this.updateComponent
       );
-      console.log(message, comment, prints);
     } else if (message === "chosen") {
       this.setState(
         {
           edit: !this.state.edit,
           chosen: !this.state.chosen
-        },
-        this.updateComponent
+        }
+        // this.updateComponent
       );
-      console.log(message, comment, prints);
     } else {
       this.setState({
         edit: !this.state.edit,
@@ -108,13 +110,11 @@ class Photo extends React.Component {
 
   render() {
     const { prints, comment, chosen, edit, status } = this.state;
-    console.log(status, chosen);
 
     return (
       <>
         {edit && <ModalPhoto name={this.state} hide={this.handleEdit} />}
-
-        <div className="photo-item">
+        <div className={`photo-item ${Boolean(chosen) ? "active" : ""}`}>
           {status && <div className="loader_small">{<LoaderSmall />}</div>}
           <div className="photo-image" onClick={this.handleModal}>
             <img
@@ -123,7 +123,7 @@ class Photo extends React.Component {
               }`}
               alt=""
             />
-            {chosen && <span className="mark" />}
+            {Boolean(chosen) && <span className="mark" />}
           </div>
           <div className="photo-buttons">
             <button
