@@ -15,6 +15,7 @@ class ListItem extends React.Component {
     price: this.props.value.price,
     priceAdd: this.props.value.price_add,
     ready: this.props.value.ready,
+    chosen: this.props.value.chosen,
     token: this.props.value.token,
     edit: false,
     pending: false
@@ -66,7 +67,8 @@ class ListItem extends React.Component {
       ready,
       token,
       edit,
-      pending
+      pending,
+      chosen
     } = this.state;
     console.log();
 
@@ -80,6 +82,23 @@ class ListItem extends React.Component {
               <span className="date">{date}</span>
             </div>
             <ul className="client-data">
+              <li className="element desc">imię</li>
+              <li className="element desc">nazwisko</li>
+              <li className="element desc">telefon</li>
+              <li className="element desc">e-mail</li>
+              <li className="element desc">typ</li>
+              <li className="element small desc">pakiet</li>
+              <li className="element small desc">cena </li>
+              <li className="element small desc">dodatkowe </li>
+              <li className="element small desc">wybrane</li>
+              <li className="element small desc">dopłata</li>
+              <li className="element desc">status</li>
+              <li>
+                <div className="empty" />
+                <div className="empty" />
+              </li>
+            </ul>
+            <ul className="client-data">
               <li className="element">{name}</li>
               <li className="element">{surname}</li>
               <li className="element">{phone}</li>
@@ -88,6 +107,12 @@ class ListItem extends React.Component {
               <li className="element small">{packageQ} szt.</li>
               <li className="element small">{price} zł</li>
               <li className="element small">{priceAdd} zł</li>
+              <li className="element small">
+                {chosen} / {packageQ}
+              </li>
+              <li className="element small">
+                {chosen < packageQ ? (chosen - packageQ) * priceAdd : 0} zł
+              </li>
               <li className={ready > 0 ? "element ready" : "element pending"}>
                 {ready > 0 ? "gotowe" : "oczekuje"}
               </li>
@@ -107,7 +132,6 @@ class ListItem extends React.Component {
                   id={id}
                   name={user}
                   value={token}
-                  // onClick={this.props.remove}
                   onClick={this.handleRemove}
                 >
                   usuń

@@ -15,7 +15,6 @@ class ModalPhoto extends React.Component {
 
   saveData = e => {
     const option = e.target.name;
-    console.log("saveData = ", this.state.comment);
 
     if (option === "save") {
       this.props.hide(

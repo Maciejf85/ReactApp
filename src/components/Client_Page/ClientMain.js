@@ -37,10 +37,12 @@ class Main extends React.Component {
       modal_length: ""
     };
   }
+  componentDidUpdate() {
+    console.log("Client Main updated");
+  }
 
   saveModal = (value, name, token) => {
     const curr = this.state.photos.filter(item => item.name === name);
-
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
       // "http://maciejf.pl/reactApp/updateData.php",
@@ -65,6 +67,7 @@ class Main extends React.Component {
           photos: response,
           chosen: chosenQ
         });
+        this.props.updateData(chosenQ);
       })
       .catch(err => {
         console.log(err);
@@ -76,6 +79,7 @@ class Main extends React.Component {
       photos: response,
       chosen: value
     });
+    this.props.updateData(value);
   };
   /**
    * Wyświetlenie modala
@@ -271,6 +275,7 @@ class Main extends React.Component {
                     token={this.props.token}
                     update={this.updateData}
                     click={this.handleModal}
+                    updateData={this.props.updateData}
                   />
                 )}
               </div>
@@ -287,6 +292,7 @@ class Main extends React.Component {
             index={this.state.modal_index}
             length={this.state.modal_length}
             chosen={this.state.modal_chosen}
+            updateData={this.props.updateData}
           />
         )}
       </>

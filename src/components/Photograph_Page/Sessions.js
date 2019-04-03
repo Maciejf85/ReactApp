@@ -40,7 +40,6 @@ class Sessions extends React.Component {
   }
 
   handleRemove = e => {
-    // console.log(e.target.id, e.target.name, e.target.value);
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/removeUser.php",
       // "http://maciejf.pl/reactApp/removeUser.php",
@@ -79,6 +78,7 @@ class Sessions extends React.Component {
       })
       .then(response => {
         if (this.mounted === true) {
+          console.log(response);
           this.setState({
             response: response,
             loading: false

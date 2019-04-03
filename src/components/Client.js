@@ -70,6 +70,27 @@ class Client extends React.Component {
         });
       });
   }
+  updateDataBase = value => {
+    fetch(
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateBaseData.php",
+      // "http://maciejf.pl/reactApp/updateBaseData.php",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          token: this.state.token,
+          value: value
+        })
+      }
+    )
+      .then(resp => {
+        if (resp.ok) return resp.text();
+        else throw new Error("Błąd sieci!");
+      })
+      .then(response => {})
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   updateData = () => {
     fetch(
@@ -154,6 +175,7 @@ class Client extends React.Component {
                   token={this.state.token}
                   chosenQ={this.state.chosenQ}
                   update={this.updateData}
+                  updateData={this.updateDataBase}
                 />
               )}
             </div>
