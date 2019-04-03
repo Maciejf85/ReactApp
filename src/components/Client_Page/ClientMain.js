@@ -43,6 +43,7 @@ class Main extends React.Component {
 
   saveModal = (value, name, token) => {
     const curr = this.state.photos.filter(item => item.name === name);
+
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
       // "http://maciejf.pl/reactApp/updateData.php",
@@ -62,12 +63,13 @@ class Main extends React.Component {
       })
       .then(response => {
         const chosenQ = response.filter(item => item.chosen === true).length;
-
+        const data = response.filter(item => item.chosen === true);
+        const names = data.map(item => item.name);
         this.setState({
           photos: response,
           chosen: chosenQ
         });
-        this.props.updateData(chosenQ);
+        this.props.updateData(chosenQ, names);
       })
       .catch(err => {
         console.log(err);
@@ -75,11 +77,13 @@ class Main extends React.Component {
   };
 
   updateData = (response, value) => {
+    const data = response.filter(item => item.chosen === true);
+    const names = data.map(item => item.name);
     this.setState({
       photos: response,
       chosen: value
     });
-    this.props.updateData(value);
+    this.props.updateData(value, names);
   };
   /**
    * Wyświetlenie modala

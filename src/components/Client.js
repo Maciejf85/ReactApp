@@ -70,7 +70,9 @@ class Client extends React.Component {
         });
       });
   }
-  updateDataBase = value => {
+  updateDataBase = (value, names) => {
+    // const chosenFiles = this.state.photos.filter(item => item.chosen === true);
+    console.log(value);
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateBaseData.php",
       // "http://maciejf.pl/reactApp/updateBaseData.php",
@@ -78,7 +80,9 @@ class Client extends React.Component {
         method: "POST",
         body: JSON.stringify({
           token: this.state.token,
-          value: value
+          value: value,
+          packageQ: this.state.packageQ,
+          chosen: names
         })
       }
     )
@@ -86,7 +90,9 @@ class Client extends React.Component {
         if (resp.ok) return resp.text();
         else throw new Error("Błąd sieci!");
       })
-      .then(response => {})
+      .then(response => {
+        console.log(response);
+      })
       .catch(err => {
         console.log(err);
       });
@@ -150,7 +156,7 @@ class Client extends React.Component {
                 <div>
                   <img src={logSrc} alt="logo" />
                 </div>
-                <span> LOGO</span>
+                <span> Panel Klienta</span>
               </div>
             </div>
             <ul className="nav-list">

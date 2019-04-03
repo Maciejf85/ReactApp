@@ -50,7 +50,6 @@ class ListItem extends React.Component {
       [e.target.name]: e.target.value
     });
   };
-
   render() {
     const {
       id,
@@ -72,6 +71,7 @@ class ListItem extends React.Component {
     } = this.state;
     console.log(parseInt(chosen) > parseInt(packageQ));
     const addPhotos = parseInt(chosen) > parseInt(packageQ);
+    const downloadBtn = parseInt(chosen) >= parseInt(packageQ);
 
     return (
       <>
@@ -80,6 +80,18 @@ class ListItem extends React.Component {
             {pending && <div className="loader_small">{<LoaderSmall />}</div>}
             <div className="title">
               <span className="date">{this.props.value.user}</span>
+
+              {downloadBtn && (
+                <button className="btn-edit">
+                  <a
+                    href={`http://www.maciejf.pl/reactApp/${
+                      this.props.value.token
+                    }/wybrane.bat`}
+                  >
+                    pobierz
+                  </a>
+                </button>
+              )}
               <span className="date">{date}</span>
             </div>
             <ul className="client-data">
@@ -111,7 +123,7 @@ class ListItem extends React.Component {
               <li className="element small">
                 {chosen} / {packageQ}
               </li>
-              <li className={`element small ${addPhotos ? 'unpayed' : null}`}>
+              <li className={`element small ${addPhotos ? "unpayed" : null}`}>
                 {addPhotos ? (chosen - packageQ) * priceAdd : 0} zł
               </li>
               <li className={ready > 0 ? "element ready" : "element pending"}>
@@ -141,118 +153,118 @@ class ListItem extends React.Component {
             </ul>
           </li>
         ) : (
-            <li key={id} className={edit && "active"}>
-              <div className="title">
-                <span className="date">{this.props.value.user}</span>
-                <span>edycja</span>
+          <li key={id} className={edit && "active"}>
+            <div className="title">
+              <span className="date">{this.props.value.user}</span>
+              <span>edycja</span>
 
-                <span className="date">
-                  <input
-                    className="listItem-input"
-                    type="text"
-                    defaultValue={date}
-                    name="date"
-                    onChange={this.handleForm}
-                  />
-                </span>
-              </div>
-              <ul className="client-data">
-                <li className="element">
-                  <input
-                    className="listItem-input"
-                    type="text"
-                    defaultValue={name}
-                    name="name"
-                    onChange={this.handleForm}
-                  />
-                </li>
-                <li className="element">
-                  <input
-                    className="listItem-input"
-                    type="text"
-                    defaultValue={surname}
-                    name="surname"
-                    onChange={this.handleForm}
-                  />
-                </li>
-                <li className="element">
-                  <input
-                    className="listItem-input"
-                    type="text"
-                    defaultValue={phone}
-                    name="phone"
-                    onChange={this.handleForm}
-                  />
-                </li>
-                <li className="element">
-                  <input
-                    className="listItem-input"
-                    type="text"
-                    defaultValue={email}
-                    name="email"
-                    onChange={this.handleForm}
-                  />
-                </li>
-                <li className="element">
-                  <input
-                    className="listItem-input"
-                    type="text"
-                    defaultValue={typeOf}
-                    name="typeOf"
-                    onChange={this.handleForm}
-                  />
-                </li>
-                <li className="element small">
-                  <input
-                    className="listItem-input small"
-                    type="text"
-                    defaultValue={packageQ}
-                    name="packageQ"
-                    onChange={this.handleForm}
-                  />
-                  szt.
+              <span className="date">
+                <input
+                  className="listItem-input"
+                  type="text"
+                  defaultValue={date}
+                  name="date"
+                  onChange={this.handleForm}
+                />
+              </span>
+            </div>
+            <ul className="client-data">
+              <li className="element">
+                <input
+                  className="listItem-input"
+                  type="text"
+                  defaultValue={name}
+                  name="name"
+                  onChange={this.handleForm}
+                />
               </li>
-                <li className="element small">
-                  <input
-                    className="listItem-input small"
-                    type="text"
-                    defaultValue={price}
-                    name="price"
-                    onChange={this.handleForm}
-                  />
-                  zł
+              <li className="element">
+                <input
+                  className="listItem-input"
+                  type="text"
+                  defaultValue={surname}
+                  name="surname"
+                  onChange={this.handleForm}
+                />
               </li>
-                <li className="element small">
-                  <input
-                    className="listItem-input small"
-                    type="text"
-                    defaultValue={priceAdd}
-                    name="priceAdd"
-                    onChange={this.handleForm}
-                  />
-                  zł
+              <li className="element">
+                <input
+                  className="listItem-input"
+                  type="text"
+                  defaultValue={phone}
+                  name="phone"
+                  onChange={this.handleForm}
+                />
               </li>
-                <li className={ready > 0 ? "element ready" : "element pending"}>
-                  {ready > 0 ? "gotowe" : "oczekuje"}
-                </li>
-                <li>
-                  <button className="btn-edit save" onClick={this.handleEdit}>
-                    zapisz
+              <li className="element">
+                <input
+                  className="listItem-input"
+                  type="text"
+                  defaultValue={email}
+                  name="email"
+                  onChange={this.handleForm}
+                />
+              </li>
+              <li className="element">
+                <input
+                  className="listItem-input"
+                  type="text"
+                  defaultValue={typeOf}
+                  name="typeOf"
+                  onChange={this.handleForm}
+                />
+              </li>
+              <li className="element small">
+                <input
+                  className="listItem-input small"
+                  type="text"
+                  defaultValue={packageQ}
+                  name="packageQ"
+                  onChange={this.handleForm}
+                />
+                szt.
+              </li>
+              <li className="element small">
+                <input
+                  className="listItem-input small"
+                  type="text"
+                  defaultValue={price}
+                  name="price"
+                  onChange={this.handleForm}
+                />
+                zł
+              </li>
+              <li className="element small">
+                <input
+                  className="listItem-input small"
+                  type="text"
+                  defaultValue={priceAdd}
+                  name="priceAdd"
+                  onChange={this.handleForm}
+                />
+                zł
+              </li>
+              <li className={ready > 0 ? "element ready" : "element pending"}>
+                {ready > 0 ? "gotowe" : "oczekuje"}
+              </li>
+              <li>
+                <button className="btn-edit save" onClick={this.handleEdit}>
+                  zapisz
                 </button>
 
-                  <button
-                    className="btn-remove"
-                    id={id}
-                    name={user}
-                    value={token}
-                    onClick={this.props.remove}
-                  >
-                    usuń
+                <button
+                  className="btn-remove"
+                  id={id}
+                  name={user}
+                  value={token}
+                  onClick={this.props.remove}
+                >
+                  usuń
                 </button>
-                </li>
-              </ul>
-            </li>
-          )}
+              </li>
+            </ul>
+          </li>
+        )}
         {edit && <div className="editing" />}
       </>
     );

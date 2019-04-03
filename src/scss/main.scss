@@ -102,3 +102,9 @@ body {
   display: flex;
   justify-content: center;
 }
+button {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

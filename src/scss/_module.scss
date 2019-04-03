@@ -25,6 +25,7 @@
   padding-bottom: 20px;
   width: 90%;
   min-width: 600px;
+  border-left: 7px solid $react-blue;
   overflow: hidden;
 
   &.active {
@@ -88,8 +89,8 @@
       font-weight: normal;
       font-style: normal;
     }
-    &.unpayed{
-      color:red;
+    &.unpayed {
+      color: red;
     }
 
     &.pending,
