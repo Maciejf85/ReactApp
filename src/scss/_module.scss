@@ -82,11 +82,14 @@
     font-style: italic;
 
     &.small {
-      min-width: 80px;
+      min-width: 60px;
     }
     &.desc {
       font-weight: normal;
       font-style: normal;
+    }
+    &.unpayed{
+      color:red;
     }
 
     &.pending,
