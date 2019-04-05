@@ -9,14 +9,18 @@ class Sessions extends React.Component {
     response: "",
     loading: true,
     remove: false,
-    sort: "data"
+    detail: false,
+    name: "",
+    surname: "",
+    token: "",
+    detailResponse: ""
   };
 
   componentDidMount() {
     this.mounted = true;
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
-      // "http://maciejf.pl/reactApp/getData.php"
+      // "/reactApp/getData.php"
     )
       .then(resp => {
         if (resp.ok) return resp.json();
@@ -39,16 +43,50 @@ class Sessions extends React.Component {
     console.log("component unmounted: " + this.mounted);
   }
 
-  handleRemove = e => {
+  handleDetail = (name, surname, token) => {
+    this.setState({
+      loading: true
+    });
+    fetch(
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
+      // "/reactApp/getClientData.php",
+      {
+        method: "POST",
+        body: JSON.stringify({ token: token, type: "file" })
+      }
+    )
+      .then(resp => {
+        if (resp.ok) return resp.json();
+        else throw new Error("Błąd sieci!");
+      })
+      .then(response => {
+        const chosenQ = response.filter(item => item.chosen === true);
+        this.setState({
+          detail: true,
+          name: name,
+          surname: surname,
+          token: token,
+          detailResponse: chosenQ,
+          loading: !this.state.loading
+        });
+      })
+      .catch(err => {
+        this.setState({
+          response: err
+        });
+      });
+  };
+
+  handleRemove = (name, id, token) => {
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/removeUser.php",
-      // "http://maciejf.pl/reactApp/removeUser.php",
+      // "/reactApp/removeUser.php",
       {
         method: "POST",
         body: JSON.stringify({
-          user: e.target.name,
-          id: e.target.id,
-          token: e.target.value
+          user: name,
+          id: id,
+          token: token
         })
       }
     )
@@ -57,7 +95,6 @@ class Sessions extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        console.log("response " + response);
         this.getData();
       })
       .catch(err => {
@@ -67,10 +104,13 @@ class Sessions extends React.Component {
 
   getData = () => {
     this.mounted = true;
+    this.setState({
+      loading: true
+    });
 
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
-      // "http://maciejf.pl/reactApp/getData.php"
+      // "/reactApp/getData.php"
     )
       .then(resp => {
         if (resp.ok) return resp.json();
@@ -78,10 +118,10 @@ class Sessions extends React.Component {
       })
       .then(response => {
         if (this.mounted === true) {
-          console.log(response);
           this.setState({
             response: response,
-            loading: false
+            loading: false,
+            detail: false
           });
         }
       })
@@ -95,7 +135,7 @@ class Sessions extends React.Component {
   handleUpdate = props => {
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/update.php",
-      // "http://maciejf.pl/reactApp/update.php",
+      // "/reactApp/update.php",
       {
         method: "POST",
         body: JSON.stringify({
@@ -117,7 +157,6 @@ class Sessions extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        console.log("response " + response);
         this.getData();
       })
       .catch(err => {
@@ -126,8 +165,17 @@ class Sessions extends React.Component {
   };
 
   render() {
-    const { newUser, allSesions, response, loading } = this.state;
-
+    const {
+      newUser,
+      allSesions,
+      response,
+      loading,
+      detail,
+      name,
+      surname,
+      token,
+      detailResponse
+    } = this.state;
     return (
       <div className="photographer-container">
         <div className="photographer-left">
@@ -149,21 +197,53 @@ class Sessions extends React.Component {
         <div className="photographer-form busy">
           {loading && <div className="loader">{<Loader />}</div>}
           <div>
-            <h1 className="list-title">Baza klientów</h1>
-            {!loading && (
-              <ul className="list">
-                {response.map(
-                  item =>
-                    item.type === "client" && (
-                      <ListItem
-                        key={item.id}
-                        value={item}
-                        remove={this.handleRemove}
-                        update={this.handleUpdate}
-                      />
-                    )
+            {!detail && (
+              <div>
+                <h1 className="list-title">Baza klientów</h1>
+                {!loading && (
+                  <ul className="list">
+                    {response.map(
+                      item =>
+                        item.type === "client" && (
+                          <ListItem
+                            key={item.id}
+                            value={item}
+                            remove={this.handleRemove}
+                            update={this.handleUpdate}
+                            detail={this.handleDetail}
+                          />
+                        )
+                    )}
+                  </ul>
                 )}
-              </ul>
+              </div>
+            )}
+            {detail && (
+              <div className="session-detal-container">
+                <div className="session-detal-name">
+                  <span>
+                    {name} {surname}
+                  </span>
+                  <button className="btn-logout dark" onClick={this.getData}>
+                    Powrót
+                  </button>
+                </div>
+
+                {detailResponse.map((item, index) => (
+                  <div key={item.name} className="session-detal-item">
+                    <div className="session-detal-number">{index + 1}.</div>
+                    <div className="session-detal-image">
+                      <img
+                        src={`http://maciejf.pl/reactApp/${token}/img/${
+                          item.name
+                        }`}
+                        alt=""
+                      />
+                    </div>
+                    <div className="session-detal-comment">{item.comment}</div>
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         </div>

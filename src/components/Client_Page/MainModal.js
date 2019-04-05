@@ -39,7 +39,7 @@ class MainModal extends React.Component {
       <div className="modal-photo">
         <div className="main-modal-container">
           <img
-            src={`http://www.maciejf.pl/reactApp/${this.props.token}/img/${
+            src={`http://maciejf.pl/reactApp/${this.props.token}/img/${
               this.state.name
             }`}
             alt=""
@@ -63,7 +63,6 @@ class MainModal extends React.Component {
             <div className="item" />
             <div className="item">
               <div>
-                zdjęcie
                 {this.state.index + 1 < 10
                   ? ` 0${this.state.index + 1} `
                   : ` ${this.state.index + 1} `}

@@ -32,7 +32,7 @@ class Client extends React.Component {
     this.mounted = true;
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
-      // "http://maciejf.pl/reactApp/getClientData.php",
+      // "/reactApp/getClientData.php",
       {
         method: "POST",
         body: JSON.stringify({ token: this.state.token })
@@ -71,11 +71,9 @@ class Client extends React.Component {
       });
   }
   updateDataBase = (value, names) => {
-    // const chosenFiles = this.state.photos.filter(item => item.chosen === true);
-    console.log(value);
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateBaseData.php",
-      // "http://maciejf.pl/reactApp/updateBaseData.php",
+      // "/reactApp/updateBaseData.php",
       {
         method: "POST",
         body: JSON.stringify({
@@ -90,9 +88,7 @@ class Client extends React.Component {
         if (resp.ok) return resp.text();
         else throw new Error("Błąd sieci!");
       })
-      .then(response => {
-        console.log(response);
-      })
+      .then(response => {})
       .catch(err => {
         console.log(err);
       });
@@ -101,7 +97,7 @@ class Client extends React.Component {
   updateData = () => {
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
-      // "http://maciejf.pl/reactApp/getClientData.php",
+      // "/reactApp/getClientData.php",
       {
         method: "POST",
         body: JSON.stringify({ token: this.state.token })

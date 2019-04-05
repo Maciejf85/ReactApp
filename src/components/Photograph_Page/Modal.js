@@ -6,7 +6,7 @@ const Modal = props => {
   const { name, result } = props;
   return (
     <div className="modal-message">
-      <div className="modal-window">
+      <div className="modal-window anim">
         <div className="modal-title">
           {result && <img src={success} alt="img" className="success-icon" />}
           {!result && <img src={fail} alt="img" className="failure-icon" />}

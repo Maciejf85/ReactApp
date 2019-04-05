@@ -15,7 +15,7 @@
   z-index: 334;
   width: 60vw;
   min-width: 800px;
-  height: 55vh;
+  height: 50vh;
   min-height: 570px;
   display: flex;
   justify-content: space-around;
@@ -29,7 +29,6 @@
   box-shadow: 0 0 50px 0px rgba(0, 0, 0, 0.4);
 
   animation-name: fadeIn;
-  animation-duration: 1s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   opacity: 0;

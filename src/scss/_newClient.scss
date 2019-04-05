@@ -22,6 +22,11 @@
     padding: 0 30px;
     // border: 1px solid red;
   }
+  h3 {
+    font-style: italic;
+    color: $dark-grey;
+    font-size: 1.7rem;
+  }
 }
 
 .photographer-left {
@@ -95,6 +100,10 @@
     color: $dark-grey;
     width: 150px;
     text-align: center;
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $react-blue-dark;
+    }
   }
 }
 span {
@@ -116,7 +125,7 @@ span {
 
 .form-checkbox {
   height: 30px;
-  width:230px;
+  width: 230px;
   text-align: center;
   margin: 10px 0;
   color: $dark-grey;
@@ -125,13 +134,15 @@ span {
 
   label:hover,
   input:hover {
-    color: $base-pink;
+    color: #04c404;
+    font-size: 1rem;
     cursor: pointer;
   }
 }
 
 .checkbox-active {
-  color: $base-pink;
+  color: #04c404;
+  font-weight: 700;
   font-size: 1rem;
 }
 input[type="file"] {
@@ -140,7 +151,7 @@ input[type="file"] {
   display: none;
 }
 .file-label {
-  color: #d3394c;
+  color: #181818;
   background: transparent;
   border: 2px solid currentColor;
   width: 300px;
@@ -152,7 +163,6 @@ input[type="file"] {
 
   &:hover {
     cursor: pointer;
-    color: #722040;
   }
 }
 
@@ -168,7 +178,7 @@ input[type="file"] {
 }
 .form-success-icon {
   position: absolute;
-  top:1.9em;
+  top: 1.9em;
   left: 75%;
   height: 20px;
   width: 20px;

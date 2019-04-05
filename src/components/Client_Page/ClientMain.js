@@ -37,16 +37,13 @@ class Main extends React.Component {
       modal_length: ""
     };
   }
-  componentDidUpdate() {
-    console.log("Client Main updated");
-  }
 
   saveModal = (value, name, token) => {
     const curr = this.state.photos.filter(item => item.name === name);
 
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
-      // "http://maciejf.pl/reactApp/updateData.php",
+      // "/reactApp/updateData.php",
       {
         method: "POST",
         body: JSON.stringify({
@@ -179,7 +176,7 @@ class Main extends React.Component {
     if (update) {
       fetch(
         "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/update_isReady.php",
-        // "http://maciejf.pl/reactApp/update_isReady.php",
+        // "/reactApp/update_isReady.php",
         {
           method: "POST",
           body: JSON.stringify({
@@ -234,7 +231,7 @@ class Main extends React.Component {
               <span className="client-item-value">{price} zł</span>
             </div>
             <div className="client-item">
-              <span className="value-title">dodatkowe zdjęcie :</span>
+              <span className="value-title">cena-dodatkowe :</span>
               <span className="client-item-value">{priceAdd} zł</span>
             </div>
             <div className="client-item">
@@ -253,18 +250,18 @@ class Main extends React.Component {
                 {chosen} / {packageQ}
               </span>
             </div>
-            <div className="client-item">
-              <span className="value-title">do zapłaty :</span>
-              <span className="client-item-value">
+            <div className="client-item-summary">
+              <span className="value-title-summary">Dopłata :</span>
+              <span className="client-item-value-summary">
                 {this.countPrice(chosen, packageQ, priceAdd, payed, price)} zł
               </span>
             </div>
           </div>
         </div>
         <div className="client-footer">
-          <div className="footer-summary">
+          {/* <div className="footer-summary">
             suma: {this.countPrice(chosen, packageQ, priceAdd, payed, price)} zł
-          </div>
+          </div> */}
         </div>
 
         {

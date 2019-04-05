@@ -35,9 +35,9 @@ class ModalPhoto extends React.Component {
         <div className="modal-photo-container">
           <div className="modal-image">
             <img
-              src={`http://www.maciejf.pl/reactApp/${
-                this.props.name.token
-              }/img/${this.state.name}`}
+              src={`http://maciejf.pl/reactApp/${this.props.name.token}/img/${
+                this.state.name
+              }`}
               alt=""
             />
           </div>

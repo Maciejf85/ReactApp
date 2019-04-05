@@ -188,8 +188,10 @@ class Form extends React.Component {
       filesSummary: "",
       loading: false
     });
-    console.log("clear form");
   };
+  componentWillUnmount() {
+    this.mounted = false;
+  }
   /**
    * Obsługa checkoxów
    */
@@ -206,9 +208,11 @@ class Form extends React.Component {
    * Dodanie nowego użytkownika
    */
   addNewUser = () => {
+    this.mounted = true;
+
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/addUser.php",
-      // "http://maciejf.pl/reactApp/addUser.php",
+      // "/reactApp/addUser.php",
       {
         method: "POST",
         body: this.state.form_data
@@ -219,12 +223,13 @@ class Form extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        console.log(response);
-        this.setState({
-          success: true,
-          showMessage: true,
-          loading: false
-        });
+        if (this.mounted) {
+          this.setState({
+            success: true,
+            showMessage: true,
+            loading: false
+          });
+        }
       })
       .catch(err => {
         this.setState({

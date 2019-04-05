@@ -27,10 +27,10 @@
   position: fixed;
   left: 0;
   bottom: 0;
-  height: 40px;
+  height: 25px;
   width: 100%;
   z-index: 999;
-  background: #000;
+  background: white;
   > .footer-summary {
     line-height: 40px;
     text-align: center;
@@ -58,6 +58,26 @@
 .client-item {
   padding: 8px 0;
 
+  &-summary {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 80%;
+    font-style: italic;
+    border-top: 1px solid #aaa;
+    text-align: right;
+    margin-top: 250px;
+    padding: 5px;
+
+    .value-title-summary {
+      font-size: 1.3rem;
+    }
+    .client-item-value-summary {
+      font-size: 1.4rem;
+    }
+  }
+
   &-title {
     font-size: 1.6rem;
     text-align: left;
@@ -72,7 +92,7 @@
 
   .value-title {
     color: $react-blue-dark;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     padding-left: 10px;
     margin: 0;
     font-weight: 900;

@@ -1,5 +1,8 @@
 import React from "react";
 import LoaderSmall from "./LoaderSmall";
+import Confirm from "./ModalConfirm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 class ListItem extends React.Component {
   state = {
@@ -18,16 +21,22 @@ class ListItem extends React.Component {
     chosen: this.props.value.chosen,
     token: this.props.value.token,
     edit: false,
-    pending: false
+    pending: false,
+    confirm: false
   };
 
-  componentWillUpdate() {
-    if (this.state.pending === true && this.state.edit === false) {
-      this.setState({
-        pending: false
-      });
-    }
-  }
+  // componentWillUpdate() {
+  //   if (this.state.pending === true && this.state.edit === false) {
+  //     this.setState({
+  //       pending: false
+  //     });
+  //   }
+  // }
+
+  handleDetail = () => {
+    const { name, surname, token } = this.state;
+    this.props.detail(name, surname, token);
+  };
 
   handleEdit = () => {
     this.state.edit && this.props.update(this.state);
@@ -38,10 +47,17 @@ class ListItem extends React.Component {
     });
   };
 
-  handleRemove = e => {
-    this.props.remove(e);
+  handleConfirm = () => {
     this.setState({
-      pending: true
+      confirm: !this.state.confirm
+    });
+  };
+
+  handleRemove = () => {
+    this.props.remove(this.state.name, this.state.id, this.state.token);
+    this.setState({
+      pending: true,
+      confirm: false
     });
   };
 
@@ -67,9 +83,9 @@ class ListItem extends React.Component {
       token,
       edit,
       pending,
-      chosen
+      chosen,
+      confirm
     } = this.state;
-    console.log(parseInt(chosen) > parseInt(packageQ));
     const addPhotos = parseInt(chosen) > parseInt(packageQ);
     const downloadBtn = parseInt(chosen) >= parseInt(packageQ);
 
@@ -80,19 +96,20 @@ class ListItem extends React.Component {
             {pending && <div className="loader_small">{<LoaderSmall />}</div>}
             <div className="title">
               <span className="date">{this.props.value.user}</span>
-
-              {downloadBtn && (
-                <button className="btn-edit">
-                  <a
-                    href={`http://www.maciejf.pl/reactApp/${
-                      this.props.value.token
-                    }/wybrane.bat`}
-                  >
-                    pobierz
-                  </a>
-                </button>
-              )}
-              <span className="date">{date}</span>
+              <div>
+                {downloadBtn && (
+                  <button className="btn-download">
+                    <a
+                      href={`http://maciejf.pl/reactApp/${
+                        this.props.value.token
+                      }/wybrane.bat`}
+                    >
+                      <FontAwesomeIcon icon={faDownload} />
+                    </a>
+                  </button>
+                )}
+                <span className="date">{date}</span>
+              </div>
             </div>
             <ul className="client-data">
               <li className="element desc">imię</li>
@@ -145,12 +162,19 @@ class ListItem extends React.Component {
                   id={id}
                   name={user}
                   value={token}
-                  onClick={this.handleRemove}
+                  onClick={this.handleConfirm}
                 >
                   usuń
                 </button>
               </li>
             </ul>
+            {downloadBtn && (
+              <button
+                className="btn-more"
+                name={token}
+                onClick={this.handleDetail}
+              />
+            )}
           </li>
         ) : (
           <li key={id} className={edit && "active"}>
@@ -266,6 +290,15 @@ class ListItem extends React.Component {
           </li>
         )}
         {edit && <div className="editing" />}
+        {confirm && (
+          <Confirm
+            name={name}
+            id={id}
+            value={token}
+            cancel={this.handleConfirm}
+            remove={this.handleRemove}
+          />
+        )}
       </>
     );
   }

@@ -32,7 +32,7 @@ class Photo extends React.Component {
     if (this.mount) {
       fetch(
         "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
-        // "http://maciejf.pl/reactApp/updateData.php",
+        // "/reactApp/updateData.php",
         {
           method: "POST",
           body: JSON.stringify({
@@ -90,7 +90,7 @@ class Photo extends React.Component {
     );
   };
 
-  handleModal = e => {
+  handleModal = () => {
     const { name, comment_text, prints_items, chosen, token } = this.state;
     this.props.click(name, comment_text, prints_items, chosen, token);
   };
@@ -105,7 +105,7 @@ class Photo extends React.Component {
           {status && <div className="loader_small">{<LoaderSmall />}</div>}
           <div className="photo-image" onClick={this.handleModal}>
             <img
-              src={`http://www.maciejf.pl/reactApp/${this.props.token}/img/${
+              src={`http://maciejf.pl/reactApp/${this.props.token}/img/${
                 this.state.name
               }`}
               alt=""

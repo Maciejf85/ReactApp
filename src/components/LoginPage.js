@@ -66,7 +66,7 @@ class Main extends React.Component {
       // WYSYŁANIE DANYCH
       fetch(
         "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/login.php",
-        // "http://maciejf.pl/reactApp/login.php",
+        // "/reactApp/login.php",
         {
           method: "POST",
           body: JSON.stringify({ text: text, password: password })
@@ -115,9 +115,7 @@ class Main extends React.Component {
         <div className="wrapper" />
         <div className="form-window">
           <div className="form">
-            {loading && (
-              <div className="loader_small dark">{<LoaderSmall />}</div>
-            )}
+            {loading && <div className="loader_small">{<LoaderSmall />}</div>}
             <div className="form-icon">
               <FontAwesomeIcon icon={faUserCircle} />
             </div>
