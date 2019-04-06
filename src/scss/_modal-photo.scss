@@ -84,7 +84,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  height: 100px;
+  height: 25%;
   width: 100%;
   font-style: italic;
   font-family: $open-sans;
@@ -96,6 +96,84 @@
   outline: none;
   border-radius: 10px;
   padding: 8px;
+}
+.photo-prints {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 70%;
+  width: 100%;
+  font-style: italic;
+  font-family: $open-sans;
+  font-size: 0.9rem;
+  color: $dark-grey;
+  resize: none;
+  border: 1px solid #1969c4;
+  border-left: 5px solid #1969c4;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: hidden;
+
+  &-title {
+    font-size: 0.9rem;
+    color: $light-grey;
+  }
+  .prints-input {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  select {
+    outline: none;
+    border: 1px solid #ccc;
+    width: 100px;
+    height: 25px;
+    text-align: center;
+  }
+
+  .counter {
+    display: inline-block;
+    padding: 5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    background: #ccc;
+  }
+  .changeValue {
+    border: none;
+    outline: none;
+    border: 1px solid #ccc;
+    background: white;
+    width: 25px;
+    height: 25px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .printsList {
+    margin-top: 20px;
+    li {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      &.strong {
+        font-size: 0.9rem;
+        font-weight: 700;
+        border-top: 1px solid #ccc;
+        margin: 10px 0;
+      }
+      div {
+        width: 25%;
+        min-height: 20px;
+        text-align: center;
+        padding: 5px 0;
+      }
+    }
+  }
 }
 .modal-buttons {
   display: flex;
@@ -112,7 +190,7 @@
   border: none;
   border: 2px solid white;
   border-radius: 50%;
-  background: black;
+  // background: black;
   background: rgb(31, 31, 31);
   &:hover {
     cursor: pointer;

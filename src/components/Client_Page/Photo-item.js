@@ -60,6 +60,8 @@ class Photo extends React.Component {
   };
 
   handleEdit = (message, comment, prints) => {
+    if (message.target !== undefined) {
+    }
     this.setState({
       status: true
     });
@@ -121,7 +123,7 @@ class Photo extends React.Component {
             >
               wybierz
             </button>
-            {comment && (
+            {comment && Boolean(chosen) && (
               <button
                 className="btn-photo-comment"
                 name="edit"
@@ -130,7 +132,7 @@ class Photo extends React.Component {
                 <FontAwesomeIcon icon={faPen} />
               </button>
             )}
-            {prints && (
+            {prints && Boolean(chosen) && (
               <button
                 className="btn-photo-prints"
                 name="prints"

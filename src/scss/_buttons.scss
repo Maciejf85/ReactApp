@@ -109,7 +109,8 @@
   }
 }
 .btn-remove,
-.btn-edit {
+.btn-edit,
+.btn-addPrints {
   background: transparent;
   border-radius: 5px;
   padding: 3px 10px;
@@ -165,6 +166,10 @@
   border-radius: 5px;
   margin: 0 3px;
 
+  svg {
+    pointer-events: none;
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -212,6 +217,7 @@
   right: -30px;
   width: 0;
   height: 0;
+  outline: none;
   background: transparent;
   border-top: 40px solid transparent;
   border-bottom: 40px solid $react-blue-dark;
@@ -219,6 +225,20 @@
   transition: all 0.1s linear;
   &:hover {
     cursor: pointer;
-    border-bottom: 40px solid red;
+    border-bottom: 40px solid $base-pink;
+  }
+}
+
+.btn-addPrints {
+  width: 80px;
+  height: 25px;
+  background: $success-color;
+  border: none;
+  color: white;
+  border-radius: 0px;
+  &:hover {
+    background: #1f8337;
+    border: none;
+    color: white;
   }
 }
