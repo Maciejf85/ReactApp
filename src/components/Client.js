@@ -31,8 +31,8 @@ class Client extends React.Component {
   componentDidMount() {
     this.mounted = true;
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
-      // "/reactApp/getClientData.php",
+      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
+      "/reactApp/getClientData.php",
       {
         method: "POST",
         body: JSON.stringify({ token: this.state.token })
@@ -72,8 +72,8 @@ class Client extends React.Component {
   }
   updateDataBase = (value, names) => {
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateBaseData.php",
-      // "/reactApp/updateBaseData.php",
+      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateBaseData.php",
+      "/reactApp/updateBaseData.php",
       {
         method: "POST",
         body: JSON.stringify({
@@ -96,8 +96,8 @@ class Client extends React.Component {
 
   updateData = () => {
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
-      // "/reactApp/getClientData.php",
+      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
+      "/reactApp/getClientData.php",
       {
         method: "POST",
         body: JSON.stringify({ token: this.state.token })

@@ -12,8 +12,8 @@ class Main extends React.Component {
     this.session = JSON.parse(sessionStorage.getItem("session-token"));
 
     this.state = {
-      text: "Maciej",
-      password: "1",
+      text: " ",
+      password: " ",
       response: "",
       token: this.props.tokenValue,
       type: this.props.type,
@@ -65,8 +65,8 @@ class Main extends React.Component {
     if (text.length !== 0 && password.length !== 0) {
       // WYSYŁANIE DANYCH
       fetch(
-        "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/login.php",
-        // "/reactApp/login.php",
+        // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/login.php",
+        "/reactApp/login.php",
         {
           method: "POST",
           body: JSON.stringify({ text: text, password: password })

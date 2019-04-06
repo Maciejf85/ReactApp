@@ -39,9 +39,7 @@ class MainModal extends React.Component {
       <div className="modal-photo">
         <div className="main-modal-container">
           <img
-            src={`http://maciejf.pl/reactApp/${this.props.token}/img/${
-              this.state.name
-            }`}
+            src={`/reactApp/${this.props.token}/img/${this.state.name}`}
             alt=""
           />
           {this.state.chosen && <span className="mark-big" />}

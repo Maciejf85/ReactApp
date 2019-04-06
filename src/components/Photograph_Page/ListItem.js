@@ -99,11 +99,7 @@ class ListItem extends React.Component {
               <div>
                 {downloadBtn && (
                   <button className="btn-download">
-                    <a
-                      href={`http://maciejf.pl/reactApp/${
-                        this.props.value.token
-                      }/wybrane.bat`}
-                    >
+                    <a href={`/reactApp/${this.props.value.token}/wybrane.bat`}>
                       <FontAwesomeIcon icon={faDownload} />
                     </a>
                   </button>
