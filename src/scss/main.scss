@@ -17,6 +17,9 @@
 
 html {
   font-size: 16px;
+  @media (max-width: 1600px) {
+    font-size: 12px;
+  }
 }
 body {
   position: relative;
@@ -32,13 +35,7 @@ body {
   background: radial-gradient(#1b275f, #080a16);
 
   background-image: url("../img/camera_1920.jpg");
-  // background-image: url("../img/adventure-antique-blank-269923.jpg");
-  // background-image: url("../img/apple-devices-camera-computer-593316.jpg");
-  // background-image: url("../img/camera-coffee-composition-1509428.jpg");
-  // background-image: url("../img/analogue-background-camera-593324.jpg");
-  // background-image: url("../img/camera-camera-lens-desk-593325.jpg");
-  // filter: blur(1px);
-  // -webkit-filter: blur(30px);
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -91,12 +88,12 @@ body {
   // border: 1px solid red;
 
   img {
-    width: 60px;
+    width: 50px;
     // margin-top: 40px;
   }
   span {
     color: #00d7fe;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     padding: 0 10px;
     font-style: italic;
     letter-spacing: 4px;

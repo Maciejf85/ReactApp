@@ -13,6 +13,9 @@
   border-right: 1px solid #aaa;
   min-width: 550px;
   min-height: 550px;
+  @media (max-width: 1800px) {
+    flex-grow: 1;
+  }
 
   .newUser-form {
     margin: 0 auto;
@@ -42,6 +45,9 @@
   min-width: 300px;
   // background: rgba(255, 0, 0, 0.1);
   padding: 20px 30px;
+  @media (max-width: 1800px) {
+    display: none;
+  }
 }
 
 .new-box input[type="text"],

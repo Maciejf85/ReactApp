@@ -241,6 +241,7 @@ class Sessions extends React.Component {
                       />
                     </div>
                     <div className="session-detal-comment">{item.comment}</div>
+                    <div className="session-detal-imgName">{item.name}</div>
                   </div>
                 ))}
               </div>
