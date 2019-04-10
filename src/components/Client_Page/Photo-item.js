@@ -9,9 +9,10 @@ class Photo extends React.Component {
     prints: this.props.prints,
     comment: this.props.comments,
     name: this.props.item.name,
+    photos: this.props.item.prints,
     comment_text: this.props.item.comment,
     chosen: this.props.item.chosen,
-    prints_items: [],
+    prints_items: this.props.item.prints,
     token: this.props.token,
     edit: false,
     chosenQ: this.props.chosenQ,
@@ -29,17 +30,19 @@ class Photo extends React.Component {
     this.props.update(response, chosenQ);
   };
   updateComponent = () => {
+    console.log(this.state.prints_items);
     if (this.mount) {
       fetch(
-        // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
-        "/reactApp/updateData.php",
+        "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
+        // "/reactApp/updateData.php",
         {
           method: "POST",
           body: JSON.stringify({
             name: this.state.name,
             comment: this.state.comment_text,
             chosen: this.state.chosen,
-            token: this.props.token
+            token: this.props.token,
+            prints: this.state.prints_items
           })
         }
       )
@@ -62,6 +65,7 @@ class Photo extends React.Component {
   handleEdit = (message, comment, prints) => {
     if (message.target !== undefined) {
     }
+    console.log(prints);
     this.setState({
       status: true
     });
@@ -99,6 +103,7 @@ class Photo extends React.Component {
 
   render() {
     const { prints, comment, chosen, edit, status } = this.state;
+    console.log(this.props.item);
 
     return (
       <>
@@ -107,7 +112,9 @@ class Photo extends React.Component {
           {status && <div className="loader_small">{<LoaderSmall />}</div>}
           <div className="photo-image" onClick={this.handleModal}>
             <img
-              src={`/reactApp/${this.props.token}/img/${this.state.name}`}
+              src={`http://maciejf.pl/reactApp/${this.props.token}/img/${
+                this.state.name
+              }`}
               alt=""
             />
             {Boolean(chosen) && <span className="mark" />}

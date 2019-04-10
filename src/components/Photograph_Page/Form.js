@@ -211,8 +211,8 @@ class Form extends React.Component {
     this.mounted = true;
 
     fetch(
-      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/addUser.php",
-      "/reactApp/addUser.php",
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/addUser.php",
+      // "/reactApp/addUser.php",
       {
         method: "POST",
         body: this.state.form_data

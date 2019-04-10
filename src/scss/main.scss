@@ -32,9 +32,9 @@ body {
 .wrapper {
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(#1b275f, #080a16);
+  background: linear-gradient(#393939, #2e2e2e);
 
-  background-image: url("../img/camera_1920.jpg");
+  // background-image: url("../img/camera_1920.jpg");
 
   background-position: center;
   background-repeat: no-repeat;

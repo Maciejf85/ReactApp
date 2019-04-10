@@ -4,7 +4,7 @@ class ModalPhoto extends React.Component {
   state = {
     name: this.props.name.name,
     comment: this.props.name.comment_text,
-    prints: [],
+    prints: this.props.name.photos,
     editComment: this.props.editComment,
     editPrints: this.props.editPrints,
     count: 1,
@@ -34,13 +34,25 @@ class ModalPhoto extends React.Component {
   };
 
   handleAddPrint = () => {
+    let prints = this.state.prints;
+    let val;
+    let count = 0;
+    if (prints.length > 0) {
+      val = prints.findIndex(
+        item => item.size === this.state.size && item.paper === this.state.paper
+      );
+
+      if (val > -1) {
+        count = prints[val].count;
+        prints.splice(val, 1);
+      }
+    }
     const print = {
       name: this.state.name,
       size: this.state.size,
       paper: this.state.paper,
-      count: this.state.count
+      count: this.state.count + count
     };
-    let prints = this.state.prints;
     prints.push(print);
 
     this.setState({
@@ -49,9 +61,19 @@ class ModalPhoto extends React.Component {
     });
   };
   handlePrintsCount = e => {
-    const value = e.target.name === "add" ? 1 : -1;
+    const operation = e.target.name === "add" ? 1 : -1;
+    let counter = this.state.count;
+    let value = counter + operation < 1 ? 1 : counter + operation;
     this.setState({
-      count: this.state.count + value
+      count: value
+    });
+  };
+  removePrints = e => {
+    const number = e.target.name;
+    let prints = this.state.prints;
+    prints.splice(number, 1);
+    this.setState({
+      prints
     });
   };
 
@@ -62,12 +84,15 @@ class ModalPhoto extends React.Component {
   };
   render() {
     const { comment, size, paper, count, prints } = this.state;
+    console.log(prints, this.props.name);
     return (
       <div className="modal-photo">
         <div className="modal-photo-container">
           <div className="modal-image">
             <img
-              src={`/reactApp/${this.props.name.token}/img/${this.state.name}`}
+              src={`http://maciejf.pl/reactApp/${this.props.name.token}/img/${
+                this.state.name
+              }`}
               alt=""
             />
           </div>
@@ -134,7 +159,13 @@ class ModalPhoto extends React.Component {
                         <div>{item.paper}</div>
                         <div>{item.count}</div>
                         <div>
-                          <button className="btn-remove">usuń</button>
+                          <button
+                            name={index}
+                            className="btn-remove"
+                            onClick={this.removePrints}
+                          >
+                            usuń
+                          </button>
                         </div>
                       </li>
                     ))}

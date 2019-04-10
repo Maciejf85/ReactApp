@@ -42,15 +42,16 @@ class Main extends React.Component {
     const curr = this.state.photos.filter(item => item.name === name);
 
     fetch(
-      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
-      "/reactApp/updateData.php",
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
+      // "/reactApp/updateData.php",
       {
         method: "POST",
         body: JSON.stringify({
           name: name,
           chosen: value,
           token: token,
-          comment: curr[0].comment
+          comment: curr[0].comment,
+          prints: curr[0].prints
         })
       }
     )
@@ -175,8 +176,8 @@ class Main extends React.Component {
 
     if (update) {
       fetch(
-        // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/update_isReady.php",
-        "/reactApp/update_isReady.php",
+        "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/update_isReady.php",
+        // "/reactApp/update_isReady.php",
         {
           method: "POST",
           body: JSON.stringify({

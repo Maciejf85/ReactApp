@@ -13,6 +13,7 @@ $edit-color: #8e43b9;
 $photo-edit-color: #a677c2;
 
 // h1-h6
+
 @for $i from 1 through 6 {
   h#{$i} {
     font-size: (2.7rem - $i * 0.2);
