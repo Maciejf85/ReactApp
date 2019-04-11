@@ -5,16 +5,21 @@ import ModalPhoto from "./ModalPhoto";
 import LoaderSmall from "../Photograph_Page/LoaderSmall";
 
 class Photo extends React.Component {
+  // value = this.props.prints;
+  value = 0;
+
   state = {
     prints: this.props.prints,
     comment: this.props.comments,
     name: this.props.item.name,
     photos: this.props.item.prints,
+    photos_cnt: this.value,
     comment_text: this.props.item.comment,
     chosen: this.props.item.chosen,
     prints_items: this.props.item.prints,
     token: this.props.token,
     edit: false,
+    edit_type: "",
     chosenQ: this.props.chosenQ,
     status: false
   };
@@ -30,7 +35,6 @@ class Photo extends React.Component {
     this.props.update(response, chosenQ);
   };
   updateComponent = () => {
-    console.log(this.state.prints_items);
     if (this.mount) {
       fetch(
         "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
@@ -64,11 +68,12 @@ class Photo extends React.Component {
 
   handleEdit = (message, comment, prints) => {
     if (message.target !== undefined) {
+      var type = message.target.name === "prints" ? "prints" : "comment";
     }
-    console.log(prints);
     this.setState({
       status: true
     });
+
     if (message === "update") {
       this.setState(
         {
@@ -81,7 +86,8 @@ class Photo extends React.Component {
     } else {
       this.setState({
         edit: !this.state.edit,
-        status: false
+        status: false,
+        type: type !== "close" ? type : ""
       });
     }
   };
@@ -102,8 +108,19 @@ class Photo extends React.Component {
   };
 
   render() {
-    const { prints, comment, chosen, edit, status } = this.state;
-    console.log(this.props.item);
+    const {
+      prints,
+      comment,
+      chosen,
+      edit,
+      status,
+      comment_text,
+      prints_items
+    } = this.state;
+
+    const count = prints_items.reduce((prev, curr) => {
+      return prev + curr.count;
+    }, 0);
 
     return (
       <>
@@ -130,7 +147,11 @@ class Photo extends React.Component {
             </button>
             {comment && Boolean(chosen) && (
               <button
-                className="btn-photo-comment"
+                className={
+                  comment_text.length > 0
+                    ? "btn-photo-comment active"
+                    : "btn-photo-comment"
+                }
                 name="edit"
                 onClick={this.handleEdit}
               >
@@ -139,11 +160,14 @@ class Photo extends React.Component {
             )}
             {prints && Boolean(chosen) && (
               <button
-                className="btn-photo-prints"
+                className={
+                  count > 0 ? "btn-photo-prints active" : "btn-photo-prints"
+                }
                 name="prints"
                 onClick={this.handleEdit}
               >
                 odbitki
+                <div className="count">{count}</div>
               </button>
             )}
           </div>

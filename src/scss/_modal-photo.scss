@@ -97,6 +97,7 @@
   border-radius: 10px;
   padding: 8px;
 }
+
 .photo-prints {
   position: absolute;
   top: 0;
@@ -173,6 +174,14 @@
         padding: 5px 0;
       }
     }
+  }
+}
+.disable {
+  border: 1px solid #dadada;
+  border-left: 5px solid #dadada;
+  color: #8a8a8a;
+  &:hover {
+    cursor: default;
   }
 }
 .modal-buttons {

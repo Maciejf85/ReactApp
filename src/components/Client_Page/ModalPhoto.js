@@ -7,6 +7,7 @@ class ModalPhoto extends React.Component {
     prints: this.props.name.photos,
     editComment: this.props.editComment,
     editPrints: this.props.editPrints,
+    type: this.props.name.type,
     count: 1,
     size: "10x15",
     paper: "matowy"
@@ -83,8 +84,8 @@ class ModalPhoto extends React.Component {
     });
   };
   render() {
-    const { comment, size, paper, count, prints } = this.state;
-    console.log(prints, this.props.name);
+    const { comment, size, paper, count, prints, type } = this.state;
+
     return (
       <div className="modal-photo">
         <div className="modal-photo-container">
@@ -98,53 +99,59 @@ class ModalPhoto extends React.Component {
           </div>
           <div className="modal-edit">
             {this.props.name.prints && (
-              <div className="photo-prints">
+              <div
+                className={
+                  type === "prints" ? "photo-prints" : "photo-prints disable"
+                }
+              >
                 <div className="photo-prints-title">odbitki</div>
-                <div className="prints-input">
-                  <select
-                    className="select-type"
-                    name="size"
-                    value={size}
-                    onChange={this.inputForm}
-                  >
-                    <option value="10x15">10x15</option>
-                    <option value="13x18">13x18</option>
-                    <option value="15x21">15x21</option>
-                    <option value="20x30">20x30</option>
-                  </select>
-                  <select
-                    className="select-type"
-                    name="paper"
-                    value={paper}
-                    onChange={this.inputForm}
-                  >
-                    <option value="matowy">matowy</option>
-                    <option value="błyszczący">błyszczący</option>
-                    <option value="jedwabny">jedwabny</option>
-                    <option value="metalik">metalik</option>
-                  </select>
-                  <button
-                    className="changeValue"
-                    onClick={this.handlePrintsCount}
-                    name="subs"
-                  >
-                    -
-                  </button>
-                  <div className="counter">{count}</div>
-                  <button
-                    className="changeValue"
-                    onClick={this.handlePrintsCount}
-                    name="add"
-                  >
-                    +
-                  </button>
-                  <button
-                    className="btn-addPrints"
-                    onClick={this.handleAddPrint}
-                  >
-                    Dodaj
-                  </button>
-                </div>
+                {type === "prints" && (
+                  <div className="prints-input ">
+                    <select
+                      className="select-type"
+                      name="size"
+                      value={size}
+                      onChange={this.inputForm}
+                    >
+                      <option value="10x15">10x15</option>
+                      <option value="13x18">13x18</option>
+                      <option value="15x21">15x21</option>
+                      <option value="20x30">20x30</option>
+                    </select>
+                    <select
+                      className="select-type"
+                      name="paper"
+                      value={paper}
+                      onChange={this.inputForm}
+                    >
+                      <option value="matowy">matowy</option>
+                      <option value="błyszczący">błyszczący</option>
+                      <option value="jedwabny">jedwabny</option>
+                      <option value="metalik">metalik</option>
+                    </select>
+                    <button
+                      className="changeValue"
+                      onClick={this.handlePrintsCount}
+                      name="subs"
+                    >
+                      -
+                    </button>
+                    <div className="counter">{count}</div>
+                    <button
+                      className="changeValue"
+                      onClick={this.handlePrintsCount}
+                      name="add"
+                    >
+                      +
+                    </button>
+                    <button
+                      className="btn-addPrints"
+                      onClick={this.handleAddPrint}
+                    >
+                      Dodaj
+                    </button>
+                  </div>
+                )}
 
                 <div className="printsList">
                   <ul>
@@ -159,13 +166,15 @@ class ModalPhoto extends React.Component {
                         <div>{item.paper}</div>
                         <div>{item.count}</div>
                         <div>
-                          <button
-                            name={index}
-                            className="btn-remove"
-                            onClick={this.removePrints}
-                          >
-                            usuń
-                          </button>
+                          {type === "prints" && (
+                            <button
+                              name={index}
+                              className="btn-remove"
+                              onClick={this.removePrints}
+                            >
+                              usuń
+                            </button>
+                          )}
                         </div>
                       </li>
                     ))}
@@ -176,10 +185,13 @@ class ModalPhoto extends React.Component {
 
             {this.props.name.comment && (
               <textarea
-                className="photo-comment"
+                className={
+                  type === "prints" ? "photo-comment disable" : "photo-comment"
+                }
                 onChange={this.handleInput}
                 value={comment}
                 placeholder="Napisz swoje uwagi"
+                readOnly={!(type === "comment")}
               />
             )}
           </div>
