@@ -196,16 +196,15 @@ class ModalPhoto extends React.Component {
             )}
           </div>
           <div className="modal-buttons">
-            {this.props.name.comment && (
-              <button
-                className="btn-edit photo-btn-close"
-                name="save"
-                onClick={this.saveData}
-                disabled={!this.props.name.comment}
-              >
-                Zapisz
-              </button>
-            )}
+            <button
+              className="btn-edit photo-btn-close"
+              name="save"
+              onClick={this.saveData}
+              // disabled={!this.props.name.comment}
+            >
+              Zapisz
+            </button>
+
             <button
               className="btn-edit photo-btn-save"
               name="close"

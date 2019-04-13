@@ -134,7 +134,7 @@ class Photo extends React.Component {
               }`}
               alt=""
             />
-            {Boolean(chosen) && <span className="mark" />}
+            {Boolean(chosen) && <div className="mark">wybrane</div>}
           </div>
           <div className="photo-buttons">
             <button
@@ -167,7 +167,9 @@ class Photo extends React.Component {
                 onClick={this.handleEdit}
               >
                 odbitki
-                <div className="count">{count}</div>
+                <div className={count > 0 ? "count" : "count disabled"}>
+                  {count}
+                </div>
               </button>
             )}
           </div>

@@ -177,16 +177,21 @@
 
   .count {
     position: absolute;
-    bottom: -8px;
+    top: -8px;
     right: -8px;
     width: 17px;
     height: 17px;
     line-height: 17px;
     border-radius: 50%;
     background: $edit-color;
+    background: #2b8dfd;
     color: white;
     font-size: 0.7rem;
     font-family: $roboto;
+
+    &.disabled {
+      display: none;
+    }
   }
 }
 
@@ -194,6 +199,7 @@
   flex-grow: 1;
 
   &:hover {
+    background: #65aeff;
     color: white;
   }
   &.selected {

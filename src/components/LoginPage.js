@@ -12,8 +12,8 @@ class Main extends React.Component {
     this.session = JSON.parse(sessionStorage.getItem("session-token"));
 
     this.state = {
-      text: " ",
-      password: " ",
+      text: "",
+      password: "",
       response: "",
       token: this.props.tokenValue,
       type: this.props.type,

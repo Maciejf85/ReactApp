@@ -51,13 +51,14 @@
     border: 1px solid #d10000;
   }
 }
-.photo-btn-chose {
+.photo-btn-choose {
   width: 150px;
   color: $success-color;
   border: 1px solid $success-color;
   &:hover {
-    color: #1969c4;
-    border: 1px solid #1969c4;
+    color: white;
+    border: 1px solid $success-color;
+    background: $success-color;
   }
 }
 
@@ -173,6 +174,9 @@
         text-align: center;
         padding: 5px 0;
       }
+    }
+    &.small {
+      font-size: 0.6rem;
     }
   }
 }

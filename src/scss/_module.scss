@@ -177,6 +177,7 @@
     }
     .session-detal-comment {
       flex-grow: 1;
+      flex-wrap: wrap;
       padding: 10px;
       width: 30%;
       font-style: italic;
@@ -192,6 +193,17 @@
       width: 30%;
       color: $dark-grey;
       font-size: 0.7rem;
+    }
+    .session-detal-prints {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-grow: 1;
+      width: 20%;
+      color: $dark-grey;
+      font-size: 0.7rem;
+      border: 1px solid red;
     }
   }
 }

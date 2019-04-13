@@ -44,7 +44,11 @@ class MainModal extends React.Component {
             }`}
             alt=""
           />
-          {this.state.chosen && <span className="mark-big" />}
+          {this.state.chosen && (
+            <div className="big-mark-container">
+              <span className="mark-big">wybrane</span>
+            </div>
+          )}
           <button
             className="arrow left"
             name="prev"
@@ -71,7 +75,7 @@ class MainModal extends React.Component {
             </div>
             <div className="item right">
               <button
-                className="btn-edit photo-btn-chose"
+                className="btn-edit photo-btn-choose"
                 name="chosen"
                 onClick={this.saveData}
               >
