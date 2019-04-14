@@ -37,41 +37,48 @@ class Main extends React.Component {
       modal_length: ""
     };
   }
-
+  componentDidMount() {
+    this.mounted = true;
+  }
+  componentWillUnmount() {
+    this.mounted = false;
+  }
   saveModal = (value, name, token) => {
     const curr = this.state.photos.filter(item => item.name === name);
 
-    fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
-      // "/reactApp/updateData.php",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          name: name,
-          chosen: value,
-          token: token,
-          comment: curr[0].comment,
-          prints: curr[0].prints
+    if (this.mounted) {
+      fetch(
+        "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
+        // "/reactApp/updateData.php",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            name: name,
+            chosen: value,
+            token: token,
+            comment: curr[0].comment,
+            prints: curr[0].prints
+          })
+        }
+      )
+        .then(resp => {
+          if (resp.ok) return resp.json();
+          else throw new Error("Błąd sieci!");
         })
-      }
-    )
-      .then(resp => {
-        if (resp.ok) return resp.json();
-        else throw new Error("Błąd sieci!");
-      })
-      .then(response => {
-        const chosenQ = response.filter(item => item.chosen === true).length;
-        const data = response.filter(item => item.chosen === true);
-        const names = data.map(item => item.name);
-        this.setState({
-          photos: response,
-          chosen: chosenQ
+        .then(response => {
+          const chosenQ = response.filter(item => item.chosen === true).length;
+          const data = response.filter(item => item.chosen === true);
+          const names = data.map(item => item.name);
+          this.setState({
+            photos: response,
+            chosen: chosenQ
+          });
+          this.props.updateData(chosenQ, names);
+        })
+        .catch(err => {
+          console.log(err);
         });
-        this.props.updateData(chosenQ, names);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    }
   };
 
   updateData = (response, value) => {

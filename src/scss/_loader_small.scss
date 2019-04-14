@@ -10,6 +10,9 @@
   &.dark {
     background: #0000009a;
   }
+  &.orange {
+    background: hsla(19, 99%, 50%, 0.12);
+  }
 }
 .form-loader_small {
   position: fixed;

@@ -24,6 +24,7 @@ class Main extends React.Component {
     };
   }
   componentDidMount() {
+    this.mounted = true;
     if (this.local !== null) {
       this.props.token(this.local.token, this.local.type, this.local.name);
     }
@@ -77,11 +78,12 @@ class Main extends React.Component {
           else throw new Error("Błąd sieci!");
         })
         .then(response => {
-          const { error, token, type, name } = response;
-          console.log(error);
-          error === undefined
-            ? this.props.token(token, type, name, this.state.checkbox)
-            : this.setState({ response: error, loading: false });
+          if (this.mounted) {
+            const { error, token, type, name } = response;
+            error === undefined
+              ? this.props.token(token, type, name, this.state.checkbox)
+              : this.setState({ response: error, loading: false });
+          }
         })
         .catch(err => {
           this.setState({
@@ -115,7 +117,9 @@ class Main extends React.Component {
         <div className="wrapper" />
         <div className="form-window">
           <div className="form">
-            {loading && <div className="loader_small">{<LoaderSmall />}</div>}
+            {loading && (
+              <div className="loader_small orange">{<LoaderSmall />}</div>
+            )}
             <div className="form-icon">
               <FontAwesomeIcon icon={faUserCircle} />
             </div>

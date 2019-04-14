@@ -9,11 +9,12 @@
   flex-wrap: wrap;
   width: 380px;
   min-height: 350px;
-  background: #11111167;
+  background: rgba(17, 17, 17, 0.9);
   border-radius: 15px;
   padding: 70px 30px;
   overflow: hidden;
-  border: 1px solid hsla(19, 99%, 50%, 0.801);
+  border: 2px solid hsla(19, 99%, 50%, 0.801);
+  box-shadow: 0 0 10px 2px hsla(19, 99%, 50%, 0.3);
 }
 .form-icon {
   text-align: center;

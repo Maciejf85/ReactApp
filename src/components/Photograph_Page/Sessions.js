@@ -29,7 +29,6 @@ class Sessions extends React.Component {
       .then(response => {
         if (this.mounted === true) {
           this.setState({ response: response, loading: false });
-          // console.log(response);
         }
       })
       .catch(err => {
@@ -60,15 +59,17 @@ class Sessions extends React.Component {
         else throw new Error("Błąd sieci!");
       })
       .then(response => {
-        const chosenQ = response.filter(item => item.chosen === true);
-        this.setState({
-          detail: true,
-          name: name,
-          surname: surname,
-          token: token,
-          detailResponse: chosenQ,
-          loading: !this.state.loading
-        });
+        if (this.mounted) {
+          const chosenQ = response.filter(item => item.chosen === true);
+          this.setState({
+            detail: true,
+            name: name,
+            surname: surname,
+            token: token,
+            detailResponse: chosenQ,
+            loading: !this.state.loading
+          });
+        }
       })
       .catch(err => {
         this.setState({

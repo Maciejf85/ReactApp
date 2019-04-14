@@ -1,6 +1,6 @@
 .list-title {
   font-weight: normal;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   font-style: italic;
   color: rgb(99, 99, 99);
   text-align: left;
@@ -31,7 +31,7 @@
   &.active {
     top: 50%;
     left: 0;
-    transform: scale(1.15);
+    transform: scale(1.12);
     border: 1px solid $edit-color;
     z-index: 333;
   }
@@ -73,9 +73,9 @@
   li.element {
     color: #636363;
     min-width: 100px;
-    height: 1.4rem;
-    line-height: 1.4rem;
-    font-size: 0.8rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    font-size: 0.75rem;
     // border: 1px solid #eee;
     text-align: center;
     font-weight: 700;

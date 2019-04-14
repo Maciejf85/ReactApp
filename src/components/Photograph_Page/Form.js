@@ -153,8 +153,6 @@ class Form extends React.Component {
       formData.append("files[]", t[i]);
     }
     formData.append("json", data);
-
-    console.log("file select handler");
   };
   /**
    * Czyszczenie formularza
@@ -189,6 +187,9 @@ class Form extends React.Component {
       loading: false
     });
   };
+  componentDidMount() {
+    this.mounted = true;
+  }
   componentWillUnmount() {
     this.mounted = false;
   }
@@ -208,8 +209,6 @@ class Form extends React.Component {
    * Dodanie nowego użytkownika
    */
   addNewUser = () => {
-    this.mounted = true;
-
     fetch(
       "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/addUser.php",
       // "/reactApp/addUser.php",

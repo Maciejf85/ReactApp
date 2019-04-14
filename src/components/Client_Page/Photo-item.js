@@ -35,35 +35,35 @@ class Photo extends React.Component {
     this.props.update(response, chosenQ);
   };
   updateComponent = () => {
-    if (this.mount) {
-      fetch(
-        "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
-        // "/reactApp/updateData.php",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            name: this.state.name,
-            comment: this.state.comment_text,
-            chosen: this.state.chosen,
-            token: this.props.token,
-            prints: this.state.prints_items
-          })
-        }
-      )
-        .then(resp => {
-          if (resp.ok) return resp.json();
-          else throw new Error("Błąd sieci!");
+    fetch(
+      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
+      // "/reactApp/updateData.php",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          name: this.state.name,
+          comment: this.state.comment_text,
+          chosen: this.state.chosen,
+          token: this.props.token,
+          prints: this.state.prints_items
         })
-        .then(response => {
+      }
+    )
+      .then(resp => {
+        if (resp.ok) return resp.json();
+        else throw new Error("Błąd sieci!");
+      })
+      .then(response => {
+        if (this.mount) {
           this.countChosen(response);
           this.setState({
             status: false
           });
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   handleEdit = (message, comment, prints) => {

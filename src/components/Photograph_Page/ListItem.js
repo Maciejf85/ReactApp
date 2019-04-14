@@ -25,14 +25,6 @@ class ListItem extends React.Component {
     confirm: false
   };
 
-  // componentWillUpdate() {
-  //   if (this.state.pending === true && this.state.edit === false) {
-  //     this.setState({
-  //       pending: false
-  //     });
-  //   }
-  // }
-
   handleDetail = () => {
     const { name, surname, token } = this.state;
     this.props.detail(name, surname, token);
@@ -88,7 +80,8 @@ class ListItem extends React.Component {
     } = this.state;
     const addPhotos = parseInt(chosen) > parseInt(packageQ);
     const downloadBtn = parseInt(chosen) >= parseInt(packageQ);
-
+    const payed = this.props.value.payed;
+    const cost = payed === "true" ? 0 : parseFloat(price);
     return (
       <>
         {edit === false ? (
@@ -117,7 +110,7 @@ class ListItem extends React.Component {
               <li className="element small desc">cena </li>
               <li className="element small desc">dodatkowe </li>
               <li className="element small desc">wybrane</li>
-              <li className="element small desc">dopłata</li>
+              <li className="element small desc">do zapłaty</li>
               <li className="element desc">status</li>
               <li>
                 <div className="empty" />
@@ -137,7 +130,8 @@ class ListItem extends React.Component {
                 {chosen} / {packageQ}
               </li>
               <li className={`element small ${addPhotos ? "unpayed" : null}`}>
-                {addPhotos ? (chosen - packageQ) * priceAdd : 0} zł
+                {addPhotos ? (chosen - packageQ) * priceAdd + cost : 0 + cost}{" "}
+                zł
               </li>
               <li className={ready > 0 ? "element ready" : "element pending"}>
                 {ready > 0 ? "gotowe" : "oczekuje"}
