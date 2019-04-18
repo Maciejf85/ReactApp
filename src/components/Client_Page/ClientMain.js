@@ -262,7 +262,6 @@ class Main extends React.Component {
               <span className="value-title-summary">Dopłata :</span>
               <span className="client-item-value-summary">
                 {this.countPrice(chosen, packageQ, priceAdd, payed, price)} zł
-                <button>Zakończ</button>
               </span>
             </div>
           </div>

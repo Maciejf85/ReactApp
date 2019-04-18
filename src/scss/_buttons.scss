@@ -7,15 +7,15 @@
   outline: none;
   border: none;
   margin-top: 20px;
-  background: #463a44;
+  background: transparent;
   font-family: $roboto;
   font-size: 1;
-  border: 1px solid white;
+  border: 1px solid orangered;
   border-radius: 20px;
 
   &:hover {
     cursor: pointer;
-    background: #2c242b;
+    background: rgba(255, 68, 0, 0.178);
     // transform: scale(1.03);
   }
 
@@ -28,7 +28,12 @@
 .btn-submit-newUser {
   width: 50%;
   border-radius: 0px;
-  background: black;
+  background: transparent;
+  color: black;
+  border: 1px solid black;
+  &:hover {
+    background: rgb(240, 240, 240);
+  }
 }
 
 .btn-logout {
@@ -36,12 +41,12 @@
   width: 100px;
   padding: 5px 10px;
   background: transparent;
-  border: 2px solid $base-pink;
-  color: $base-pink;
+  border: 2px solid $react-blue;
+  color: $react-blue;
   border-radius: 10px;
   font-weight: 700;
   &:hover {
-    background: $base-pink;
+    background: $react-blue-dark;
     color: white;
     cursor: pointer;
   }

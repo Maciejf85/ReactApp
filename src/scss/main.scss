@@ -67,7 +67,7 @@ body {
     // border: 1px solid white;
     align-items: center;
     justify-content: space-between;
-    color: $base-pink;
+    color: $react-blue;
     padding: 0 10px;
     font-size: 0.9rem;
     letter-spacing: 1px;
@@ -90,15 +90,15 @@ body {
   // border: 1px solid red;
 
   img {
-    width: 50px;
+    width: 40px;
     // margin-top: 40px;
   }
   span {
-    color: #00d7fe;
-    font-size: 1.6rem;
+    color: $react-blue;
+    font-size: 1.3rem;
     padding: 0 10px;
     font-style: italic;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
   }
 }
 .nav-options {

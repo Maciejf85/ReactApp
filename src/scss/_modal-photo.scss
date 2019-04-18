@@ -5,7 +5,7 @@
   z-index: 333;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
 }
 .modal-photo-container {
   position: absolute;
@@ -118,8 +118,10 @@
   overflow: hidden;
 
   &-title {
+    margin-bottom: 10px;
     font-size: 0.9rem;
     color: $light-grey;
+    font-style: italic;
   }
   .prints-input {
     margin-top: 20px;

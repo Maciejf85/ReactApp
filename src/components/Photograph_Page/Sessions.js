@@ -241,16 +241,32 @@ class Sessions extends React.Component {
                         alt=""
                       />
                     </div>
-                    <div className="session-detal-comment">{item.comment}</div>
+                    <div className="session-detal-comment">
+                      <div className="photo-prints-title">komentarz:</div>
+                      {item.comment.length > 0 ? (
+                        item.comment
+                      ) : (
+                        <div className="photo-prints-title">
+                          brak komentarza
+                        </div>
+                      )}
+                    </div>
                     <div className="session-detal-prints">
+                      <div className="photo-prints-title">odbitki:</div>
                       <div className="printsList">
-                        <ul>
-                          <li className="strong ">
-                            <div>rozmiar</div> <div>papier</div>
-                            <div>ilość</div>
-                            <div />
-                          </li>
-                        </ul>
+                        {item.prints.length > 0 ? (
+                          <ul>
+                            {item.prints.map(item => (
+                              <li key={`${item.size}${item.paper}`}>
+                                <span>{item.size}</span>
+                                <span>{item.paper}</span>
+                                <span>{item.count}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <div className="photo-prints-title">brak odbitek</div>
+                        )}
                       </div>
                     </div>
                     <div className="session-detal-imgName">{item.name}</div>

@@ -156,7 +156,7 @@
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    max-height: 160px;
+    max-height: 120px;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     padding: 5px 0;
@@ -167,13 +167,13 @@
       text-align: center;
     }
     img {
-      height: 150px;
+      height: 100%;
     }
     .session-detal-number {
-      height: 150px;
-      font-size: 1.5rem;
+      height: 105px;
+      font-size: 1.2rem;
       padding: 0 20px;
-      line-height: 150px;
+      line-height: 105px;
     }
     .session-detal-comment {
       flex-grow: 1;
@@ -193,17 +193,31 @@
       width: 30%;
       color: $dark-grey;
       font-size: 0.7rem;
+      border-left: 1px solid rgb(228, 228, 228);
     }
     .session-detal-prints {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      flex-grow: 1;
+      padding: 10px;
       width: 20%;
       color: $dark-grey;
       font-size: 0.7rem;
-      border: 1px solid red;
+      border-left: 1px solid rgb(228, 228, 228);
+      li {
+        list-style-type: circle;
+        display: flex;
+        justify-content: space-evenly;
+      }
+      span {
+        font-size: 0.7rem;
+        font-weight: normal;
+        padding: 5px;
+        width: 30%;
+        text-align: center;
+        // border: 1px solid red;
+        &:nth-child(odd) {
+          text-align: left;
+          width: 20%;
+        }
+      }
     }
   }
 }
