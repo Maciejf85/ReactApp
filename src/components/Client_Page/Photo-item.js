@@ -36,8 +36,8 @@ class Photo extends React.Component {
   };
   updateComponent = () => {
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
-      // "/reactApp/updateData.php",
+      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
+      "/reactApp/updateData.php",
       {
         method: "POST",
         body: JSON.stringify({
@@ -129,9 +129,7 @@ class Photo extends React.Component {
           {status && <div className="loader_small">{<LoaderSmall />}</div>}
           <div className="photo-image" onClick={this.handleModal}>
             <img
-              src={`http://maciejf.pl/reactApp/${this.props.token}/img/${
-                this.state.name
-              }`}
+              src={`/reactApp/${this.props.token}/img/${this.state.name}`}
               alt=""
             />
             {Boolean(chosen) && <div className="mark">wybrane</div>}

@@ -48,8 +48,8 @@ class Main extends React.Component {
 
     if (this.mounted) {
       fetch(
-        "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
-        // "/reactApp/updateData.php",
+        // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/updateData.php",
+        "/reactApp/updateData.php",
         {
           method: "POST",
           body: JSON.stringify({
@@ -183,8 +183,8 @@ class Main extends React.Component {
 
     if (update) {
       fetch(
-        "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/update_isReady.php",
-        // "/reactApp/update_isReady.php",
+        // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/update_isReady.php",
+        "/reactApp/update_isReady.php",
         {
           method: "POST",
           body: JSON.stringify({

@@ -19,8 +19,8 @@ class Sessions extends React.Component {
   componentDidMount() {
     this.mounted = true;
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
-      // "/reactApp/getData.php"
+      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
+      "/reactApp/getData.php"
     )
       .then(resp => {
         if (resp.ok) return resp.json();
@@ -47,8 +47,8 @@ class Sessions extends React.Component {
       loading: true
     });
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
-      // "/reactApp/getClientData.php",
+      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getClientData.php",
+      "/reactApp/getClientData.php",
       {
         method: "POST",
         body: JSON.stringify({ token: token, type: "file" })
@@ -80,8 +80,8 @@ class Sessions extends React.Component {
 
   handleRemove = (name, id, token) => {
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/removeUser.php",
-      // "/reactApp/removeUser.php",
+      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/removeUser.php",
+      "/reactApp/removeUser.php",
       {
         method: "POST",
         body: JSON.stringify({
@@ -110,8 +110,8 @@ class Sessions extends React.Component {
     });
 
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
-      // "/reactApp/getData.php"
+      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/getData.php"
+      "/reactApp/getData.php"
     )
       .then(resp => {
         if (resp.ok) return resp.json();
@@ -135,8 +135,8 @@ class Sessions extends React.Component {
 
   handleUpdate = props => {
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/update.php",
-      // "/reactApp/update.php",
+      // "https://cors-anywhere.herokuapp.com/http://maciejf.pl/reactApp/update.php",
+      "/reactApp/update.php",
       {
         method: "POST",
         body: JSON.stringify({
