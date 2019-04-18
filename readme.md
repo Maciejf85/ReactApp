@@ -4,4 +4,4 @@
 
 ### Aplikacja
 
-<img alt="Logo" src="http://maciejf.pl/reactApp/login.gif" style="max-width:100%;">
+<img alt="Logo" src="http://maciejf.pl/reactApp/login1.gif" style="max-width:100%;">
