@@ -5,12 +5,7 @@ Głównym zadaniem aplikacji jest umożliwienie klientowi obejrzenia i wybrania 
 
 ## Użyte technologie
 
-- _React_ , _React-router_
-- _JavaScript_
-- _PHP5_
-- _MySQL_
-- _HTML_
-- _SASS_
+<img alt="Logo" src="http://maciejf.pl/img/reactApp/tech60080.png" style="max-width:50%;">
 
 ## Opis i prezentacja
 
