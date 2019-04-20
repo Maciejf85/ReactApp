@@ -34,5 +34,8 @@ Na podstawie zwróconych danych **React-router** podejmuje decyzję do którego 
 Panel fotografa składa się z 2 podstron kontrolowanych przez **React-router**. <br>
 Strona główna to formularz służący do dodawania nowego klienta:
 
-<img align="left" alt="Logo" src="http://maciejf.pl/img/reactApp/gif/pole-formularza.gif" style="max-width:50%;">
-<img align="right" alt="Logo" src="http://maciejf.pl/img/reactApp/form.jpg" style="max-width:50%;">
+<img align="left" alt="Logo" src="http://maciejf.pl/img/reactApp/form.jpg" style="max-width:50%;">
+<img align="right" alt="Logo" src="http://maciejf.pl/img/reactApp/gif/pole-formularza.gif" style="max-width:50%;">
+<img align="right" alt="Logo" src="http://maciejf.pl/img/reactApp/gif/pole-formularza.gif" style="max-width:50%;">
+<img align="right" alt="Logo" src="http://maciejf.pl/img/reactApp/gif/pole-formularza.gif" style="max-width:50%;">
+
