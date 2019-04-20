@@ -39,7 +39,6 @@ class Sessions extends React.Component {
   }
   componentWillUnmount() {
     this.mounted = false;
-    console.log("component unmounted: " + this.mounted);
   }
 
   handleDetail = (name, surname, token) => {
@@ -234,12 +233,7 @@ class Sessions extends React.Component {
                   <div key={item.name} className="session-detal-item">
                     <div className="session-detal-number">{index + 1}.</div>
                     <div className="session-detal-image">
-                      <img
-                        src={`http://maciejf.pl/reactApp/${token}/img/${
-                          item.name
-                        }`}
-                        alt=""
-                      />
+                      <img src={`/reactApp/${token}/img/${item.name}`} alt="" />
                     </div>
                     <div className="session-detal-comment">
                       <div className="photo-prints-title">komentarz:</div>
