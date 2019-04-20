@@ -5,7 +5,7 @@ Głównym zadaniem aplikacji jest umożliwienie klientowi obejrzenia i wybrania 
 
 ## Użyte technologie
 
-<img src="http://maciejf.pl/img/reactApp/technologys.png" alt="logo"> _React_ <br>
+<img src="http://maciejf.pl/img/reactApp/technologys.png" alt="logo">
 
 
 
