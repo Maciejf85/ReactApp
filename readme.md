@@ -5,13 +5,8 @@ Głównym zadaniem aplikacji jest umożliwienie klientowi obejrzenia i wybrania 
 
 ## Użyte technologie
 
-<img src="http://maciejf.pl/img/reactApp/react48.png" alt="logo"> _React_ <br>
-<img src="http://maciejf.pl/img/reactApp/react-router128.png" alt="logo">_React-router_ <br>
-<img src="http://maciejf.pl/img/reactApp/js128.png" alt="logo"> _JavaScript_ <br>
-<img src="http://maciejf.pl/img/reactApp/php128.png" alt="logo"> _PHP5_ <br>
-<img src="http://maciejf.pl/img/reactApp/mysql128.png" alt="logo"> _MySQL_ <br>
-<img src="http://maciejf.pl/img/reactApp/html128.png" alt="logo"> _HTML_ <br>
-<img src="http://maciejf.pl/img/reactApp/sass128.png" alt="logo"> _SASS_ <br>
+<img src="http://maciejf.pl/img/reactApp/technologys.png" alt="logo"> _React_ <br>
+
 
 
 ## Opis i prezentacja
