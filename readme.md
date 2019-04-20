@@ -5,13 +5,16 @@ Głównym zadaniem aplikacji jest umożliwienie klientowi obejrzenia i wybrania 
 
 ## Użyte technologie
 
-<img src="http://maciejf.pl/img/reactApp/tech60080.png" alt="logo">
-
-
+- _React_ , _React-router_
+- _JavaScript_
+- _PHP5_
+- _MySQL_
+- _HTML_
+- _SASS_
 
 ## Opis i prezentacja
 
-### **_Logowanie_**
+### **_1. Logowanie_**
 
 Single page aplication składająca się z trzech głównych komponentów :
 
@@ -19,10 +22,16 @@ Single page aplication składająca się z trzech głównych komponentów :
 - panelu fotografa
 - panelu klienta
 
-Formularz logowania jest walidowany aby nie dopuścić do wysyłania pustych pół loginu i hasła, następnie skrypt PHP wysyła zapytanie do bazy danych i sprawdza czy dany użytkownik i hasło są poprawne i czy jest to klient czy fotograf.
+Formularz logowania jest walidowany aby nie dopuścić do wysyłania pustych pół loginu i hasła, następnie poprzez **fetch API** dane wysyłane są do serwera a tam skrypt napisany w **PHP** wysyła zapytanie do bazy danych i sprawdza czy dany użytkownik i hasło są poprawne i czy jest to _klient_ czy _fotograf_.
 
-Na podstawie zwróconych danych `React-router` podejmuje decyzję do którego panelu przekieruje użytkownika.
+Na podstawie zwróconych danych **React-router** podejmuje decyzję do którego panelu przekieruje użytkownika.
 
-### Logowanie
+<img alt="Logo" src="http://maciejf.pl/img/reactApp/gif/login.gif" style="max-width:100%;">
 
-<img alt="Logo" src="http://maciejf.pl/reactApp/login_1.gif" style="max-width:100%;">
+### **_2. Panel fotografa_**
+
+Panel fotografa składa się z 2 podstron kontrolowanych przez **React-router**. <br>
+Strona główna to formularz służący do dodawania nowego klienta:
+
+<img alt="Logo" src="http://maciejf.pl/img/reactApp/gif/login.gif" style="max-width:100%;">
+<img alt="Logo" src="http://maciejf.pl/img/reactApp/form.jpg" style="max-width:100%;">
