@@ -20,6 +20,7 @@ Single page aplication składająca się z trzech głównych komponentów :
 Formularz logowania jest walidowany aby nie dopuścić do wysyłania pustych pół loginu i hasła, następnie poprzez **fetch API** dane wysyłane są do serwera a tam skrypt napisany w **PHP** wysyła zapytanie do bazy danych i sprawdza czy dany użytkownik i hasło są poprawne i czy jest to _klient_ czy _fotograf_.
 
 Na podstawie zwróconych danych **React-router** podejmuje decyzję do którego panelu przekieruje użytkownika.
+Po zaznaczeniu *Nie wylogowuj mnie*, użytkownik będzie cały czas zalogowany. Wyłączenie przeglądarki nie spowoduje wylogowania.
 
 <img alt="Logo" src="http://maciejf.pl/img/reactApp/gif/login.gif" style="max-width:100%;">
 
@@ -48,8 +49,17 @@ Następnie do bazy **mysql** wysyłane są dane z formularza.
 
 #### *2. Panel fotografa --> Lista klientów*
 
-Po dodaniu nowej sesji, w bazie klientów pojawia się nowa pozycja.
+Po dodaniu nowego użytkownika w bazie klientów pojawi się nowa pozycja.
+Jeśli podczas dodawania sesji fotograf popełni błąd, wystarczy kliknąć przycisk *edytuj* i poprawić dane.
+Po zatwierdzeniu, wszystkie dane aktualizowane są na serwerze.
 
-<img alt="Logo" src="http://maciejf.pl/img/reactApp/katalog.jpg" style="max-width:100%;">
+<img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/lista-klientów.gif" style="max-width:100%;">
 
 
+Jeśli klienta wybierze conajmniej tyle zdjęć ile kupił w pakiecie, `status` zmieni się na *gotowe*, obok daty pojawi się link do pobrania pliku .bat który skopiuje wybrane przez klienta zdjęcia do osobnego katalogu.
+
+<img  alt="Logo" src="http://maciejf.pl/img/reactApp/plik.png" style="max-width:100%;">
+
+Dodatkowo w prawym dolnym rogu pojawi się przycisk przenoszący nas do podstrony na której znajduje się lista wybranych przez klienta zdjęć z komentarzem i odbitkami.
+
+<img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/lista.gif" style="max-width:100%;">
