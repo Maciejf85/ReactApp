@@ -28,10 +28,9 @@ Na podstawie zwróconych danych **React-router** podejmuje decyzję do którego 
 Panel fotografa składa się z 2 podstron kontrolowanych przez **React-router**. <br>
 Strona główna to formularz służący do dodawania nowego klienta:
 
-<img align="left" alt="Logo" src="http://maciejf.pl/img/reactApp/form.jpg" style="max-width:100%;">
-<br><br>
-
 Formularz jest 2 krotnie walidowany.
 Pierwsza walidacja, po wpisaniu wartości i odznaczeniu pola sprawdzane jest czy wprowadzone dane spełniają kryteria walidacji. Jeśli tak, pojawia się zielony znaczek sugerujący, że wszystko jest ok, w przeciwnym wypadku wyświetlana jest podpowiedź i blokowane jest wysłanie formularza.
 
+<img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/form.gif" style="max-width:100%;">
+<br>
 <img align="left" alt="Logo" src="http://maciejf.pl/img/reactApp/gif/pole-formularza.gif" style="width:200px;">
