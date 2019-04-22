@@ -17,7 +17,7 @@ Single page aplication składająca się z trzech głównych komponentów :
 - panelu fotografa
 - panelu klienta
 
-Formularz logowania jest walidowany aby nie dopuścić do wysyłania pustych pół loginu i hasła, następnie poprzez **fetch API** dane wysyłane są do serwera a tam skrypt napisany w **PHP** wysyła zapytanie do bazy danych i sprawdza czy dany użytkownik i hasło są poprawne i czy jest to _klient_ czy _fotograf_.
+Formularz logowania jest walidowany aby nie dopuścić do wysyłania pustych pól loginu i hasła, następnie poprzez **fetch API** dane wysyłane są do serwera a tam skrypt napisany w **PHP** wysyła zapytanie do bazy danych i sprawdza czy dany użytkownik i hasło są poprawne i czy jest to **klient** czy **fotograf**.
 
 Na podstawie zwróconych danych **React-router** podejmuje decyzję do którego panelu przekieruje użytkownika.
 Po zaznaczeniu _Nie wylogowuj mnie_, użytkownik będzie cały czas zalogowany. Wyłączenie przeglądarki nie spowoduje wylogowania.
@@ -26,13 +26,15 @@ Po zaznaczeniu _Nie wylogowuj mnie_, użytkownik będzie cały czas zalogowany. 
 
 ### **_2. Panel fotografa_**
 
-Panel fotografa składa się z 2 podstron kontrolowanych przez **React-router**. <br>
+Panel fotografa składa się z 2 podstron. <br>
 Strona główna to formularz służący do dodawania nowego klienta:
 
 #### _1. Panel fotografa --> Dodanie nowego klienta_
 
 Formularz jest 2 krotnie walidowany.
 Pierwsza walidacja, po wpisaniu wartości i odznaczeniu pola sprawdzane jest czy wprowadzone dane spełniają kryteria walidacji. Jeśli tak, pojawia się zielony znaczek sugerujący, że wszystko jest ok, w przeciwnym wypadku wyświetlana jest podpowiedź i blokowane jest wysłanie formularza.
+
+Druga walidacja następuje po dodaniu zdjęć i kliknięciu przycisku *wyślij*
 
 Ostatnim etapem jest zaznaczenie checkboxów i dodanie zdjęć:
 
@@ -52,12 +54,12 @@ Następnie do bazy **mysql** wysyłane są dane z formularza.
 #### _2. Panel fotografa --> Lista klientów_
 
 Po dodaniu nowego użytkownika w bazie klientów pojawi się nowa pozycja.
-Jeśli podczas dodawania sesji fotograf popełni błąd, wystarczy kliknąć przycisk _edytuj_ i poprawić dane.
-Po zatwierdzeniu, wszystkie dane aktualizowane są na serwerze.
+Jeśli podczas dodawania sesji fotograf popełni błąd, wystarczy kliknąć przycisk _edytuj_ i poprawić błąd.
+Po zatwierdzeniu, wszystkie dane aktualizowane są na serwerze, a lista jest odświeżana.
 
 <img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/lista-klientów.gif" style="max-width:100%;">
 
-Jeśli klienta wybierze conajmniej tyle zdjęć ile kupił w pakiecie, `status` zmieni się na _gotowe_, obok daty pojawi się link do pobrania pliku .bat który skopiuje wybrane przez klienta zdjęcia do osobnego katalogu.
+Jeśli klient wybierze conajmniej tyle zdjęć ile kupił w pakiecie, `status` zmieni się na _gotowe_, obok daty pojawi się link do pobrania pliku .bat który skopiuje wybrane przez klienta zdjęcia do osobnego katalogu.
 
 Jest to bardzo przydatne jeśli po sesji mamy bardzo dużo plików i trzeba by było wyszukiwać w katalogu pliku .jpg oraz RAW zgodnego z wyborem klienta. Tutaj wszystko robi za nas przygotowany skrypt.
 
@@ -70,7 +72,6 @@ Dodatkowo w prawym dolnym rogu pojawi się przycisk przenoszący nas do podstron
 ##### _słaba jakość zdjeć wynika z ograniczenia palety barw do 256 kolorów_
 
 ### **_3. Panel klienta_**
-
 <br>
 
 Po zalogowaniu się, klient widzi podstawowe informacje odnośnie sesji oraz galerię zdjęć.
