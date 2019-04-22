@@ -23,19 +23,15 @@ Na podstawie zwróconych danych **React-router** podejmuje decyzję do którego 
 
 <img alt="Logo" src="http://maciejf.pl/img/reactApp/gif/login.gif" style="max-width:100%;">
 
-
 ### **_2. Panel fotografa_**
 
 Panel fotografa składa się z 2 podstron kontrolowanych przez **React-router**. <br>
 Strona główna to formularz służący do dodawania nowego klienta:
 
-<<<<<<< HEAD
-<img alt="Logo" src="http://maciejf.pl/img/reactApp/gif/pole-formularza.gif" style="max-width:50%; float:left;">
-<img alt="Logo" src="http://maciejf.pl/img/reactApp/form.jpg" style="max-width:50%; float:left;">
-=======
-<img align="left" alt="Logo" src="http://maciejf.pl/img/reactApp/form.jpg" style="max-width:50%;">
-<img align="right" alt="Logo" src="http://maciejf.pl/img/reactApp/gif/pole-formularza.gif" style="max-width:50%;">
-<img align="right" alt="Logo" src="http://maciejf.pl/img/reactApp/gif/pole-formularza.gif" style="max-width:50%;">
-<img align="right" alt="Logo" src="http://maciejf.pl/img/reactApp/gif/pole-formularza.gif" style="max-width:50%;">
+<img align="left" alt="Logo" src="http://maciejf.pl/img/reactApp/form.jpg" style="max-width:100%;">
+<br><br>
 
->>>>>>> 0bdd341357c36e533dac2751ff129b56c54f24ab
+Formularz jest 2 krotnie walidowany.
+Pierwsza walidacja, po wpisaniu wartości i odznaczeniu pola sprawdzane jest czy wprowadzone dane spełniają kryteria walidacji. Jeśli tak, pojawia się zielony znaczek sugerujący, że wszystko jest ok, w przeciwnym wypadku wyświetlana jest podpowiedź i blokowane jest wysłanie formularza.
+
+<img align="left" alt="Logo" src="http://maciejf.pl/img/reactApp/gif/pole-formularza.gif" style="width:200px;">
