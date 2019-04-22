@@ -58,10 +58,37 @@ Po zatwierdzeniu, wszystkie dane aktualizowane są na serwerze.
 
 Jeśli klienta wybierze conajmniej tyle zdjęć ile kupił w pakiecie, `status` zmieni się na *gotowe*, obok daty pojawi się link do pobrania pliku .bat który skopiuje wybrane przez klienta zdjęcia do osobnego katalogu.
 
-<img  alt="Logo" src="http://maciejf.pl/img/reactApp/plik1.png" style="max-width:100%;">
+Jest to bardzo przydatne jeśli po sesji mamy bardzo dużo plików i trzeba by było wyszukiwać w katalogu pliku .jpg oraz RAW zgodnego z wyborem klienta. Tutaj wszystko robi za nas przygotowany skrypt.
+
+<img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/plik.gif" style="max-width:100%;">
 
 Dodatkowo w prawym dolnym rogu pojawi się przycisk przenoszący nas do podstrony na której znajduje się lista wybranych przez klienta zdjęć z komentarzem i odbitkami.
 
 <img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/lista.gif" style="max-width:100%;">
 
 ### **_3. Panel klienta_**
+<br>
+
+Po zalogowaniu się, klient widzi podstawowe informacje odnośnie sesji oraz galerię zdjęć.
+
+Użytkownik może wybrać interesujące go zdjęcie na 2 sposoby:
+
+1. Klikając przycisk **wybierz** znajdujący się pod zdjęciem.
+
+Jeśli fotograf zezwolił na dodawanie *odbitek* i *komentarzy* po wybraniu zdjęcia pojawią się 2 przyciski.
+<br>
+
+<img  alt="Logo"  src="http://maciejf.pl/img/reactApp/gif/button.gif" >
+Po dodaniu komentarza przycisk zmienia kolor na fioletowy, a po dodaniu odbitek przyciska zmienia kolor na zielony i pojawia się ikonka z liczbą odbitek.
+<img  alt="Logo" src="http://maciejf.pl/img/reactApp/button.jpg" >
+<br>
+
+2. Klikając w zdjęcie i wybierając z pełno ekranowej galerii.
+Zdjęcia można przewijać klikając w strzałki obok zdjęcia lub za pomocą strzałek na klawiaturze.
+
+<img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/wybór2.gif" style="max-width:100%;">
+
+
+
+
+
