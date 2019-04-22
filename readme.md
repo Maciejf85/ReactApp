@@ -84,7 +84,7 @@ Po dodaniu komentarza przycisk zmienia kolor na fioletowy, a po dodaniu odbitek 
 <br>
 
 2. Klikając w zdjęcie i wybierając z pełno ekranowej galerii.
-Zdjęcia można przewijać klikając w strzałki obok zdjęcia lub za pomocą strzałek na klawiaturze.
+Galerię można przewijać klikając w strzałki obok zdjęcia na klawiaturze.
 
 ###### *słaba jakość wynika z ograniczeń gif do 256 kolorów*
 <img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/wybór_1.gif" style="max-width:100%;">
