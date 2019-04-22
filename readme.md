@@ -69,12 +69,16 @@ Jest to bardzo przydatne jeśli po sesji mamy bardzo dużo plików i trzeba by b
 Dodatkowo w prawym dolnym rogu pojawi się przycisk przenoszący nas do podstrony na której znajduje się lista wybranych przez klienta zdjęć z komentarzem i odbitkami.
 
 <img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/lista.gif" style="max-width:100%;">
+
 ##### _słaba jakość zdjeć wynika z ograniczenia palety barw do 256 kolorów_
 
 ### **_3. Panel klienta_**
 <br>
 
-Po zalogowaniu się, klient widzi podstawowe informacje odnośnie sesji oraz galerię zdjęć.
+Po zalogowaniu się, klient widzi podstawowe informacje o sesji oraz galerię zdjęć.
+
+Jeśli klient wybierze więcej zdjęć niż zawiera pakiet, zacznie być naliczana dopłata za każde następne zdjęcie.
+Jeśli fotograf nie zaznaczył checkboxa `sesja opłacona` to pozycja `dopłata` będzie zawierała cenę sesji + dopłatę za dodatkowe zdjęcia.
 
 Użytkownik może wybrać interesujące go zdjęcie na 2 sposoby:
 
@@ -92,6 +96,7 @@ Po dodaniu komentarza przycisk zmienia kolor na fioletowy, a po dodaniu odbitek 
    Galerię można przewijać klikając w strzałki obok zdjęcia na klawiaturze.
 
 <img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/wybór_1.gif" style="max-width:100%;">
+
 ##### _słaba jakość zdjeć wynika z ograniczenia palety barw do 256 kolorów_
 
 <br>
