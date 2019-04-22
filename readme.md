@@ -45,7 +45,8 @@ Ostatnim etapem jest zaznaczenie checkboxów i dodanie zdjęć:
 <img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/form.gif" style="max-width:100%;">
 <br>
 
-Po wysłaniu formularza na serwerze powstaje katalog ze zdjęciami i plikiem json przechowującym informacje o wybranych zdjęciach, komentarzach i odbitkach.
+Po wysłaniu formularza na serwerze powstaje katalog ze zdjęciami i plikiem do którego będą zapisywane informacje o wybranych zdjęciach, treść komentarzy oraz rodzaj i ilość odbitek.
+
 Następnie do bazy **mysql** wysyłane są dane z formularza.
 
 <img alt="Logo" src="http://maciejf.pl/img/reactApp/katalog.jpg" style="max-width:100%;">
