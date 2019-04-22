@@ -66,7 +66,7 @@ Jest to bardzo przydatne jeśli po sesji mamy bardzo dużo plików i trzeba by b
 Dodatkowo w prawym dolnym rogu pojawi się przycisk przenoszący nas do podstrony na której znajduje się lista wybranych przez klienta zdjęć z komentarzem i odbitkami.
 
 <img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/lista.gif" style="max-width:100%;">
-###### _słaba jakość wynika z ograniczenia palety barw do 256 kolorów_
+##### *słaba jakość wynika z ograniczenia palety barw do 256 kolorów*
 
 
 ### **_3. Panel klienta_**
@@ -91,7 +91,7 @@ Po dodaniu komentarza przycisk zmienia kolor na fioletowy, a po dodaniu odbitek 
    Galerię można przewijać klikając w strzałki obok zdjęcia na klawiaturze.
 
 <img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/wybór_1.gif" style="max-width:100%;">
-###### _słaba jakość wynika z ograniczenia palety barw do 256 kolorów_
+##### *słaba jakość wynika z ograniczenia palety barw do 256 kolorów*
 
 <br>
 
