@@ -48,4 +48,8 @@ Następnie do bazy **mysql** wysyłane są dane z formularza.
 
 #### *2. Panel fotografa --> Lista klientów*
 
+Po dodaniu nowej sesji, w bazie klientów pojawia się nowa pozycja.
+
+<img alt="Logo" src="http://maciejf.pl/img/reactApp/katalog.jpg" style="max-width:100%;">
+
 
