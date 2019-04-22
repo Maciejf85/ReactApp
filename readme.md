@@ -58,8 +58,10 @@ Po zatwierdzeniu, wszystkie dane aktualizowane są na serwerze.
 
 Jeśli klienta wybierze conajmniej tyle zdjęć ile kupił w pakiecie, `status` zmieni się na *gotowe*, obok daty pojawi się link do pobrania pliku .bat który skopiuje wybrane przez klienta zdjęcia do osobnego katalogu.
 
-<img  alt="Logo" src="http://maciejf.pl/img/reactApp/plik.png" style="max-width:100%;">
+<img  alt="Logo" src="http://maciejf.pl/img/reactApp/plik1.png" style="max-width:100%;">
 
 Dodatkowo w prawym dolnym rogu pojawi się przycisk przenoszący nas do podstrony na której znajduje się lista wybranych przez klienta zdjęć z komentarzem i odbitkami.
 
 <img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/lista.gif" style="max-width:100%;">
+
+### **_3. Panel klienta_**
