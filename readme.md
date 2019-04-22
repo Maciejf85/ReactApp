@@ -1,7 +1,7 @@
 # React Photo App
 
 Aplikacja internetowa dedykowana fotografom. <br>
-Głównym zadaniem aplikacji jest umożliwienie klientowi wybrania zdjęć po sesji fotograficznej, które mają zostać poddane retuszowi, napisanie swoich uwag i dodanie odbitek.
+Głównym zadaniem aplikacji jest umożliwienie klientowi wybrania zdjęć, które mają zostać poddane retuszowi, napisanie swoich uwag i dodanie odbitek.
 
 ## Użyte technologie
 
