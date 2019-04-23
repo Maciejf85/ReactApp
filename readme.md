@@ -4,9 +4,9 @@ Aplikacja internetowa dedykowana fotografom. <br>
 Głównym zadaniem aplikacji jest umożliwienie klientowi wybrania zdjęć, które mają zostać poddane retuszowi, napisanie swoich uwag i dodanie odbitek.
 
 ### Demo aplikacji:
-[maciejf.pl](http://maciejf.pl)
-*Login: demo*
-*Hasło: demo*
+[http://maciejf.pl](http://maciejf.pl)
+<br>
+*Login: demo* , *Hasło: demo*
 
 
 ## Użyte technologie
