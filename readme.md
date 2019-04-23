@@ -84,11 +84,11 @@ Użytkownik może wybrać interesujące go zdjęcie na 2 sposoby:
 
 1. Klikając przycisk **wybierz** znajdujący się pod zdjęciem.
 
-Jeśli fotograf zezwolił na dodawanie _odbitek_ i _komentarzy_ po wybraniu zdjęcia pojawią się 2 przyciski.
+Jeśli fotograf zezwolił na dodawanie _odbitek_ i _komentarzy_ po wybraniu zdjęcia pojawią się dodatkowe przyciski.
 <br>
 
 <img  alt="Logo"  src="http://maciejf.pl/img/reactApp/gif/button1.gif" >
-Po dodaniu komentarza przycisk zmienia kolor na fioletowy, a po dodaniu odbitek przyciska zmienia kolor na zielony i pojawia się ikonka z liczbą odbitek.
+Jeśli zdjęcie zawiera komentarz i odbitki, przyciski zmieniają kolor i pojawia się ikonka z liczbą wybranych odbitek.
 <img  alt="Logo" src="http://maciejf.pl/img/reactApp/button1.jpg" >
 <br>
 
