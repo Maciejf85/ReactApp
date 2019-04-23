@@ -93,7 +93,7 @@ Jeśli zdjęcie zawiera komentarz i odbitki, przyciski zmieniają kolor i pojawi
 <br>
 
 2. Klikając w zdjęcie i wybierając z pełno ekranowej galerii.
-   Galerię można przewijać klikając w strzałki obok zdjęcia na klawiaturze.
+   Galerię można przewijać  strzałkami obok zdjęć lub tymi na klawiaturze.
 
 <img  alt="Logo" src="http://maciejf.pl/img/reactApp/gif/wybór_1.gif" style="max-width:100%;">
 
