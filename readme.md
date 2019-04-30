@@ -6,8 +6,10 @@ Głównym zadaniem aplikacji jest umożliwienie klientowi wybrania zdjęć, któ
 ### Demo aplikacji:
 [http://maciejf.pl](http://maciejf.pl)
 <br>
+Panel fotografa
 *Login: demo* , *Hasło: demo*
-
+Panel klienta
+*Login: fotograf* , *Hasło: 12345*
 
 ## Użyte technologie
 
