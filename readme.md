@@ -8,6 +8,7 @@ Głównym zadaniem aplikacji jest umożliwienie klientowi wybrania zdjęć, któ
 <br>
 Panel fotografa
 *Login: demo* , *Hasło: demo*
+<br>
 Panel klienta
 *Login: fotograf* , *Hasło: 12345*
 
